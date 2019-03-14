@@ -8,10 +8,8 @@
     <section>
         <title>Decimálisból unárisba átváltó Turing gép</title>
         <para>
-            Állapotátmenet gráfjával megadva írd meg ezt a gépet!
-        </para>
-        <para>
-            Megoldás forrása:
+	 A harmadik fejezet első feladatában mint már a címben is látható, Decimálisból unárisba átváltó Turing gépet kell létrehoznunk,
+	 állapotátmenet gráfjával megadva.
         </para>
 	<programlisting language="c"><![CDATA[
 	#include <stdio.h>
