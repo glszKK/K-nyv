@@ -198,7 +198,7 @@ false]]></screen>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/labdapattogas">https://bhaxor.blog.hu/2018/08/28/labdapattogas</link>
         </para>
         <para>
-            Megoldás forrása:  <link xlink:href="https://github.com/ujhazibalazs/MagProg1/blob/master/labdapattogas.cpp</link>
+            Megoldás forrása:  <link xlink:href="https://github.com/ujhazibalazs/MagProg1/blob/master/labdapattogas.cpp">https://github.com/ujhazibalazs/MagProg1/blob/master/labdapattogas.cpp</link>
         </para>
 	<programlisting language="c"><![CDATA[
 #include <stdio.h>
@@ -254,9 +254,9 @@ main ( void )
             Ez a program eltér az előzőektől egy minimálisan, hisz itt új header fileokat használunk. Melyeknek a neve curses.h és unistd.h.
             Ezek segítségével tudjuk a kurzort mozgatni a terminálon belül.
         </para>
-    </section>                     
-
-    <section>
+     </section>   
+	
+   <section>
         <title>Szóhossz és a Linus Torvalds féle BogoMIPS</title>
         <para>
 	   Az ötödik feladatban olyan programot kell írnunk amely azt nézi meg, hogy hány bites a szó a gépeden,
