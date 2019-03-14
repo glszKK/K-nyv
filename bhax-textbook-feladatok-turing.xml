@@ -470,9 +470,5 @@ length(nemvaltoztatesnyer)+length(valtoztatesnyer)
         <para>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2019/01/03/erdos_pal_mit_keresett_a_nagykonyvben_a_monty_hall-paradoxon_kapcsan">https://bhaxor.blog.hu/2019/01/03/erdos_pal_mit_keresett_a_nagykonyvben_a_monty_hall-paradoxon_kapcsan</link>
         </para>
-        <para>
-            Megoldás forrása: <link xlink:href="https://gitlab.com/nohar92/bhax/blob/master/Harmati%20Norbert/1.%20rész/monthy.r"</link>
-        </para>
     </section>
-
 </chapter>                
