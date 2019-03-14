@@ -11,13 +11,28 @@
             Állapotátmenet gráfjával megadva írd meg ezt a gépet!
         </para>
         <para>
-            Megoldás videó:
+            Megoldás forrása:
         </para>
+	<programlisting language="c"><![CDATA[
+	#include <stdio.h>
+	int main()
+	{
+	  int x;
+	  printf("Tizes szamrendszerbeli szam:");
+	  scanf("%d",&x);
+	  printf("\nUnaris alakja:");
+	  for(int i = 0; i < x; i++)
+	    {
+	      printf("/");
+	    }
+	  printf("\n");
+	  return 0;
+	}
+	]]>
+        </programlisting>
         <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+           Decimálisból unáris (egyes számrendszer) számrendszerbe való átváltás során csak a 10-es számrenderben megadott számú tetszőleges karaktert kell leírni.
+	   A fenti példában ez egy for ciklussal van megoldva de bármilyen más megoldás is jó ha az megfelelő számú tetszőleges karakter ad vissza eredményül.
         </para>
     </section>        
         
@@ -27,10 +42,7 @@
             Mutass be legalább két környezetfüggő generatív grammatikát, amely ezt a nyelvet generálja!
         </para>
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
+            Megoldás forrása:
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -44,20 +56,47 @@
             BNF-ben a C utasítás fogalmát!
             Majd mutass be olyan kódcsipeteket, amelyek adott szabvánnyal nem fordulnak (például C89), mással (például C99) igen.
         </para>
+	<programlisting><![CDATA[
+	<nem terminális> ::= konkatenációja terminálisoknak, nem terminálisoknak, 
+	illetve {iteráció}, [opcionális], alter|natíva
+	<egész szám> ::= <előjel><szám>
+	<előjel> ::= [-|+]
+	<szám> ::= <számjegy>{<számjegy>}
+	<számjegy> ::= 0|1|2|3|4|5|6|7|8|9]]>
+	</programlisting>
+	<programlisting><![CDATA[
+	<címkézett_utasítás> ::= <azonosító> | case | default
+	<kifejezésutasítás> ::= <kifejezés>
+	<deklarációs_lista> ::= <deklaráció>
+	<utasítás_lista> ::= <utasítás>
+	<összetett_utasítás> ::= <deklarációs_lista> | <utasítás_lista>
+	<kiválasztó_utasítás> ::= if | if else | switch
+	<iterációs_utasítás> ::= while | do while | for
+	<vezérlésátadó_ utasítás> ::= goto | continue | break | return]]>
+        </programlisting>
         <para>
-           
+            Példák a szabványok közötti különbségekre:  
         </para>
+	<programlisting language="c"><![CDATA[
+	int main(){
+	//int a;
+		return 0;
+	}
+	]]>
+        </programlisting>
         <para>
-            Megoldás forrása:
-            <programlisting language="c"><![CDATA[
-                long long int
-    ]]>
-            </programlisting>  
-            Uj adattipus.
+            A fenti példa C89-es szabvánnyal nem fordul le mí C99-es szabvánnyal le fordul mert abban már megengedett a //-el való kommentelés, míg a C89-es szabványban csak a /* és a */ voltak kommentet jelző szimbólumok. Szóval a fenti példa C89-es szabványban így nézne ki:
         </para>
-        <para>
-            Aritmetikai es vezerlo utasitasok függvényen belül, blokkban helyezkednek el. A tevekenyseg pontos megfogalmazasa amit nem lehet reszletezni, jelentessel bir.
-        </para>
+	<programlisting language="c"><![CDATA[
+	int main(){
+	/*int a;*/
+		return 0;
+	}
+	]]>
+        </programlisting>
+	<para>
+	Ez mind a 2 szabványban le fog fordulni.
+	</para>
     </section>                     
 
     <section>
@@ -119,45 +158,66 @@
             <listitem>                                    
                 <programlisting><![CDATA[if(signal(SIGINT, SIG_IGN)!=SIG_IGN)
     signal(SIGINT, jelkezelo);]]></programlisting>
+		<para>
+			Ha a SIGINT nem volt figyelmen kívül hagyva akkor a jelkezelő kezelje.
+			Ha figyelmen kívül volt hagyva tövábbra is maradjon úgy.
+		</para>
             </listitem>
+	
             <listitem>                                    
-                <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>            
+                <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>  
+		<para>
+		A függvény 5x fog lefutni, viszont figyelni kell arra hogy az i változót még a for ciklus ellőtt deklarálni kell, és ha az i-t ++i-vel növeltük akkor lehetőleg 		továbbra is úgy használjuk hogy könnyebben érthető maradjon a kód.
+	
+		</para>          
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>            
+	
+            <listitem>
+                <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>  
+		<para>
+			Itt is ugyanaz igaz mint az előzőnél. A cuklus 5x le fog futni ha a ciklusváltozót deklarátuk a ciklus előtt.
+		</para>          
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>            
+	
+            <listitem>
+                <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>  
+		<para>
+			Nyelvtani hiba nincs ha már létrehoztuk a tomb nevű tömböt és az i-t. Le is fog fordulni, viszont az eredmény bugos lesz.
+		</para>          
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting>            
+	
+            <listitem>
+                <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting>
+		<para>
+			A kód hibamentes ha már létrehoztuk a látható változókat és mutatókat.
+		</para>            
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>            
+	
+            <listitem>
+                <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>  
+		<para>
+			A printf függvény ki fog írni 2 decimális számot ha már megvan az f függvény, az a változó, és ha az a változó megfelelő típusú az f függvényhez.
+			Arra kell figyelni hogy ha az f függvény visszatérési értéke nem int akkor a kiírt értékek nem biztos hogy pontosak lesznek.
+		</para>          
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>            
+	
+            <listitem>
+                <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>  
+		<para>
+			A printf ki fogja írni az f függvény visszatérési értékét a-ra decimális alakban, és a értékét decimális alakban. Itt is ugyanarra kell figyelni mint 				az előbb. Nyelvtani hiba nincs a kódrészletben.
+		</para>          
             </listitem>
-            <listitem>                                    
-
-                <programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>            
-            </listitem>
+	
+            <listitem>
+                <programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>  
+		<para>
+		A kiiratás megtörténik viszont az f függvény most az a változó memória címévél fog dolgozni nem az a értékével ha ezt akarjuk akkor nincs semmi gond.
+		</para>          
+            </listitem>	
         </orderedlist>
         <para>
-            Megoldás forrása:  
-        </para>
-
-        <para>
-            Megoldás videó: 
-        </para>
-
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+	    Tanulságok, tapasztalatok, magyarázat...:
+            Figyeljünk hogy hogyan haszáljuk az operátorokat, figyeljünk a kiértékelés és az értékadás sorrendjére (i++, ++i), és ismerjük a függvényeket amiket használunk.
         </para>
 
     </section>                     
@@ -167,14 +227,23 @@
         <para>
             Hogyan olvasod természetes nyelven az alábbi Ar nyelvű formulákat?
         </para>
-        <programlisting language="tex"><![CDATA[$(\forall x \exists y ((x<y)\wedge(y \text{ prím})))$ 
-
-$(\forall x \exists y ((x<y)\wedge(y \text{ prím})\wedge(SSy \text{ prím})))$ 
-
-$(\exists y \forall x (x \text{ prím}) \supset (x<y)) $ 
-
-$(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
-]]></programlisting>        
+        <programlisting language="tex"><![CDATA[$(\forall x \exists y ((x<y)\wedge(y \text{ prím})))$]]></programlisting>
+	<para>
+		Végtelen sok prím van.
+	</para>
+	<programlisting language="tex"><![CDATA[$(\forall x \exists y ((x<y)\wedge(y \text{ prím})\wedge(SSy \text{ prím})))$]]></programlisting> 
+	<para>
+		Végtelen sok ikerprím van.
+	</para>
+	<programlisting language="tex"><![CDATA[$(\exists y \forall x (x \text{ prím}) \supset (x<y)) $]]></programlisting> 
+	<para>
+		Véges sok prím van.
+	</para>
+	<programlisting language="tex"><![CDATA[$(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$]]></programlisting>
+	<para>
+		Véges sok prím van.
+	</para>
+        
         <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/MatLog_LaTeX">https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/MatLog_LaTeX</link>
         </para>
@@ -183,9 +252,6 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
             Megoldás videó: <link xlink:href="https://youtu.be/ZexiPy3ZxsA">https://youtu.be/ZexiPy3ZxsA</link>, <link xlink:href="https://youtu.be/AJSXOQFF_wk">https://youtu.be/AJSXOQFF_wk</link>
         </para>
 
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
     </section>                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     <section>
@@ -197,34 +263,44 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
 
         <itemizedlist>
             <listitem>
-                <para>egész</para>                        
+                <para>egész</para>
+		<programlisting><![CDATA[int a;]]></programlisting>                         
             </listitem>
             <listitem>
-                <para>egészre mutató mutató</para>                        
+                <para>egészre mutató mutató</para>
+		<programlisting><![CDATA[int *b;]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egész referenciája</para>                        
+                <para>egész referenciája</para>
+		<programlisting><![CDATA[int &r;]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészek tömbje</para>                        
+                <para>egészek tömbje</para>
+		<programlisting><![CDATA[int t[5];]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészek tömbjének referenciája (nem az első elemé)</para>                        
+                <para>egészek tömbjének referenciája (nem az első elemé)</para>
+		<programlisting><![CDATA[int (&tr)[5] = t;]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészre mutató mutatók tömbje</para>                        
+                <para>egészre mutató mutatók tömbje</para>
+		<programlisting><![CDATA[int *d[5];]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészre mutató mutatót visszaadó függvény</para>                        
+                <para>egészre mutató mutatót visszaadó függvény</para>
+		<programlisting><![CDATA[int *h();]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészre mutató mutatót visszaadó függvényre mutató mutató</para>                        
+                <para>egészre mutató mutatót visszaadó függvényre mutató mutató</para>
+		<programlisting><![CDATA[int *(*h) ();]]></programlisting>                        
             </listitem>
             <listitem>
-                <para>egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvény</para>                        
+                <para>egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvény</para>
+		<programlisting><![CDATA[int (*v (int c)) (int a, int b);]]></programlisting>
             </listitem>            
             <listitem>
-                <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>                        
+                <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>
+		<programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>                        
             </listitem>            
         </itemizedlist>            
 
@@ -234,48 +310,75 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
 
         <itemizedlist>
             <listitem>
-                <programlisting><![CDATA[int a;]]></programlisting>            
+                <programlisting><![CDATA[int a;]]></programlisting>   
+		<para>
+			Egy egész típusú változót.
+		</para>         
             </listitem>
-            <listitem>
-                <programlisting><![CDATA[int *b = &a;]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int &r = a;]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int c[5];]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int (&tr)[5] = c;]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int *d[5];]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int *h ();]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int *(*l) ();]]></programlisting>            
-            </listitem>
-            <listitem>
-                <programlisting><![CDATA[int (*v (int c)) (int a, int b)]]></programlisting>            
-            </listitem>            
-            <listitem>
-                <programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>            
-            </listitem>            
-        </itemizedlist>       
 
+            <listitem>
+                <programlisting><![CDATA[int *b = &a;]]></programlisting>
+		<para>
+			Egy egész típusú mutatót ami a-ra mutat.
+		</para>            
+            </listitem>
 
-        <para>
-            Megoldás videó: 
-        </para>
-        <para>
-            Megoldás forrása:  
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
+            <listitem>
+                <programlisting><![CDATA[int &r = a;]]></programlisting>   
+		<para>
+			a változónak a referenciája.
+		</para>         
+            </listitem>
+
+            <listitem>
+                <programlisting><![CDATA[int c[5];]]></programlisting>  
+		<para>
+			Egy 5 elemű egész típusú tömböt.
+		</para>          
+            </listitem>
+
+            <listitem>
+                <programlisting><![CDATA[int (&tr)[5] = c;]]></programlisting>    
+		<para>
+			Egészek tömbjének referenciáját.
+		</para>        
+            </listitem>
+            <listitem>
+                <programlisting><![CDATA[int *d[5];]]></programlisting>  
+		<para>
+			5 elemű int-re mutató mutatók tömbjét.
+		</para>          
+            </listitem>
+
+            <listitem>
+                <programlisting><![CDATA[int *h ();]]></programlisting> 
+		<para>
+			Egy függvényt ami int-re mutató mutatót ad vissza.
+		</para>           
+            </listitem>
+
+            <listitem>
+                <programlisting><![CDATA[int *(*l) ();]]></programlisting> 
+		<para>
+			Egy int-re mutató mutatót visszaadó függvényre mutató mutatót.(pl. az előző függvényre)
+		</para>           
+            </listitem>
+
+            <listitem>
+                <programlisting><![CDATA[int (*v (int c)) (int a, int b)]]></programlisting>
+		<para>
+			int-et visszaadó, két intet kapó függvényre mutató mutatót visszaadó egészet kapó függvényt.
+		</para>            
+            </listitem> 
+           
+            <listitem>
+                <programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>  
+		<para>
+			int-et visszaadó, két intet kapó függvényre mutató mutatót visszaadó egészet kapó függvényre mutató mutatót.
+		</para>          
+            </listitem>            
+        </itemizedlist>
     </section>                     
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-</chapter>                
+</chapter>  
