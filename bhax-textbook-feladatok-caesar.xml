@@ -1,4 +1,4 @@
-<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
+    <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
     <info>
         <title>Helló, Caesar!</title>
         <keywordset>
@@ -8,31 +8,71 @@
     <section>
         <title><type>int ***</type> háromszögmátrix</title>
         <para>
-           
+           Írj egy olyan malloc és free párost használó C programot, amely helyet foglal egy alsó háromszög
+            mátrixnak a szabad tárban!
         </para>
         <para>
-            Megoldás videó:
+            Megoldás forrása: https://github.com/ujhazibalazs/MagProg1/blob/master/haromszogmatrix.c
         </para>
         <para>
-            Megoldás forrása:                
+            Az alsó háromszögmátrix tulajdonságai: 
+            -Négyzetes: A mátrixnak ugyan annyi sora van, mint oszlopa.
+            -Főátlója feletti összes elem értéke 0.
+            -Ha a mátrixot i-vel és j-vel indexeljük, ahol i a sorok számát és j az oszlopok számát jelöli, 
+            akkor biztosak lehetünk abban, hogy ha j nagyobb, mint i, a mátrix eleme 0.
+            
+            A forrásban linkelt program pointerek segítségével foglal megfelelő méretű helyet az alsó háromszögmátrix számára.
+            A program elején létrehoztunk egy egész típusú változót nr néven, ez határozza meg, hogy hány soros/oszlopos legyen a mátrix.
+            A mátrixban minden elemnek "Double"-nyi helyet foglalunk.
+            A for ciklusokban csak a főátlóig kell elmennie az indexeknek, mivel a főátló után már csak 0 van.
+            2 db for ciklust teszünk egymásba, hogy a 2 dimenziós tömbünket indexelni tudjuk és helyet tudjunk foglalni az elemeknek a memóriában.
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
     </section>        
     <section>
         <title>C EXOR titkosító</title>
         <para>
             Írj egy EXOR titkosítót C-ben!
         </para>
+        <programlisting language="C"><![CDATA[
+      
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
+#define MAX_KULCS 100
+#define BUFFER_MERET 256
+
+int 
+main (int argc, char **argv)
+{
+	char kulcs [MAX_KULCS];
+	char buffer[BUFFER_MERET];
+	
+	int kulcs_index = 0;
+	int olvasott_bajtok = 0;
+
+	int kulcs_meret = strlen (argv[1]);
+	strncpy (kulcs, argv[1], MAX_KULCS);
+
+	while ((olvasott_bajtok = read (0, (void *) buffer, BUFFER_MERET)))
+		{
+			for (int i=0; i< olvasott_bajtok; ++i)
+			{
+				buffer[i] = buffer[i] ^ kulcs[kulcs_index];
+				kulcs_index = (kulcs_index + 1) % kulcs_meret;
+			}
+		  write (1, buffer, olvasott_bajtok);
+		}
+}
+]]></programlisting>
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ebben a programban a kizáró vaggyal(XOR) titkosítunk bármilyen szöveget, inputot.
+            A program elején létrehozunk 2db karakter tömböt, az egyiket a kulcsnak, a másikat a buffernek.
+            Ezután létrehozunk 2db egész(int) típusú változót, az egyiket azért, hogy tudjuk, a kulcs hanyadik karakterénél járunk titkosítás közben, 
+            a másikat pedig azért, hogy tudjuk hány bájtot olvastunk be a megadott szövegből, inputból.
+            A 17. sorban egy egész típusú változóban eltároljuk az első paraméternek megadott kulcs hosszát, mivel ez egy karaktersorozat, ezért a strlen-el megszámoltatjuk hány db.
+            Ezután egy while ciklusban karakterenként titkosítjuk a megadott szöveget exorral és minden karakter titkosítása után a kulcs következő karakterére lépünk, ha a végére értünk,
+            akkor kezdjük az elejéről. Ha while ciklus végzett a titkosítással már csak annyi a dolgunk, hogy ki irassuk a titkos szöveget ami létrejött.
         </para>            
     </section>        
     <section>
@@ -40,14 +80,60 @@
         <para>
             Írj egy EXOR titkosítót Java-ban!
         </para>
+       <programlisting language="Java"><![CDATA[
+        public class ExorTitkosító {
+    
+    public ExorTitkosító(String kulcsSzöveg,
+            java.io.InputStream bejövőCsatorna,
+            java.io.OutputStream kimenőCsatorna)
+            throws java.io.IOException {
+        
+        byte [] kulcs = kulcsSzöveg.getBytes();
+        byte [] buffer = new byte[256];
+        int kulcsIndex = 0;
+        int olvasottBájtok = 0;
+
+        while((olvasottBájtok =
+                bejövőCsatorna.read(buffer)) != -1) {
+            
+            for(int i=0; i<olvasottBájtok; ++i) {
+                
+                buffer[i] = (byte)(buffer[i] ^ kulcs[kulcsIndex]);
+                kulcsIndex = (kulcsIndex+1) % kulcs.length;
+                
+            }
+            
+            kimenőCsatorna.write(buffer, 0, olvasottBájtok);
+            
+        }
+        
+    }
+    
+    public static void main(String[] args) {
+        
+        try {
+            
+            new ExorTitkosító(args[0], System.in, System.out);
+            
+        } catch(java.io.IOException e) {
+            
+            e.printStackTrace();
+            
+        }
+        
+    }
+    
+}
+]]></programlisting>
+
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ez a program ugyan arra a célra lett létrehozva, mint a felette lévő, annyi különbséggel, hogy másik nyelven íródott.
+            A program Java nyelvben készült, ami annyiban tér el az eddig megszokott nyelvünktől, hogy objektum-orientált.
+            Mint láthatjuk a programban egy "ExorTitkosító" nevű függvényünk van a "Main"-en kívül.
+            Ez az "ExorTitkosító" ugyan azt csinálja lényegében, mint amit feljebb leírtam.
+            A "Main"-ben viszont annyi különbség van, hogy egy try, catch-et használunk.
+            A try-ban létrehozzuk az elején elkészített "ExorTitkosító" objektumunkat és átadjuk neki a megfelelő paramétereket: kulcs, bemeneti és kimeneti csatorna.
+            Ha ez hiba nélkül lefut, akkor a program kilép, de ha bármi hiba történne a catch el fogja kapni azt és tudatja velünk mi volt a baj.
         </para>            
     </section>        
     <section>
@@ -55,14 +141,106 @@
         <para>
             Írj egy olyan C programot, amely megtöri az első feladatban előállított titkos szövegeket!
         </para>
+        <programlisting language="c"><![CDATA[
+     #define MAX_TITKOS 4096
+	#define OLVASAS_BUFFER 256
+	#define KULCS_MERET 8
+	#define _GNU_SOURCE
+	
+	#include <stdio.h>
+	#include <unistd.h>
+	#include <string.h>
+
+		int
+                tiszta_lehet (const char *titkos, int titkos_meret)
+                {
+                    // a tiszta szoveg valszeg tartalmazza a gyakori magyar szavakat
+                    // illetve az átlagos szóhossz vizsgálatával csökkentjük a
+                    // potenciális töréseket
+
+                        && strcasestr (titkos, "hogy") && strcasestr (titkos, "nem")
+                        && strcasestr (titkos, "az") && strcasestr (titkos, "ha");
+
+                }
+
+            void
+            exor (const char kulcs[], int kulcs_meret, char titkos[], int titkos_meret)
+            {
+
+                int kulcs_index = 0;
+
+                for (int i = 0; i < titkos_meret; ++i)
+                {
+
+                    titkos[i] = titkos[i] ^ kulcs[kulcs_index];
+                    kulcs_index = (kulcs_index + 1) % kulcs_meret;
+
+                }
+
+            }
+
+                int
+                exor_tores (const char kulcs[], int kulcs_meret, char titkos[],
+                        int titkos_meret)
+                {
+
+                    exor (kulcs, kulcs_meret, titkos, titkos_meret);
+
+                   return tiszta_lehet (titkos, titkos_meret);
+
+                }
+
+
+                char kulcs[KULCS_MERET];
+                char titkos[MAX_TITKOS];
+                char *p = titkos;
+                int olvasott_bajtok;
+
+	            while ((olvasott_bajtok =
+                        read (0, (void *) p,
+                        	(p - titkos + OLVASAS_BUFFER <
+                        	MAX_TITKOS) ? OLVASAS_BUFFER : titkos + MAX_TITKOS - p)))
+                     p += olvasott_bajtok;
+
+
+                for (int i = 0; i < MAX_TITKOS - (p - titkos); ++i)
+                        titkos[p - titkos + i] = '\0';
+
+
+  for (int ii = '0'; ii <= '9'; ++ii)
+    for (int ji = '0'; ji <= '9'; ++ji)
+      for (int ki = '0'; ki <= '9'; ++ki)
+	for (int li = '0'; li <= '9'; ++li)
+	  for (int mi = '0'; mi <= '9'; ++mi)
+	    for (int ni = '0'; ni <= '9'; ++ni)
+	      for (int oi = '0'; oi <= '9'; ++oi)
+		for (int pi = '0'; pi <= '9'; ++pi)
+		  {
+		    kulcs[0] = ii;
+		    kulcs[1] = ji;
+		    kulcs[2] = ki;
+		    kulcs[3] = li;
+		    kulcs[4] = mi;
+		    kulcs[5] = ni;
+		    kulcs[6] = oi;
+		    kulcs[7] = pi;
+
+		    if (exor_tores (kulcs, KULCS_MERET, titkos, p - titkos))
+		      printf
+			("Kulcs: [%c%c%c%c%c%c%c%c]\nTiszta szoveg: [%s]\n",
+			 ii, ji, ki, li, mi, ni, oi, pi, titkos);
+
+		    // ujra EXOR-ozunk, igy nem kell egy masodik buffer  
+		    exor (kulcs, KULCS_MERET, titkos, p - titkos);
+		  }
+]]></programlisting> 
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ez a program a fentebb készített exor titkosítóval titkosított szövegeket töri fel és árulja el nekünk, hogy mi volt a kulcs.
+            Tulajdonképpen bruteforce-ot alkalmazunk, ami azt jelenti, hogy minden létező kombinációt megpróbálunk és majd idővel sikerül.
+            Ez nem túl jó taktika, ha a kulcs bonyolult és hosszú, mert nagy kapacitású gép kell a töréséhez és nagyon sok idő.
+            A programban tudnunk kell a kulcs hosszát, majd annyi for ciklust készítünk egymásban amennyi karakter hosszú a kulcs és így minden kombinációt kipróbálhatunk a szövegen.
+            Ha a szöveg "tisztának" tűnik, azaz előfordulnak benne gyakori szavak, pl: hogy, nem, az, ha, akkor nagy valószínűséggel sikerült feltörni 
+            (kivéve, ha ezek a szavak nem fordulnak elő a tiszta szövegben). A végén csak ki iratjuk for ciklusok indexei által megkapott kulcsot és a tiszta szöveget.
         </para>            
     </section>        
     <section>
@@ -71,13 +249,20 @@
             R
         </para>
         <para>
-            Megoldás videó: <link xlink:href="https://youtu.be/Koyw6IH5ScQ">https://youtu.be/Koyw6IH5ScQ</link>
-        </para>
-        <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Az AND (és) csak abban az esetben tér vissza 1-es értékkel, ha A AND B esetében A és B is 1-es értékkel rendelkezik. Minden egyéb esetben 
+            pl: A = 0 B = 0, A = 1 B = 0, A = 0 B = 1 0 értékkel tér vissza.
+            
+            Az OR (megengedő vagy) minden esetben 1-es értékkel tér vissza, kivéve ha A OR B esetében mind a 2 0 értéket tartalmaz. 
+            pl: A = 0 B = 0 esetben A OR B = 0, minden más esetben A OR B = 1
+            pl: A = 1 B = 1, A = 0 B = 1, A = 1 B = 0.
+            
+            Az XOR (kizáró vagy) akkor tér vissza 1-es értékkel, ha A XOR B esetében mindkét elem értéke eltérő.
+            Ha a két elem értéke megegyezik A XOR B = 0 lesz. 
+            pl: A = 1 B = 0 és A = 0 B = 1 esetében lesz A XOR B értéke 1.
+            A = 1 B = 1, A = 0 B = 0 esetében lesz A XOR B értéke 0.
         </para>            
     </section>        
     <section>
@@ -86,15 +271,29 @@
             C++
         </para>
         <para>
-            Megoldás videó:
-        </para>
-        <para>
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A hálózat kimenetének hibáját a várt kimenet ismeretében egy folytonos függvény, az úgynevezett veszteségfüggvény segítségével számszerűsítjük. 
+            A hálózat egyes súlyainak hozzájárulása a hibához a veszteségfüggvény súlyok tekintetében vett gradiensével egyenlő, 
+            ahol w a hálózat összes súlyát tartalmazó képzeletbeli vektor, C pedig a veszteségfüggvény (például az átlagos négyzetes eltérés).
+            A kimeneti réteg súlyai tekintetében vett gradiens a láncszabállyal határozható meg.
+            A rejtett rétegek hibájának meghatározásához alkalmaznunk kell a hiba-visszaterjesztést. 
+            Ehhez észre kell vennünk, hogy a lineáris kombinációig (tehát az aktivációs függvény hívása előttig) visszaszámított gradiens kétszer is felhasználásra kerül: 
+            egyrészt meghatározható általa a súlyok gradiense, másrészt az előző réteg kimenetének tekintetében vett gradiens, 
+            mely az előző réteg tanításához kell. A lineáris kombinációig visszaszámított gradiensre bevezetjük a delta-jelölést, ahol O* a kimeneti réteg lineáris kombinációját jelöli, 
+            pedig jelen definíció szerint a kimeneti réteg hibája vagy deltája és a következőképpen határozzuk meg, 
+            aholg az aktivációs függvény deriváltja, melyet elemenként kiértékelünk az O mátrixra, 
+            pedig mátrixok elemenkénti szorzását jelöli. A delta jelöléssel felírjuk a kimeneti súlyok gradiensét, ahol T felső indexben a transzponálást jelöli.
+            A rejtett réteg hibájának meghatározásához vissza kell terjeszteni a gradienst a rejtett réteg kimenetéig, 
+            majd kiszámítani a rejtett réteg deltáját, végül a deltából a súlyok gradiensét 
+            eljuttat minket a rejtett réteg kimenetének gradienséig. 
+            A rejtett réteg deltája (gradiens a lineáris kombinációnál): ?. 
+            A rejtett réteg súlyainak gradiense: ?. 
+            Az eltolósúlyok gradiense ? és ?. 
         </para>            
     </section>        
         
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
+     
