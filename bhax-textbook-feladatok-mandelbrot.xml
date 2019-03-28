@@ -10,51 +10,77 @@
         <para>
                 
         </para>
+        Tanulságok, tapasztalatok, magyarázat...
+        A Mandelbrot-halmaz a komplex számsíkon ábrázolva, fraktálalakzatot vesz fel.
+        A fraktálok: végtelenül komplex geometriai alakzatok, két gyakori tulajdonsággal rendelkeznek: 
+        Az első: A fraktálok határoló vonalai vagy -felületei végtelenül „gyűröttek” vagy „érdesek”, illetve „szakadásosak”.
+        A második:  A rendkívül problematikus, de jól érzékelhető önhasonlóság.
+        A Mandelbrot-halmazt Benoît Mandelbrot fedezte fel, és Adrien Douady és John Hamal Hubbard nevezte el róla 1982-ben.
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
+            Megoldás forrása: https://github.com/ujhazibalazs/MagProg1/blob/master/3.1.2.cpp
         </para>
     </section>        
         
     <section>
         <title>A Mandelbrot halmaz a <filename>std::complex</filename> osztállyal</title>
         <para>
-                
+            Megoldás forrása: https://github.com/ujhazibalazs/MagProg1/blob/master/mandelpng.cpp
         </para>
         <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
+            Tanulságok, tapasztalatok, magyarázat...
+            Az előző feladatot fogjuk megoldani, csak most egy kicsit másképpen. Ahogy láttad,
+            az előbb a komplex számokat két változóban tároltuk, egyikben a valós, ,másikban
+            pedig a képzetes részét. De az infromatikusok lusták, mindek használnánk 2
+            változót, ha lehet egyet is. Ezt teszi számunkra lehetőve a <function>complex</function>
+            library, melynek segítségével a gép képes kezelni ezeket a számokat.
+
         </para>
     </section>        
                 
     <section>
         <title>Biomorfok</title>
+        
         <para>
-        </para>
-        <para>
-            Megoldás videó: <link xlink:href="https://youtu.be/IJMbgRzY76E">https://youtu.be/IJMbgRzY76E</link>
-        </para>
-        <para>
-            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf</link>
+            Megoldás forrása: https://github.com/ujhazibalazs/MagProg1/blob/master/biomorf.cpp
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
+            Tovább folytatjuk a Mandelbrot-os témakört. Ezzel a feladattal nem egészen 
+            direkt a kapcsolata a Mandelbrot halmaznak, inkább a Julia halmazokkal
+            lesz szoros rokonságban. A Mandelbrot halmaz tartalmazza az összes Julia
+            halmazt. Ez abból következik, hogy a Julia halmaz esetén a c konstans, és
+            a rácsot a z-vel járjuk be, viszont a Mandelbrot halmazban a c változóként
+            szerepel, melyhez kiszámoljuk a z értékeket. Szóval mindig újabb és újabb 
+            Julia halmazt számolunk ki vele. 
+             A Biomorfokra Clifford Pickover talált rá, méghozzá egy Julia halmazt rajzoló
+            prgramjának írása közben. A programja rejtett egy bugot, és emiatt egészen
+            furcsa dolgokat produkált a program, melyre azt hitte, hogy valami természeti
+            csodára lelt rá. Magáról a Biomorfokról, és a Pickover történetéről
+            részletesebben olvashatsz
+            <link xlink:href="https://bit.ly/2HCbCYs">itt</link>.
+            Mi is ez alapján készítettük el a biomorf rajzoló programunkat, mely
+            a Mandelbrot-os programra alapul, annak egy továbbfejlesztett verziója.
+
         </para>                        
     </section>                     
 
     <section>
         <title>A Mandelbrot halmaz CUDA megvalósítása</title>
-        <para>
-        </para>
-        <para>
-            Megoldás videó: 
-        </para>
-        <para>
+         <para>
             Megoldás forrása:  
+        </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+            Tovább folytatjuk a MAndelbrot-halmazos programunk fejlesztését, ezúttal
+            az Nvidia CUDA technológiáját hívjuk segítségül, mallyel jelentősen fel tudjuk
+            gyorsítani a kép generálását. A tecknika lényege, hogy egy 600x600 darab blokkból
+            álló gridet hozunk létre, és mindegy blokkhoz tartozik egy szál. Ezzel
+            sikerül a program futását párhuzamosítani.
+            A CUDA használatához nvidia GPU-ra van szükség, és telepíteni
+            kell a <function>nvidia-cuda-toolkit</function>-et. 
+            Mivel a gépemben nincsen videókártya ezt a foráskodót nem tudtam lefutatni csak utána olvasatm a dolgóknka.
+
+
         </para>
     </section>                     
 
@@ -64,23 +90,59 @@
             Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
             egérrel kiválasztva vizualizálja onnan a komplex iteréció bejárta z<subscript>n</subscript> komplex számokat!
         </para>
+        
             
         <para>
             Megoldás forrása:  
         </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+            Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
+            egérrel kiválasztva vizualizálja onnan a komplex iteréció bejárta z<subscript>n</subscript> komplex számokat!
+            Telepíteni: sudo apt-get install libqt4-dev
+            A program a QT GUI-t használja, ennek segítségével tudjuk elkészíteni a 
+            Mandelbrot halmazt beutazó programunkat. Ez a GUI az egyik legertejedtebb
+            garfikus interfésze a C++-nak, rengeteg tutorial van róla fent a neten. 
+            Fordítás:
+             Az szükséges 4 fájlnak egy mappában kell lennie. A mappában futtatni
+             kell a <function>qmake -project</function> parancsot. Ez létre fog
+            hozni egy <function>*.pro</function> fájlt. Ebbe a fájlba be kell
+            írni a következőt: <function>QT += widgets</function> sort. Ezután futtatni kell
+            a <function>qmake *.pro</function>.
+            Ezután lesz a mappában
+            egy <function>Makefile</function>, ezt kell majd használni. Ki 
+            adjuk a <function>make</function> parancsot, mely létrehoz 
+            egy bináris fájlt. Ezt pedig a szokásos módon futtatjuk.
 
-        <para>
-            Megoldás videó: 
         </para>
-        <para>
-            Megoldás forrása:  
-        </para>
+
+        
+        
     </section>                     
                                                                                                                                                                             
     <section>
         <title>Mandelbrot nagyító és utazó Java nyelven</title>
         <para>
+            Megoldás forrása:  
         </para>
+        <para>
+            Tanulságok, tapasztalatok, magyarázat...
+            Az előző feladatban készített nagyító Java implementációját
+            kell most elkészíteni. A forrás egy kicsit bugos, mivel amikor
+            nagyítasz. akkor új ablakban nyílik meg a nagyítás, melynek
+            mérete a kijelölt terület függvényében változik. Érdekesség
+            ebben a Java programban már includálva van
+            másik java program, a <filename>MandelbrotHalmaz.java</filename>.
+            Ezt a következő sorral érjük el:
+            <programlisting language="java">
+                public class MandelbrotHalmazNagyító extends MandelbrotHalmaz
+            </programlisting>
+            A Javaban nincs a már megszokott <function>#include</function>, helyette az <function>import</function>-ot
+            vagy jelen esetben az <function>extends</function>-et használjuk.
+
+
+        </para>
+        
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
