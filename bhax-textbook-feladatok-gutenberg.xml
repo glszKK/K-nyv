@@ -210,7 +210,7 @@
              C-ben csakis érték szerinti átadás történik, ha nem értékek másolatával szeretnénk dolgozni, akkor mutatókat használunk(ekkor a mutató kerül másolásra), viszont C++-nál már van lehetoség referencia alapú ˝
              átadásra az új REFERENCIATÍPUS bevezetésének köszönhetoen. Ugyanazt a m ˝uködést produkálja, mint-
              ha mutatót használnánk erre a vélra, viszont nem kell a változó címét képezni és az alap(nem mutatós)
-             szintaktikát továbbra is használhatjuk. Referenciaváltozóz így deklarálunk: int& a = b; //int b;
+             szintaktikát továbbra is használhatjuk.
              Kötelezo inicializálnunk! Különben hibaüzenetet kapunk. Nem szokás referenciával hivatkozni, átláthatat-
              lan kódot eredményezhet. Függvényparamétereknél az értékadás automatikusan teljesül. Gondot okozhat,
              ha referenciatípussal tér vissza egy függvény, hiszen ha visszatért a függvény akkor a benne lévődolgok
