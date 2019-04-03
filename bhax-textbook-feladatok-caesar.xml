@@ -87,7 +87,14 @@ main ()
             A mátrixban minden elemnek "Double"-nyi helyet foglalunk.
             A for ciklusokban csak a főátlóig kell elmennie az indexeknek, mivel a főátló után már csak 0 van.
             2 db for ciklust teszünk egymásba, hogy a 2 dimenziós tömbünket indexelni tudjuk és helyet tudjunk foglalni az elemeknek a memóriában.
-        </para>
+            A mátrixok a matematikában gyakorlatilag mennyiségek (pl. számok, függvények,
+            kifejezések, más mátrixok) téglalap alakú tömbjei. Úgy tudnánk igazán meghatározni, hogy
+            számok vannak táblázatos formában, amiknek N darab sora és M darab oszlopa van. Egy
+            mátrix elemeire tudunk hivatkozni, méghozzá úgy, hogy az adott elem után alsó indexben
+            megjelöljük azt, hogy hanyadik sor, hanyadik oszlopában helyezkedik el. A mátrixokhoz
+            kapcsolódó fogalom még a főátló, amit azok az elemek alkotják, aminek a sor- és
+            oszlopindexük megegyezik.
+	  </para>
     </section>        
     <section>
         <title>C EXOR titkosító</title>
@@ -134,7 +141,13 @@ main (int argc, char **argv)
             A 17. sorban egy egész típusú változóban eltároljuk az első paraméternek megadott kulcs hosszát, mivel ez egy karaktersorozat, ezért a strlen-el megszámoltatjuk hány db.
             Ezután egy while ciklusban karakterenként titkosítjuk a megadott szöveget exorral és minden karakter titkosítása után a kulcs következő karakterére lépünk, ha a végére értünk,
             akkor kezdjük az elejéről. Ha while ciklus végzett a titkosítással már csak annyi a dolgunk, hogy ki irassuk a titkos szöveget ami létrejött.
-        </para>            
+            EXOR-ral való titkosítás az egyik legrégebbi és legismertebb mód, legalább is ez áll
+            Kernighan-Plauger A programozás magasiskolája című könyvében. A Turing leckében már
+            írtam az EXOR-ról, avagy a kizáró vagynak a működéséről. Röviden összefoglalva egyeseket
+            és nullákat használunk, ezekből épül fel a kettes számrendszer. Két szám bináris alakját
+            tudjuk használni a kizáró vagyhoz úgy, hogy ha a két bit értéke egyenlő, akkor 0, ha
+            különböző, akkor 1-es értéket kapunk vissza.
+	    </para>            
     </section>        
     <section>
         <title>Java EXOR titkosító</title>
@@ -307,7 +320,18 @@ main (int argc, char **argv)
     <section>
         <title>Neurális OR, AND és EXOR kapu</title>
         <para>
-            R
+            A neurális hálózat fogalma mind a biológiában, mind a modern technológiában is
+            ismert, a két koncepciónak pedig igen sok köze van egymáshoz. Az idegi szabályozás a
+            legmagasabb szintű és a leggyorsabb szabályozási forma az állati és emberi szervezetben.
+            Testünkben nagyjából 30 milliárd neuron található, amik hálózatot képeznek valamint két
+            fő központot létesítenek az agyban és a gerincvelőben. A neuron egy sejtmagot tartalmaz
+            valamint hatalmas energiaigényét mitokondriumok elégítik ki. A neuronok osztódni nem
+            képes sejtek és számuk az idő előrehaladtával csökken. Ezen felül számos idegméreg
+            létezik, mint például az etilalkohol, halucinogének, kábítószerek, nikotin, energiaital,
+            zaj. Más neuronokkal a dendritek és az axon segítségével létesít kapcsolatot. Ezt a
+            kapcsolatot nevezzük szinapszisnak. A neurális hálózat feladata a külső és belső ingerek
+            érzékelése, továbbítása, és válaszreakció indítása. Az ingerületvezetés sebessége
+            120m/s-ig is terjedhet
         </para>
         <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R</link>               
