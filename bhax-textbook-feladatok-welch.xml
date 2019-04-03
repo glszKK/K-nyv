@@ -570,7 +570,7 @@ void kiir (std::ostream & os) {
             oldali gyereke a "gy"-re mutatótt csomópont legyen, ahogy a jobb oldali is. Nyilván itt
             összefügg, hogy hol van éppen gyerek, és hol nincs. Végül a <code>char getBetu () const
                 {</code> konstruktort igazából nem bántjuk, de megtudjuk, hogy milyen betűt
-            tartalmaz. <programlisting language="cpp"><![CDATA[private:
+            tartalmaz.
     char betu;
     Csomopont *balNulla;
     Csomopont *jobbEgy;
