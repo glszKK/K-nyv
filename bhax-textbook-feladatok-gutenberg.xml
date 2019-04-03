@@ -14,228 +14,228 @@
         <title>Juhász István - Magas szintű programozási nyelvek</title>
            
            <para> Programozni megtanulni nem lehet papíron, egy igazi, jó programozó mindig gépen
-            gyakorol, napi 1-1,5 órát, folyamatosan fejleszti magát és kutat újabb lehetőségek után.
-            De nem szabad elfelejtenünk, hogy ahhoz, hogy tényleg tudjunk programozni, bizonyos
-            alapfogalmakat is ismernünk kell. Például a programozási nyelveknek három szintét
-            érdemes ismerni: a gépi nyelveket, az assembly szintű nyelveket és a magas szintű
-            nyelveket. A programozás egyik eleme a fordítóprogram, ami a forrásprogramokból gépi
-            kódú tárgyprogramokat állít elő. Üzemelése során az alábbi lépéseket hajtja végre:
-            lexikális elemzés, szintaktikai elemzés, szemantikai elemzés és kódgenerálás. Van egy
-            másik technika, az interpreteres, ami utasításonként sorra veszi a forrásprogramot,
-            értelmezi és végrehajtja azt.
-            Minden programnyelvnek van saját irányelve, ezeket nevezzük hivatkozási nyelveknek.
-            Ezekben vannak megállapítva a szintaktikai és szemantikai szabályok. Léteznek még
-            implementációk, amik egy adott platformon létrehozott fordítóprogramok vagy
-            interpreterek. Léteznek ún. IDE-k, amik programok írásához grafikus integrált fejlesztői
-            felületet nyújtanak a felhasználónak. Például CodeBlocks vagy Netbeans. A
-            programnyelveknek osztályai is vannak: imperatív nyelvek, deklaratív nyelvek és egyéb
-            nyelvek. Beszélhetünk továbbá az alkalmazott formális jelölésrendszerről, amit a
-            szintaktikai szabályok formális leírásához használunk. Ehhez a következőket használjuk
-            fel: terminális, nem terminális, alternatíva, opció, iteráció. Ezekkel lehet a
-            szintaktikai szabályokat formalizálni.
-            Az adatabsztrakció első megjelenési formája az adattípus a programozási nyelvekben,
-            ami egy absztrakt programozási eszköz és mindig egy konkrét programozási eszköz
-            alkotórészeként jelenik meg. Az adattípusnak azonosítója van. Megkülönböztetünk típusos
-            és nem típusos nyelveket. Egy adattípust három dolog határoz meg: tartomány, műveletek
-            és reprezentáció. Vannak egyszerű, összetett és mutató típusok. A nevesített konstans
-            olyan programozási eszköz, amelynek három szegmense van: név, típus, érték. A konstanst
-            mindig deklarálni kell, és a nevével jelenik meg. Értéke a deklarációnál eldől, és nem
-            változtatható meg program során. A változónak négy komponense van: név, attribútum, cím,
-            érték. Kétfajta deklaráció van: explicit, implicit és automatikus.
-            A C típusrendszere: aritmetikai (ezen belül integrális és valós) és származtatott (pl.
-            tömb, függvény). Az aritmetikai típusok az egyszerű, a származtatottak az összetett
-            típusok. A C nyelv csak egydimenziós tömböket kezel, amiket mindig mutató típusként
-            kezel. Van automatikus deklaráció. 
-            A kifejezések szintaktikai eszközök. A program egy adott pontján ott már ismert
-            értékekből új értéket határozzunk meg. Két komponensük van: érték, típus. Összetevői:
-            operandusok, operátorok, kerek zárójelek. A legegyszerűbb kifejezés egy operandusból
-            áll. Beszélhetünk egyoperandusú, kétoperandusú és háromoperandusú operátorokról. A
-            kifejezések három alakja: prefix, infix, postfix. A kifejezés kiértékelésének nevezzük
-            azt a folyamatot, amikor a kifejezés értéke és típusa is meghatározódik. Műveletek
-            sorrendje történet balról-jobbra, jobbról-balra, illetve balról-jobbra a precedencia
-            táblázat figyelembevételével.
-            A C egy alapvetően kifejezésorientált nyelv. Az aritmetikai típusoknál a
-            típuskényszerítés elvét vallja. A mutató típus tartományának elemeivel összeadás és
-            kivonás végezhetı, azok előjel nélküli egészeknek tekinthetők. A tömb típusú eszköz neve
-            mutató típusú.
-               Minden nyelvnek van szabványa, ami az ido során fejl ˝ odhet/módosulhat. Ezek leírják, hogy hogyan lehet ˝
-használni az adott nyelvet (C89 C99). Sokféle fordítót használhatunk pl GNU Compiler Collection fordítás során, és sokféle forráskód szerkesztot, szövegszerkeszt ˝ ot is például Kate, vagy integrált fejlesztési ˝
-környezetet pl Visual Studio, Code::Blocks.
-Az interpreteres tech. nem készít tárgykódot, hanem értelmezi és végrehajtja a kódost sorrol sorra.
-Imperatív nyelvek A hacker algoritmusokat ír és ez m ˝uködteti majd a processzort. A programja utasítások
-sorozata, változókat használhat(tárt érheti el vele) Alcsoportjai eljárásorientált/objektumoriantált nyelvek.
-Deklaratív nyelvek Ezek nem algoritmikus p. nyelvek, a problémát írjuk le velük aminek megoldási lépései
-a nyelvi implementációban van beépítve. Nincsenek memóram ˝uveletek elérhetoek a programozók számára, ˝
-vagy csak nagyon korlátozottan. Funkcionális és logikai nyelvek alcsoportjai. Ezenkívól lehet még többbe
-is sorolni oket, a nyelveket. ˝
-Forrásszövegek legkisebb részei a karakterek, tehát mindegyiknek van karakterkészlete. Eljárásorientált
-nyelvek nyelvei elemei: lexikális/szintaktikai/program/fordítási egységek, utasítások, a program. Általában
-az angol ABC bet ˝uit használják a programnyelvek(például van orosz is), és az arab számokat használják.
-A lexikális egységeket ismeri fel a fordító. Az operátorok(például ++ C/C++/.. stb) ilyen egységek, de
-ilyenek például a változók azonosítója (me) ezek nyílván korlátozottak az ABC-re és lehet hosszhatáruk
-is. A nyelv fenntart kulcsszavak is, például if elágazás C-ben, ezek nem definiálhatók újra a user által.
-Megjegyzéseket is támogathat egy nyelv, ezeket a fordító ignorálja, segítik a user áltla írt kód megértését.
-A konstansok nem módosíthatóak(értékük).
-A sorokban az utasítások nyelvtol függ ˝ oen tartalmazhat csak 1 vagy több utasítást, utasításokat ált. a ’;’
-választja el de lehet akár ’\n’ is..
-Egy adattípust 3 dolog ad meg(tartomány, m ˝uveletek, reprezentáció). A tartományuk azokat az elemeket
-tartalmazzák, melyet a megadott típusú konkrét programozási eszköz fölvehet értékként, akár ezek literálok
-is lehetnek. A m ˝uveletek ezeken az elemek használjuk, belso ábrázolási módot az implementáció határozza
-meg(például szértszórt, folytonos ábrázolás.) Saját típust is lehet definiálni egyes nyelvekben például C.
-A nevesített kontansoknak 3 komponense van: név, típus, érték, mindig deklarálni kell! Konstans, tehát
-értéke nem változtatható meg, sem helye az operatív tárban. Például az úgynevezett magic numbers helyett
-használjuk. Létrehozásuk például C-ben a #define preprocessor direktívával vagy const.
-Változók(komponensek: név, attribútumok, cím, érték). Név azonosító, attribútumok a futás közben viselkedésüket befolyásolja(típus). Explicit/implicit vagy automatikus módon deklarálhatjuk oket(változókat).
-Automatikus esetnél a fordítóprogram rendel attribútumot azokhoz a változókhoz, amelyknél nincsen explicit módon ez deklarálva, másik két esetben a programozó feladata. A címkomponens a tárbeli helyét tartalmazza az értéknek, a futási ido azon részét, amikor rendelkezik ezzel a változó élettartamának nevezzük. A
-tárkiosztás lehet statikus/dinamikus, vagy eldol futás el ˝ ott a címe vagy csak futás alatt, de a programozó is
-rendelhet futási ido alatt(abszolút/relatív címzés, vagy megadja mikor legyen cím hozzárendelve a renszer
-által)
-A C-nek vannak aritmetikai(egyszerű) és származtott(összetett) típusai, illetve void. Aritmetikai lehet integrális(egész,karakter,felsorolásos) és valós(float, double). A származtatott: tömb, függvény, mutató, struktúra, union. A C csak egydimenziós tömböket kezel(darabszám megadás szükséges), és azt mindig mutató
-típusként, van auto dek. alapértelmezés az int
-Két részük van a kifejezéseknek: érték és típus. Operandusok, operátorok, kerek zárójelek az összetevoi.
-Legegyszerű kif. csak egyetlen operandusból áll. Léteznek unáris, bináris, ternáris operátorok, tehát, hogy
-Univerzális programozás 195 / 212
-hány operanduson dolgoznak. Alakjuk lehet prefix(+ a b), infix(a + b), postfix(a b +). A végrehajtási sorrend lehet balról-jobbra, fordítva, vagy precedencia tábla szerint ballról-jobbra. Az operandusok értékének
-meghatározásának sorrendje vagy szabályozza a nyelv vagy nem pl a C nem. Zárójelezés felülírhatja a
-precendia táblázat szabályainak alkalmazását, ugye mindig azt kell kiértékelni eloször. Teljesen záróje-
-lezett infix egyértelmű. Logikai kifejezéseket kilehet értekelni rövidzár módszerrel(konjunkció elso tagja
-hamis, akkor már nem kell a másik részt vizsgálni) teljes kiértékeléssel. A kif. típusának meghatározásánál
-kétféle elv: típusegyenérték ˝uség vagy típuskényszerítés. Elso esetben egy kétoperandusú operátornak csak
-azonos típusú operandusai lehetnek, nincs castolás ekkor, vagy eldöntheti az operátor is(==). Második esetnél lehetnek különbözok, de mivel csak azonos ábrázolású operanduszok között végezheőek mőveletek 
-konverzió van. A nyelv definiálja a típust ekkor. C enged például valóst egésszé vagy fordítva kasztolni. A C eleve a típuskényszerítés elvét vallja. A muatókon értelmezett a kivonás és összeadás, egésznek
-tekinthetok(unsigned int). ˝
-Utasítások alkotják az algoritmus lépéseit illetve ez alapján készül a tárgykód. Két csoportja van a deklarációs és a végrehajtható utasítások. Utóbbi csakis a fordítóprogramnak kotyog, mindenféle igényt kérnek,
-mint például üzemmód beállítása. A hacker csak a névvel rendelkezo˝ o általa birtokolt prog. eszközeit tudja
-deklarálni.
-Megkülönböztetünk: értékadó, üres, ugró, elágaztató, ciklusszervezo, hívó, vezérlésátadó, I/O és egyéb ő
-utasításokat.
-Értékadó utasítás feladata beállítani , frissíteni egy változó értékkomponensét akármikor futási ido alatt.
-AZ üres utasítás hatására a processzor üres gépi utasítást hajt végre. A ugró utasítás egy megcímkézett
-utasításra adhatjuk a vezérlést. NEM BIZTONSÁGOS, ÁTLÁTHATATLAN KÓDOT VONHAT MAGA
-UTÁN!!
-Az elágaztató utasítás révén egy adott ponton két aktivitás közül választhatunk végrehajtani. Ált. felépítése
-if feltétel then tevékenység else tevékenység. A feltétel logikai kifejezés, a tevékenység utasításainak számő
-függ a nyelvtol, lehet egyetlen egy vagy egy blokknyi utasítás. Az IF-utasítások tetsz ˝ olegesen egymásba 
-vihetok. Felmerülhet a cselleng ˝ o ELSE probléma ekkor, azaz ’if then if then else’ esetén kihez tartozik az 
-ELSE? Válasz soféle lehet: Elkerülheto a probléma, ha mindig hosszú IF-utasítást írunk, vagy implemen-
-táció függo, vagy a szintaktika alapján egyértelmű.
-Többirányú elágaztató utasítás: amikor olyan ponton vagyunk ahol diszjunkt tevékenységek közül egyet
-kell végrehajtanunk kifejezés alapján. C-en ez a switch statement
-A kifejezésnek egészre konvertálhatónak kell lennie! Case ágak kifejezései DISZJUNKTAKNAK KELL
-LENNIÜK!! Default bárhol szerepelhet. Kiértékelodik a kifejezés majd sorrendre összehasonlításra kerül
-a case ágak értékeivel, van egyezés végrehajtódik, ha nem akkor a default fog. Ha nincs default akkor egy
-üres utasítás fog. Akárhogy is, a case és default ágakban szereplenie kell a break utasításnak, azzal lépünk
-ki a switchbol.
-A ciklusszervezo utasítások lehetővé teszik, hogy a program egy adott pontján egy bizonyos aktivitást több-
-ször is megismételjünk. Egy ciklus ált. felépítése: fej mag vég. Fejben vannak az ismétlésre vonatkozó
-információk vagy a végben. Mag tartalmazza az ismételni kívánt utasítások halmazát. Két radikális típusa van a ciklusoknak végtelen és üres, elobbi soha nem áll le, másik egyszer sem fog ő
-Ciklusfajták: feltételes, eloírt lépésszámú, felsorolásos, végtelen és összetett.           
+                  gyakorol, napi 1-1,5 órát, folyamatosan fejleszti magát és kutat újabb lehetőségek után.
+                  De nem szabad elfelejtenünk, hogy ahhoz, hogy tényleg tudjunk programozni, bizonyos
+                  alapfogalmakat is ismernünk kell. Például a programozási nyelveknek három szintét
+                  érdemes ismerni: a gépi nyelveket, az assembly szintű nyelveket és a magas szintű
+                  nyelveket. A programozás egyik eleme a fordítóprogram, ami a forrásprogramokból gépi
+                  kódú tárgyprogramokat állít elő. Üzemelése során az alábbi lépéseket hajtja végre:
+                  lexikális elemzés, szintaktikai elemzés, szemantikai elemzés és kódgenerálás. Van egy
+                  másik technika, az interpreteres, ami utasításonként sorra veszi a forrásprogramot,
+                  értelmezi és végrehajtja azt.
+                  Minden programnyelvnek van saját irányelve, ezeket nevezzük hivatkozási nyelveknek.
+                  Ezekben vannak megállapítva a szintaktikai és szemantikai szabályok. Léteznek még
+                  implementációk, amik egy adott platformon létrehozott fordítóprogramok vagy
+                  interpreterek. Léteznek ún. IDE-k, amik programok írásához grafikus integrált fejlesztői
+                  felületet nyújtanak a felhasználónak. Például CodeBlocks vagy Netbeans. A
+                  programnyelveknek osztályai is vannak: imperatív nyelvek, deklaratív nyelvek és egyéb
+                  nyelvek. Beszélhetünk továbbá az alkalmazott formális jelölésrendszerről, amit a
+                  szintaktikai szabályok formális leírásához használunk. Ehhez a következőket használjuk
+                  fel: terminális, nem terminális, alternatíva, opció, iteráció. Ezekkel lehet a
+                  szintaktikai szabályokat formalizálni.
+                  Az adatabsztrakció első megjelenési formája az adattípus a programozási nyelvekben,
+                  ami egy absztrakt programozási eszköz és mindig egy konkrét programozási eszköz
+                  alkotórészeként jelenik meg. Az adattípusnak azonosítója van. Megkülönböztetünk típusos
+                  és nem típusos nyelveket. Egy adattípust három dolog határoz meg: tartomány, műveletek
+                  és reprezentáció. Vannak egyszerű, összetett és mutató típusok. A nevesített konstans
+                  olyan programozási eszköz, amelynek három szegmense van: név, típus, érték. A konstanst
+                  mindig deklarálni kell, és a nevével jelenik meg. Értéke a deklarációnál eldől, és nem
+                  változtatható meg program során. A változónak négy komponense van: név, attribútum, cím,
+                  érték. Kétfajta deklaráció van: explicit, implicit és automatikus.
+                  A C típusrendszere: aritmetikai (ezen belül integrális és valós) és származtatott (pl.
+                  tömb, függvény). Az aritmetikai típusok az egyszerű, a származtatottak az összetett
+                  típusok. A C nyelv csak egydimenziós tömböket kezel, amiket mindig mutató típusként
+                  kezel. Van automatikus deklaráció. 
+                  A kifejezések szintaktikai eszközök. A program egy adott pontján ott már ismert
+                  értékekből új értéket határozzunk meg. Két komponensük van: érték, típus. Összetevői:
+                  operandusok, operátorok, kerek zárójelek. A legegyszerűbb kifejezés egy operandusból
+                  áll. Beszélhetünk egyoperandusú, kétoperandusú és háromoperandusú operátorokról. A
+                  kifejezések három alakja: prefix, infix, postfix. A kifejezés kiértékelésének nevezzük
+                  azt a folyamatot, amikor a kifejezés értéke és típusa is meghatározódik. Műveletek
+                  sorrendje történet balról-jobbra, jobbról-balra, illetve balról-jobbra a precedencia
+                  táblázat figyelembevételével.
+                  A C egy alapvetően kifejezésorientált nyelv. Az aritmetikai típusoknál a
+                  típuskényszerítés elvét vallja. A mutató típus tartományának elemeivel összeadás és
+                  kivonás végezhetı, azok előjel nélküli egészeknek tekinthetők. A tömb típusú eszköz neve
+                  mutató típusú.
+                  Minden nyelvnek van szabványa, ami az ido során fejlődhet/módosulhat. Ezek leírják, hogy hogyan lehet
+                  használni az adott nyelvet (C89 C99). Sokféle fordítót használhatunk pl GNU Compiler Collection fordítás során, és sokféle forráskód szerkesztot, szövegszerkesztőt is például Kate, vagy integrált fejlesztési
+                  környezetet pl Visual Studio, Code::Blocks.
+                  Az interpreteres tech. nem készít tárgykódot, hanem értelmezi és végrehajtja a kódost sorrol sorra.
+                  Imperatív nyelvek A hacker algoritmusokat ír és ez m ˝uködteti majd a processzort. A programja utasítások
+                  sorozata, változókat használhat(tárt érheti el vele) Alcsoportjai eljárásorientált/objektumoriantált nyelvek.
+                  Deklaratív nyelvek Ezek nem algoritmikus p. nyelvek, a problémát írjuk le velük aminek megoldási lépései
+                  a nyelvi implementációban van beépítve. Nincsenek memóram ˝uveletek elérhetoek a programozók számára,
+                  vagy csak nagyon korlátozottan. Funkcionális és logikai nyelvek alcsoportjai. Ezenkívól lehet még többbe
+                  is sorolni oket, a nyelveket.
+                  Forrásszövegek legkisebb részei a karakterek, tehát mindegyiknek van karakterkészlete. Eljárásorientált
+                  nyelvek nyelvei elemei: lexikális/szintaktikai/program/fordítási egységek, utasítások, a program. Általában
+                  az angol ABC betűit használják a programnyelvek(például van orosz is), és az arab számokat használják.
+                  A lexikális egységeket ismeri fel a fordító. Az operátorok(például ++ C/C++/.. stb) ilyen egységek, de
+                  ilyenek például a változók azonosítója (me) ezek nyílván korlátozottak az ABC-re és lehet hosszhatáruk
+                  is. A nyelv fenntart kulcsszavak is, például if elágazás C-ben, ezek nem definiálhatók újra a user által.
+                  Megjegyzéseket is támogathat egy nyelv, ezeket a fordító ignorálja, segítik a user áltla írt kód megértését.
+                  A konstansok nem módosíthatóak(értékük).
+                  A sorokban az utasítások nyelvtol függően tartalmazhat csak 1 vagy több utasítást, utasításokat ált. a ’;’
+                  választja el de lehet akár ’\n’ is..
+                  Egy adattípust 3 dolog ad meg(tartomány, műveletek, reprezentáció). A tartományuk azokat az elemeket
+                  tartalmazzák, melyet a megadott típusú konkrét programozási eszköz fölvehet értékként, akár ezek literálok
+                  is lehetnek. A műveletek ezeken az elemek használjuk, belso ábrázolási módot az implementáció határozza
+                  meg(például szértszórt, folytonos ábrázolás.) Saját típust is lehet definiálni egyes nyelvekben például C.
+                  A nevesített kontansoknak 3 komponense van: név, típus, érték, mindig deklarálni kell! Konstans, tehát
+                  értéke nem változtatható meg, sem helye az operatív tárban. Például az úgynevezett magic numbers helyett
+                  használjuk. Létrehozásuk például C-ben a #define preprocessor direktívával vagy const.
+                  Változók(komponensek: név, attribútumok, cím, érték). Név azonosító, attribútumok a futás közben viselkedésüket befolyásolja(típus). Explicit/implicit vagy automatikus módon deklarálhatjuk oket(változókat).
+                  Automatikus esetnél a fordítóprogram rendel attribútumot azokhoz a változókhoz, amelyknél nincsen explicit módon ez deklarálva, másik két esetben a programozó feladata. A címkomponens a tárbeli helyét tartalmazza az értéknek, a futási ido azon részét, amikor rendelkezik ezzel a változó élettartamának nevezzük. A
+                  tárkiosztás lehet statikus/dinamikus, vagy eldol futás el ˝ ott a címe vagy csak futás alatt, de a programozó is
+                  rendelhet futási ido alatt(abszolút/relatív címzés, vagy megadja mikor legyen cím hozzárendelve a renszer
+                  által)
+                  A C-nek vannak aritmetikai(egyszerű) és származtott(összetett) típusai, illetve void. Aritmetikai lehet integrális(egész,karakter,felsorolásos) és valós(float, double). A származtatott: tömb, függvény, mutató, struktúra, union. A C csak egydimenziós tömböket kezel(darabszám megadás szükséges), és azt mindig mutató
+                  típusként, van auto dek. alapértelmezés az int
+                  Két részük van a kifejezéseknek: érték és típus. Operandusok, operátorok, kerek zárójelek az összetevoi.
+                  Legegyszerű kif. csak egyetlen operandusból áll. Léteznek unáris, bináris, ternáris operátorok, tehát, hogy
+                  hány operanduson dolgoznak. Alakjuk lehet prefix(+ a b), infix(a + b), postfix(a b +). A végrehajtási sorrend lehet balról-jobbra, fordítva, vagy precedencia tábla szerint ballról-jobbra. Az operandusok értékének
+                  meghatározásának sorrendje vagy szabályozza a nyelv vagy nem pl a C nem. Zárójelezés felülírhatja a
+                  precendia táblázat szabályainak alkalmazását, ugye mindig azt kell kiértékelni eloször. Teljesen záróje-
+                  lezett infix egyértelmű. Logikai kifejezéseket kilehet értekelni rövidzár módszerrel(konjunkció elso tagja
+                  hamis, akkor már nem kell a másik részt vizsgálni) teljes kiértékeléssel. A kif. típusának meghatározásánál
+                  kétféle elv: típusegyenértékűség vagy típuskényszerítés. Elso esetben egy kétoperandusú operátornak csak
+                  azonos típusú operandusai lehetnek, nincs castolás ekkor, vagy eldöntheti az operátor is(==). Második esetnél lehetnek különbözok, de mivel csak azonos ábrázolású operanduszok között végezheőek mőveletek 
+                  konverzió van. A nyelv definiálja a típust ekkor. C enged például valóst egésszé vagy fordítva kasztolni. A C eleve a típuskényszerítés elvét vallja. A muatókon értelmezett a kivonás és összeadás, egésznek
+                  tekinthetok(unsigned int).
+                  Utasítások alkotják az algoritmus lépéseit illetve ez alapján készül a tárgykód. Két csoportja van a deklarációs és a végrehajtható utasítások. Utóbbi csakis a fordítóprogramnak kotyog, mindenféle igényt kérnek,
+                  mint például üzemmód beállítása. A hacker csak a névvel rendelkezo˝ o általa birtokolt prog. eszközeit tudja
+                  deklarálni.
+                  Megkülönböztetünk: értékadó, üres, ugró, elágaztató, ciklusszervezo, hívó, vezérlésátadó, I/O és egyéb ő
+                  utasításokat.
+                  Értékadó utasítás feladata beállítani , frissíteni egy változó értékkomponensét akármikor futási ido alatt.
+                  AZ üres utasítás hatására a processzor üres gépi utasítást hajt végre. A ugró utasítás egy megcímkézett
+                  utasításra adhatjuk a vezérlést. NEM BIZTONSÁGOS, ÁTLÁTHATATLAN KÓDOT VONHAT MAGA
+                  UTÁN!!
+                  Az elágaztató utasítás révén egy adott ponton két aktivitás közül választhatunk végrehajtani. Ált. felépítése
+                  if feltétel then tevékenység else tevékenység. A feltétel logikai kifejezés, a tevékenység utasításainak számő
+                  függ a nyelvtol, lehet egyetlen egy vagy egy blokknyi utasítás. Az IF-utasítások tetsz ˝ olegesen egymásba 
+                  vihetok. Felmerülhet a cselleng ˝ o ELSE probléma ekkor, azaz ’if then if then else’ esetén kihez tartozik az 
+                  ELSE? Válasz soféle lehet: Elkerülheto a probléma, ha mindig hosszú IF-utasítást írunk, vagy implemen-
+                  táció függo, vagy a szintaktika alapján egyértelmű.
+                  Többirányú elágaztató utasítás: amikor olyan ponton vagyunk ahol diszjunkt tevékenységek közül egyet
+                  kell végrehajtanunk kifejezés alapján. C-en ez a switch statement
+                  A kifejezésnek egészre konvertálhatónak kell lennie! Case ágak kifejezései DISZJUNKTAKNAK KELL
+                  LENNIÜK!! Default bárhol szerepelhet. Kiértékelodik a kifejezés majd sorrendre összehasonlításra kerül
+                  a case ágak értékeivel, van egyezés végrehajtódik, ha nem akkor a default fog. Ha nincs default akkor egy
+                  üres utasítás fog. Akárhogy is, a case és default ágakban szereplenie kell a break utasításnak, azzal lépünk
+                  ki a switchbol.
+                  A ciklusszervezo utasítások lehetővé teszik, hogy a program egy adott pontján egy bizonyos aktivitást több-
+                  ször is megismételjünk. Egy ciklus ált. felépítése: fej mag vég. Fejben vannak az ismétlésre vonatkozó
+                  információk vagy a végben. Mag tartalmazza az ismételni kívánt utasítások halmazát. Két radikális típusa van a ciklusoknak végtelen és üres, elobbi soha nem áll le, másik egyszer sem fog ő
+                  Ciklusfajták: feltételes, eloírt lépésszámú, felsorolásos, végtelen és összetett.     
+        </para>
     </section>        
     <section>
         <title>Kerninghan és Richie</title>
-        <para> A C nyelv tanulását az alapismeretekkel kezdi a könyv, a nyelv legfontosabb elemit
+     <para> A C nyelv tanulását az alapismeretekkel kezdi a könyv, a nyelv legfontosabb elemit
             mutatja be. Kihangsúlyozza, hogy ez a könyv természetesen senkit sem tesz profi
             programozóvá, nagyon fontos a rendszeres gyakorlás, így a Halló mindenki! szöveget
             kinyomtató programmal ketdu a bemutatást. Leírást ad a fordítás és a futtatás módjáról
             ezen program bemutatása során. A magyarázatot a függvénymeghívással kezdi, a függvény
-            argumentum fogalmát mutatja be. </para>
-        <para>A második részben a változókról mesél, a változók típusait mutatja be, a programon
+            argumentum fogalmát mutatja be.
+            A második részben a változókról mesél, a változók típusait mutatja be, a programon
             belüli megjegyzés lényegét ismerteti. Megismerkedünk a ciklus fogalmával, vagyis a
             végtelen lépésszámú while ciklussal és annak használatával. Megismerjük a for ciklust, a
             használatát és előnyeit, illetve kisebb összehasonlítást nyújt a while-lal szemben.
             Ezután a szimbolikus állandókról böngészhetünk, amiket a #define szerkezettel
-            rendelhetünk hozzá egy értékhez. </para>
-        <para>Olvasunk továbbá még a karakteres adatok beviteléről és kiviteléről. Egy-egy program
+            rendelhetünk hozzá egy értékhez.
+            Olvasunk továbbá még a karakteres adatok beviteléről és kiviteléről. Egy-egy program
             segítségével szemlélteti a getchar() és a putchar() függvényeket és használatukat.
             Megismerjük a "++", "--" és "==" operátorokkal, miközben megtanuljuk, hogyan is kell
             karaktereket számolni. Természetesen a sorok és a szavak sem maradhatnak ki, eközben
             hallunk a "\n", azaz új sor karakterről és a "\t", vagyis a tabulátor karakterről,
             valamint az AND (&amp;&amp;) és az OR (||) operátorokról is. Bepillantást nyerünk az
-            if-else páros struktúrájába, mechanizmusába. </para>
-        <para>Megismerkedünk a tömbökkel, azok deklarálásával, használatukkal, a c nyelv beli
+            if-else páros struktúrájába, mechanizmusába.
+            Megismerkedünk a tömbökkel, azok deklarálásával, használatukkal, a c nyelv beli
             indexelésükkel. Egy módszert is mutat arra, hogyan döntjük el egy karakterről, hogy
             egész-e. A következő részben a függvényeken van a hangsúly, amikből bár már mutatott
             párat, de hivatalosan most esik arról szó, hogyan írhatunk saját függvényt egy
             programba, mi a céljuk, és emlékeztet minket arra, hogy maga a main is egy függvény.
             A C nyelv kevés adattípust használ, de járulhatnak minosít ˝ ok is hozzájuk. (char, int, float, double) Mi
-nosítők pl (short(16 bit), long(32 bit) int). Bevezetésük oka az volt, hogy más hosszúságú egészekkel is
-dolgozhasson a programozó. A signed/unsigned minosítők az előjel meglétére/hiányára utal, ha előjeles az
-egész vagy char, akkor -határ,+határ intervallumban vehet fel értéket az adott típus, ha elojelmentes, akkor
-0,2*határ intervallumban. Valós típusoknál a pontosságot lehet növelni a long-gal.
-Állandók is rendelkeznek a fenti típusokkal, minosítőkkel, pl: 2018 signed int is lehet. Léteznek karak-
-terállandók pl ’a’, értéke a gépi karakterkészletbeni kódszáma. ’0’=48. Karaktersorozatok is lehetnek
-állandók "alma", bizonyos karakterek pedig escape sorozattal adhatóak meg pl ’\a’ csipog, ’\n’ új sor. A
-’\0’ null-karakter karaktersorozat-állandót zár le. Az állandó kifejezés csak állandókat tartalmaz, fordítás
-során értékelodnek ki. #define MAX AZ enum felsorolt állandó, egész értékek listája. pl enum boolean{no,
-yes}; Explicit mód megadhatjuk a legelso egészt, pl enum wat {e=5, g,h,z};, avgy összesnek. Állandók
-neveinek különbözoeknek kell lennie.
-A C-ben változók neveinek elso karaktere bet ˝unek kell lennie(_ még jó, de nem ajánlott ezzel kezdeni
-a konyvtári eljárások gyakran ezt használják). A nyelv kulcsszavai nem lehetnek változónevek. Egész
-típusok(int, char) lebegopontosak(float,double), lebegőpontosak pontosság eltérő, double pontosabb, de
-nagyobb hrlyet igényel. A nyelv megengedi, hogy ezek között konvertáljunk, de ekkor például ha floatot
-konvertálunk egésszé a "pont utáni rész" leválik. Ha egy kifejezésben egy lebegopontos utasítás van, tehát
-egyik operandus lebegopontos akkor az eredmény is az lesz, az egész típus lebeg ˝ opontossá alakul.
-A vezérléstátadó utasítások a végrehajtás sorrendiségét adják meg. Egy olyan kifejezés C-ben, mint x=666
-utasítássá válik, ha ’;’ rakunk utána pl x=666; ’;’ utasításlezáró jel tehát. A {} zárójelekkel deklarácíók és
-utasítások halmazát fogjuk be egyetlen egy blokkba vagy összetett utasításba, ez nyelvtanliag egy utasítás
-lesz. Ilyen pl a függvények utasításait behatároló {} vagy if,else,while,for...
-Az if-else utasítást döntéshelyzet kifejezésére alkalmazzuk.
+            nosítők pl (short(16 bit), long(32 bit) int). Bevezetésük oka az volt, hogy más hosszúságú egészekkel is
+            dolgozhasson a programozó. A signed/unsigned minosítők az előjel meglétére/hiányára utal, ha előjeles az
+            egész vagy char, akkor -határ,+határ intervallumban vehet fel értéket az adott típus, ha elojelmentes, akkor
+            0,2*határ intervallumban. Valós típusoknál a pontosságot lehet növelni a long-gal.
+            Állandók is rendelkeznek a fenti típusokkal, minosítőkkel, pl: 2018 signed int is lehet. Léteznek karak-
+            terállandók pl ’a’, értéke a gépi karakterkészletbeni kódszáma. ’0’=48. Karaktersorozatok is lehetnek
+            állandók "alma", bizonyos karakterek pedig escape sorozattal adhatóak meg pl ’\a’ csipog, ’\n’ új sor. A
+            ’\0’ null-karakter karaktersorozat-állandót zár le. Az állandó kifejezés csak állandókat tartalmaz, fordítás
+            során értékelodnek ki. #define MAX AZ enum felsorolt állandó, egész értékek listája. pl enum boolean{no,
+            yes}; Explicit mód megadhatjuk a legelso egészt, pl enum wat {e=5, g,h,z};, avgy összesnek. Állandók
+            neveinek különbözoeknek kell lennie.
+            A C-ben változók neveinek elso karaktere bet ˝unek kell lennie(_ még jó, de nem ajánlott ezzel kezdeni
+            a konyvtári eljárások gyakran ezt használják). A nyelv kulcsszavai nem lehetnek változónevek. Egész
+            típusok(int, char) lebegopontosak(float,double), lebegőpontosak pontosság eltérő, double pontosabb, de
+            nagyobb hrlyet igényel. A nyelv megengedi, hogy ezek között konvertáljunk, de ekkor például ha floatot
+            konvertálunk egésszé a "pont utáni rész" leválik. Ha egy kifejezésben egy lebegopontos utasítás van, tehát
+            egyik operandus lebegopontos akkor az eredmény is az lesz, az egész típus lebeg ˝ opontossá alakul.
+            A vezérléstátadó utasítások a végrehajtás sorrendiségét adják meg. Egy olyan kifejezés C-ben, mint x=666
+            utasítássá válik, ha ’;’ rakunk utána pl x=666; ’;’ utasításlezáró jel tehát. A {} zárójelekkel deklarácíók és
+            utasítások halmazát fogjuk be egyetlen egy blokkba vagy összetett utasításba, ez nyelvtanliag egy utasítás
+            lesz. Ilyen pl a függvények utasításait behatároló {} vagy if,else,while,for...
+            Az if-else utasítást döntéshelyzet kifejezésére alkalmazzuk.
         </para>
     </section>        
     <section>
         <title>BME: Szoftverfejlesztés C++ nyelven / Benedek Zoltán, Levendovszky Tihamér</title>
-        <para>A C++ objektumorientált nyelv, sokterület használják még a modern napokban, például operációs rendszerek, portable operating system interface for unix platformok és rengeteg embedded renszer alapja. Ezt ő
-örökölt tulajdonságainak köszönheti, "hardverközelsége" miatt még mindig egy nagyon gyors nyelv.
-A C++ a C nyelvre alapoz, de már a függvények paraméterlistájában már anomáliákat fedezhetünk fel,
-például ha egy C függvény paraméterlistája üres akkor akármennyi paraméterrel hívható meg, de C++ nem
-így van, ott void van, tehát nincs paramétere, nem lehet meghívni paraméterrel. Ha azt akarjuk, hogy a
-C fv. paraméterlistájával ekvivalensen m ˝uködjön akkor a ’...’-t kell megadnunk. void f(...){} A
-visszatérési értékek viselkedése is abnormális lehet, C-ben ha nem adunk meg fv-hez visszatérési értéket
-akkor az alapértelmezetten int lesz, C++-ban nincs alap. érték, hibát fog dobni.
-A bool típus új típus, felveheti vagy a true, vagy a false értékeket. C-ben eddig a logikai értékek int vagy
-enum típusúak voltak. A bool olvashatóbbá teszi a kódot. Ha mégis int-t használunk van auto konverzió 0
-hamis nem 0 igaz lesz.
-A wchar_t beépített típus C++-ban, ez több bájtos karakterek reprezentálására alkalmas.
-C++ nyelven ajánlatos mindig akkor deklatálni egy változót, amikor azonnal fel is használjuk.
-C-ben nem volt lehetoség függvények túlterhelésére, C++-ban viszont mát van!! C++-ban a függvénye-
-ket egyértelm ˝uen azonosít a nevük és argumentumlistájuk, így adott az a lehetoség, hogy azonos nev ˝u, de
-más argumenlistával rendelkezo függvényeket hozzunk létre. Egyedül a visszatérési érték típusa nem vál-
-tozhat. A fordító a túlterhelést úgy éri el, hogy a nevéhez hozzáf ˝uzi az argumentum típusaiból eloállított
-elotagot vagy utótagot, így a linker szintjén diszjunkt nevekkel fognak megjelenni. Ezt name mangling-nek
-nevezzük. Ha explicit kimondjuk, hogy extern "C" akkor C stílusban fordítja és linkeli a függvényt.
-Adott az a lehetoség is, hogy alapértelmezett értékeket rendeljünk az argumentumlistában lév ˝ o argumentu-
-moknak, azaz, ha hívásnál nem adunk meg argumentumot akkor az alapértelmezett arg kerül felhasználásra
-Az alapértelmezett értékek megadása hátulról elolrőol történik, nem lehet hézag(pl felvált egyikhez van alap,
-másikhoz nincs..). Nem adhatjuk meg egyszerre az alap értékeket deklarációnál és definíciónál.
-C-ben csakis érték szerinti átadás történik, ha nem értékek másolatával szeretnénk dolgozni, akkor mutatókat használunk(ekkor a mutató kerül másolásra), viszont C++-nál már van lehetoség referencia alapú ˝
-átadásra az új REFERENCIATÍPUS bevezetésének köszönhetoen. Ugyanazt a m ˝uködést produkálja, mint-
-ha mutatót használnánk erre a vélra, viszont nem kell a változó címét képezni és az alap(nem mutatós)
-szintaktikát továbbra is használhatjuk. Referenciaváltozóz így deklarálunk: int& a = b; //int b;
-Kötelezo inicializálnunk! Különben hibaüzenetet kapunk. Nem szokás referenciával hivatkozni, átláthatat-
-lan kódot eredményezhet. Függvényparamétereknél az értékadás automatikusan teljesül. Gondot okozhat,
-ha referenciatípussal tér vissza egy függvény, hiszen ha visszatért a függvény akkor a benne lévődolgok
-felszabadulnak, így érvénytelen referenciával végeznénk műveletet.
-A szoftverek fejlesztésénél, tehát tényleges projecteknél, meg kell tervezni a program felépítését. A tervezés nem csak abból áll, hogy a leheto leggyorsabb kódot írjuk, hanem az is kritérium, hogy szép, tiszta és ˝
-átlátható jól struktúrált forráskódot állítsunk elo, hiszen az elékszült termék továbbfejlesztésével vagy mó-
-dosításával emberek fognak foglalkozni és egy átláthatatlan obfuszkált kód akár a forráskód újra írásához
-vezethet ami értékes fejlesztési idot vesz el.
-Emiatt alakult ki az objektumorientált programozás ami átlátható szerkezetűprogramokat tud eredményezni
-megfelelo tervezésnek köszönhetően.
-Az alapelgondolás az, hogy az emberek(fejlesztok) ismerik a valós világ dolgainak felépítését, annak tulaj-
-donságait és ez alapján egységbe tudják zárni egy-egy dolog tulajdonságait és funkcióit.
-Ezt az enkapszulációt valósítják meg az osztályok, amik lényegében egy tervrajznak foghatóak fel. Az
-osztályokat tudják példányosítani.
-Az osztályokban létrehozhatunk privát tagokat, amikhez nem lehet közvetlenül hozzáférni más osztályokból, ez az adatrejtés.
-Az osztályok elotudnak állni más osztályokból, ekkor annak az osztály a tulajdonságait öröklik amely-
-bol öröklőodtek. Ez lehetőség ad arra, hogy specilizált osztályokat hozzunk létre, ezzel is egy átláthatóbb,
-könnyen módosítható programot érünk el, hiszen több részbol tudunk dolgozni.
-Az osztályok támogathatnak ugyanúgy operátorokat és konverziós műveleteket mint a beépített típusok.
-Az OOP szemlélet módot a magas szintű programozási nyelvek támogatják, például a C++ is, viszont ez
-overheadet is jelent, lassabb lesz a program az új featureöktol amit a nyelv biztosít, de alacsonyabb szintű
-nyelvekkel írunk programokat akkor azok könnyen átláthatatlanok lesznek, de gyorsabbak is. Tudni kell
-mikor mit érdemes használni.
-Az egységbezárás olvasható kódot eredményez, például egy struktúrához kapcsolódó függvényeket betehetünk a struktúra definíciójába, C-ben is lehet ilyet ott függvénymutatókkal érünk el enkapszulácíót, viszont
-a függvények még mindig a scopeon kívül lesznek megfogalmazva.
+       <para>A C++ objektumorientált nyelv, sokterület használják még a modern napokban, például operációs rendszerek, portable operating system interface for unix platformok és rengeteg embedded renszer alapja. Ezt ő
+             örökölt tulajdonságainak köszönheti, "hardverközelsége" miatt még mindig egy nagyon gyors nyelv.
+             A C++ a C nyelvre alapoz, de már a függvények paraméterlistájában már anomáliákat fedezhetünk fel,
+             például ha egy C függvény paraméterlistája üres akkor akármennyi paraméterrel hívható meg, de C++ nem
+             így van, ott void van, tehát nincs paramétere, nem lehet meghívni paraméterrel. Ha azt akarjuk, hogy a
+             C fv. paraméterlistájával ekvivalensen m ˝uködjön akkor a ’...’-t kell megadnunk. void f(...){} A
+             visszatérési értékek viselkedése is abnormális lehet, C-ben ha nem adunk meg fv-hez visszatérési értéket
+             akkor az alapértelmezetten int lesz, C++-ban nincs alap. érték, hibát fog dobni.
+             A bool típus új típus, felveheti vagy a true, vagy a false értékeket. C-ben eddig a logikai értékek int vagy
+             enum típusúak voltak. A bool olvashatóbbá teszi a kódot. Ha mégis int-t használunk van auto konverzió 0
+             hamis nem 0 igaz lesz.
+             A wchar_t beépített típus C++-ban, ez több bájtos karakterek reprezentálására alkalmas.
+             C++ nyelven ajánlatos mindig akkor deklatálni egy változót, amikor azonnal fel is használjuk.
+             C-ben nem volt lehetoség függvények túlterhelésére, C++-ban viszont mát van!! C++-ban a függvénye-
+             ket egyértelműen azonosít a nevük és argumentumlistájuk, így adott az a lehetoség, hogy azonos nevű, de
+             más argumenlistával rendelkezo függvényeket hozzunk létre. Egyedül a visszatérési érték típusa nem vál-
+             tozhat. A fordító a túlterhelést úgy éri el, hogy a nevéhez hozzáf ˝uzi az argumentum típusaiból eloállított
+             elotagot vagy utótagot, így a linker szintjén diszjunkt nevekkel fognak megjelenni. Ezt name mangling-nek
+             nevezzük. Ha explicit kimondjuk, hogy extern "C" akkor C stílusban fordítja és linkeli a függvényt.
+             Adott az a lehetoség is, hogy alapértelmezett értékeket rendeljünk az argumentumlistában lév ˝ o argumentu-
+             moknak, azaz, ha hívásnál nem adunk meg argumentumot akkor az alapértelmezett arg kerül felhasználásra
+             Az alapértelmezett értékek megadása hátulról elolrőol történik, nem lehet hézag(pl felvált egyikhez van alap,
+             másikhoz nincs..). Nem adhatjuk meg egyszerre az alap értékeket deklarációnál és definíciónál.
+             C-ben csakis érték szerinti átadás történik, ha nem értékek másolatával szeretnénk dolgozni, akkor mutatókat használunk(ekkor a mutató kerül másolásra), viszont C++-nál már van lehetoség referencia alapú ˝
+             átadásra az új REFERENCIATÍPUS bevezetésének köszönhetoen. Ugyanazt a m ˝uködést produkálja, mint-
+             ha mutatót használnánk erre a vélra, viszont nem kell a változó címét képezni és az alap(nem mutatós)
+             szintaktikát továbbra is használhatjuk. Referenciaváltozóz így deklarálunk: int& a = b; //int b;
+             Kötelezo inicializálnunk! Különben hibaüzenetet kapunk. Nem szokás referenciával hivatkozni, átláthatat-
+             lan kódot eredményezhet. Függvényparamétereknél az értékadás automatikusan teljesül. Gondot okozhat,
+             ha referenciatípussal tér vissza egy függvény, hiszen ha visszatért a függvény akkor a benne lévődolgok
+             felszabadulnak, így érvénytelen referenciával végeznénk műveletet.
+             A szoftverek fejlesztésénél, tehát tényleges projecteknél, meg kell tervezni a program felépítését. A tervezés nem csak abból áll, hogy a leheto leggyorsabb kódot írjuk, hanem az is kritérium, hogy szép, tiszta és ˝
+             átlátható jól struktúrált forráskódot állítsunk elo, hiszen az elékszült termék továbbfejlesztésével vagy mó-
+             dosításával emberek fognak foglalkozni és egy átláthatatlan obfuszkált kód akár a forráskód újra írásához
+             vezethet ami értékes fejlesztési idot vesz el.
+             Emiatt alakult ki az objektumorientált programozás ami átlátható szerkezetűprogramokat tud eredményezni
+             megfelelo tervezésnek köszönhetően.
+             Az alapelgondolás az, hogy az emberek(fejlesztok) ismerik a valós világ dolgainak felépítését, annak tulaj-
+             donságait és ez alapján egységbe tudják zárni egy-egy dolog tulajdonságait és funkcióit.
+             Ezt az enkapszulációt valósítják meg az osztályok, amik lényegében egy tervrajznak foghatóak fel. Az
+             osztályokat tudják példányosítani.
+             Az osztályokban létrehozhatunk privát tagokat, amikhez nem lehet közvetlenül hozzáférni más osztályokból, ez az adatrejtés.
+             Az osztályok elotudnak állni más osztályokból, ekkor annak az osztály a tulajdonságait öröklik amely-
+             bol öröklőodtek. Ez lehetőség ad arra, hogy specilizált osztályokat hozzunk létre, ezzel is egy átláthatóbb,
+             könnyen módosítható programot érünk el, hiszen több részbol tudunk dolgozni.
+             Az osztályok támogathatnak ugyanúgy operátorokat és konverziós műveleteket mint a beépített típusok.
+             Az OOP szemlélet módot a magas szintű programozási nyelvek támogatják, például a C++ is, viszont ez
+             overheadet is jelent, lassabb lesz a program az új featureöktol amit a nyelv biztosít, de alacsonyabb szintű
+             nyelvekkel írunk programokat akkor azok könnyen átláthatatlanok lesznek, de gyorsabbak is. Tudni kell
+             mikor mit érdemes használni.
+             Az egységbezárás olvasható kódot eredményez, például egy struktúrához kapcsolódó függvényeket betehetünk a struktúra definíciójába, C-ben is lehet ilyet ott függvénymutatókkal érünk el enkapszulácíót, viszont
+             a függvények még mindig a scopeon kívül lesznek megfogalmazva.
         </para>
-    </section>        
-</chapter>                
+    </section>              
+</chapter>               
