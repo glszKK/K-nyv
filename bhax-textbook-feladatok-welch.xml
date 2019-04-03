@@ -579,9 +579,8 @@ void kiir (std::ostream & os) {
     Csomopont & operator= (const Csomopont &);
 };]]></programlisting></para>
         <para>Deklaráljuk a <parameter>betu</parameter> karakterváltozót, ami megmondja majd nekünk,
-            hogy milyen betűt tartalmaz a csomópont, illetve a bal és a jobb gyermekeket. A
-                <code>Csomopont (const Csomopont &amp;);</code> a másoló konstruktor, amit aztán a
-            következő sorban letiltunk. Fontos, hiszen ha nem vesszük hasznát jelenleg ennek a
+            hogy milyen betűt tartalmaz a csomópont, illetve a bal és a jobb gyermekeket. 
+		Fontos, hiszen ha nem vesszük hasznát jelenleg ennek a
             másoló konstruktornak, akkor károkat tud okozni fájlok, adatbázisok, tulajdonolt
             dinamika és különböző erőforrások használatának esetében. Ezt ugyanúgy megtesszük ebben
             a részben is: </para>
