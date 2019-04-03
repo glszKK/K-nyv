@@ -571,13 +571,7 @@ void kiir (std::ostream & os) {
             összefügg, hogy hol van éppen gyerek, és hol nincs. Végül a <code>char getBetu () const
                 {</code> konstruktort igazából nem bántjuk, de megtudjuk, hogy milyen betűt
             tartalmaz.
-    char betu;
-    Csomopont *balNulla;
-    Csomopont *jobbEgy;
-
-    Csomopont (const Csomopont &);
-    Csomopont & operator= (const Csomopont &);
-};]]></programlisting></para>
+	</para>
         <para>Deklaráljuk a <parameter>betu</parameter> karakterváltozót, ami megmondja majd nekünk,
             hogy milyen betűt tartalmaz a csomópont, illetve a bal és a jobb gyermekeket. 
 		Fontos, hiszen ha nem vesszük hasznát jelenleg ennek a
