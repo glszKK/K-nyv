@@ -51,7 +51,112 @@ typedef std::vector<Ant> Ants;
 #endif
 ]]> </programlisting>
             <para>
-                A következő fájlunkban adjuk meg az ablak tulajdonságát,
+                A következő fájlunkban adjuk meg az ablak tulajdonságát, melyet QMainWindow parancsal hozunk létre. Itt tudjuk megadni 
+                hogy az ablak milyen széles és magas legyen pixelekben, a cellwidht és cellheigh pedig a cellák magasságát mutatja meg,
+                ahol a hangyák mozognak. A key eventeket is itt találjuk amik ebben a programban nem nagy számba vannak jelen,
+                van egy pause parancs melyet a P vagy a Q betű lenyomásával érhetünk el, és van a kilépés parancs melyet az ESC lenyomásával érünk el.
+                Itt csak a header filet mutatom meg, de a forrásban elérhető a cpp file is.
+           </para>
+           <para>
+               Antwin.h
+           </para>
+           <programlisting language='c++'>
+               #ifndef ANTWIN_H
+#define ANTWIN_H
+
+#include <QMainWindow>
+#include <QPainter>
+#include <QString>
+#include <QCloseEvent>
+#include "antthread.h"
+#include "ant.h"
+
+class AntWin : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    AntWin(int width = 100, int height = 75,
+           int delay = 120, int numAnts = 100,
+           int pheromone = 10, int nbhPheromon = 3,
+           int evaporation = 2, int cellDef = 1,
+           int min = 2, int max = 50,
+           int cellAntMax = 4, QWidget *parent = 0);
+
+    AntThread* antThread;
+
+    void closeEvent ( QCloseEvent *event ) {
+
+        antThread->finish();
+        antThread->wait();
+        event->accept();
+    }
+
+    void keyPressEvent ( QKeyEvent *event )
+    {
+
+        if ( event->key() == Qt::Key_P ) {
+            antThread->pause();
+        } else if ( event->key() == Qt::Key_Q
+                    ||  event->key() == Qt::Key_Escape ) {
+            close();
+        }
+
+    }
+
+    virtual ~AntWin();
+    void paintEvent(QPaintEvent*);
+
+private:
+
+    int ***grids;
+    int **grid;
+    int gridIdx;
+    int cellWidth;
+    int cellHeight;
+    int width;
+    int height;
+    int max;
+    int min;
+    Ants* ants;
+
+public slots :
+    void step ( const int &);
+
+};
+
+#endif
+               ]]> </programlisting>
+               <para>
+                   Az AntThread végzi a számításokat és itt vannak a program eventjei is, kiszámolja a cellák feromonértékeket
+                   és a hangyák irányát is. A main.cpp-ben leírt utasítások szerint ezzel a parancsal tudjuk futtatni a programot:
+               </para>
+                   <programlisting>./myrmecologist -w 250 -m 150 -n 400 -t 10 -p 5 -f 80 -d 0 -a 255 -i 3 -s 3  -c 22
+                   </programlisting>
+               <para>
+                   A betűk különféle kapcsolókat jelentenek:
+               </para>
+               <para>
+                  - A cellák beállítását(szélességét,magasságát, és azt hogy hány oszlopból álljon) a -w és az -m kapcsolóval tudjuk változtatni
+               </para>
+               <para>
+                  - A hangyák számát az -n kapcsolóval.
+               </para>
+               <para>
+                  - A -t kapcsolóval azt tudjuk beállítani hogy a hangyák léptei milyen gyakoriak legyenek.
+               </para>
+               <para>
+                  - A feromonok párolgását a -p kapcsolóval állítjuk be.
+               </para>
+               <para>
+                  - A -d kapcsolóval állítjuk be azt hogy mennyivel nőjjön a feromonértéke a celláknak amint egy hangya belép abba.
+               </para>
+               <para>
+                  - A feromonok minimumát és maximumát az -a és az -i kapcsolóval szabályozzuk
+               </para>
+                <para>
+                  - A -s kapcsolóval azt állítjuk be hogy mennyi feromont hagyjanak a szomszédos cellákban a hangyák.
+               </para>            
     </section>        
     <section>
         <title>Java életjáték</title>
