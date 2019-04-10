@@ -15,11 +15,43 @@
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/10/10/myrmecologist">https://bhaxor.blog.hu/2018/10/10/myrmecologist</link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Myrmecologist">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Myrmecologist</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            Ebben a programban a hangyák viselkedését és mozgását fogjuk reprezentálni. Mint tudjuk a hangyák feromon nyomokat hagynak maguk után
+            hogy megjelöljék az útvonalukat és ha egy másik hangya belebotlik ebbe a feromon nyomba, akkor azt kezdi el követni. Ez segíti őket a
+            tájékozódásban. Ám az elhagyott feromon nyomok kezdetben zöld szinűek de elkezdenek halványodni abban az esetben ha egy másik hangya
+            rá nem téved a nyomra. Ebben a programban pont ez fogjuk megcsinálni. Elég összetett programról van szó így a megszokottaktól eltérően
+            itt több scriptre van szükségünk.
+            Az első fájlunk neve az ant.h, melyben a hangyák mozgását és koordinátájukat adjuk meg(x,y,dir). Típusdefiniálnunk is kell, hisz nem csak
+            egy hangya útját szeretnénk megnézni,hanem sok sok hangyájét.
+        </para>  
+        <programlisting language='c++'>
+            #ifndef ANT_H
+#define ANT_H
+
+class Ant
+{
+
+public:
+    int x;
+    int y;
+    int dir;
+
+    Ant(int x, int y): x(x), y(y) {
+        
+        dir = qrand() % 8;
+        
+    }
+
+};
+
+typedef std::vector<Ant> Ants;
+
+#endif
+]]> </programlisting>
+            <para>
+                A következő fájlunkban adjuk meg az ablak tulajdonságát,
     </section>        
     <section>
         <title>Java életjáték</title>
