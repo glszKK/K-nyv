@@ -287,6 +287,5 @@ int main(int argc, char *argv[])
 	     az eredményt egy új fájlba kapjuk meg.     
         </para> 
 	    
-    </section>        
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-</chapter>               
+    </section>
+</chapter>
