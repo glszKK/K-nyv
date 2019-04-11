@@ -267,6 +267,7 @@ int main(int argc, char *argv[])
     racs[y+ 11][x+ 25] = ELO;
 
 }
+]]></programlisting>
     </section>        
     <section>
         <title>BrainB Benchmark</title>
