@@ -56,8 +56,8 @@ typedef std::vector<Ant> Ants;
            <para>
                Antwin.h
            </para>
-           <programlisting language='c++'>
-               #ifndef ANTWIN_H
+	    <programlisting language="c++"><![CDATA[
+	    #ifndef ANTWIN_H
 #define ANTWIN_H
 
 #include <QMainWindow>
@@ -123,6 +123,7 @@ public slots :
 
 #endif
 ]]></programlisting>
+
                <para>
                    Az AntThread végzi a számításokat és itt vannak a program eventjei is, kiszámolja a cellák feromonértékeket
                    és a hangyák irányát is. A main.cpp-ben leírt utasítások szerint ezzel a parancsal tudjuk futtatni a programot:
