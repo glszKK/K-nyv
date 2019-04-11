@@ -122,7 +122,7 @@ public slots :
 };
 
 #endif
-               ]]></programlisting>
+]]></programlisting>
                <para>
                    Az AntThread végzi a számításokat és itt vannak a program eventjei is, kiszámolja a cellák feromonértékeket
                    és a hangyák irányát is. A main.cpp-ben leírt utasítások szerint ezzel a parancsal tudjuk futtatni a programot:
