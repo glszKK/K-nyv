@@ -44,8 +44,7 @@ public:
 };
 
 typedef std::vector<Ant> Ants;
-	   ]]>
-</programlisting>
+   ]]></programlisting>
             <para>
                 A következő fájlunkban adjuk meg az ablak tulajdonságát, melyet QMainWindow parancsal hozunk létre. Itt tudjuk megadni 
                 hogy az ablak milyen széles és magas legyen pixelekben, a cellwidht és cellheigh pedig a cellák magasságát mutatja meg,
