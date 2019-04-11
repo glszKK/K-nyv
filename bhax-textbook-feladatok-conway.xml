@@ -165,14 +165,245 @@ public slots :
             valósítsa meg a sikló-kilövőt!
         </para>
         <para>
-            Megoldás videó: 
+            Megoldás videó:<link xlink:href="https://www.youtube.com/watch?time_continue=105&v=nykA3AGq33I">https://www.youtube.com/watch?time_continue=105&v=nykA3AGq33I</link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href="https://www.algosome.com/articles/conway-game-of-life-2d.html">https://www.algosome.com/articles/conway-game-of-life-2d.html</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            Conway 1970-ben az egyik legérdekesebb sejtautomata rendszert készítette el, amit életjátéknak nevezett el, mert az egész program 
+            hasonlított az élő szervezetek viselkedésére. Gondolunk itt a születésükre,halálukra,fejlődésükre vagy éppen visszafejlődésükre.
+            A program egy nagy négyzethálóból áll,egy cellában csak egy sejt élhet(!), és minden sejtet 8 szomszédos cella vesz körül, 4 átlósan, 4 pedig keresztbe.
+            Conway olyan szabályokat akart hogy azok ne legyenek előre megjósolhatóak, ezért sokat kisérletezett mire kiválasztotta a megfelelőeket.
+            A sejtek generációról generációra változnak. Az első szabály a "Túlélés" ami azt jelenti hogy minden sejt aminek kettő vagy három
+            szomszédja van az megmenekült és tovább léphet a következő generációba. A második szabály a "Halál", ez ugye az első szabályból következve
+            úgy működik hogy minden sejt aminek négy vagy több szomszédja van vagy kettő és annál kevesebb azok meghalnak és nem mehetnek tovább
+            a következő generációba. A harmadik szabály pedig a "Születés". Ha egy cellának pontosan három élő sejt van a szomszédjá-ban, akkor ott 
+            új sejt születik. És ezeket a szabályokat követve folytatódik a végtelenségbe a program.
+        </para>
+        <programlisting>
+        public class Conway2D {
+
+
+
+	private final int width;
+
+
+
+	private final int height;
+
+	
+
+	private final int size;
+
+	
+
+	private int seedCount = 9500;
+
+	/*
+
+	 * Data representing the grid in 1d format. Specified as byte to allow for multiple
+
+	 * phases. 
+
+	 */
+
+	byte[] data;
+
+	
+
+	public Conway2D(){
+
+		this(100, 100);
+
+	}
+
+	/**
+
+	 * Constructs a new Game of Life with the specified dimensions. 
+
+	 * @param width
+
+	 * @param height
+
+	 */
+
+	public Conway2D(int width, int height){
+
+		this.width = width;
+
+		this.height = height;
+
+		this.size = width * height;
+
+		data = new byte[size];
+
+	}
+
+
+
+    /**
+
+	 * Iterates the game one step forward
+
+	 */
+
+	public void iterate(){
+
+		byte[] prev = new byte[size];
+
+		System.arraycopy(data, 0, prev, 0, size);
+
+
+
+		byte[] next = new byte[size];
+
+		for ( int i = 0; i < width; i++ ){
+
+			for ( int j = 0; j < height; j++ ){
+
+				int type = isAlive(i, j, prev);
+
+				
+
+				if ( type > 0 ){
+
+					next[j * width + i] = 1;
+
+				}else{
+
+					next[j * width + i] = 0;
+
+				}
+
+				
+
+			}
+
+		}
+
+		
+
+		System.arraycopy(next, 0, data, 0, size);
+
+		
+
+	}
+
+	
+
+	/**
+
+	 * Checks if the cell is alive
+
+	 * @param x The x position
+
+	 * @param y The y position
+
+	 * @param d The grid data.
+
+	 * @return
+
+	 */
+
+	protected int isAlive(int x, int y, byte[] d){
+
+		int count = 0;
+
+		int pos1 = y * width + x;
+
+		for ( int i = x-1; i <= x + 1; i++ ){
+
+			for ( int j = y - 1; j <= y + 1; j++ ){
+
+				int pos = j * width + i;
+
+				if ( pos >= 0 && pos < size - 1 && pos != pos1){
+
+					if ( d[pos] == 1 ){
+
+						count++;
+
+					}
+
+				}
+
+			}
+
+		}
+
+		//dead
+
+		if ( d[pos1] == 0 ){
+
+			if ( count == 3 ){//becomes alive.
+
+				return 1;
+
+			}
+
+			return 0;//still dead
+
+		}else{//live
+
+			if ( count < 2 || count > 3 ){//Dies
+
+				return 0;
+
+			}
+
+			return 1;//lives
+
+		}
+
+
+
+	}
+
+	
+
+	
+
+	/**
+
+	 * Randomly seeds the grid. 
+
+	 */
+
+	public void randomSeed(){
+
+		for ( int i = 0; i < seedCount; i++ ){
+
+			int x = (int)(Math.random() * width);
+
+			int y = (int)(Math.random() * height);
+
+			data[y * width + x] = 1;
+
+
+
+		}
+
+	}
+
+	
+
+	/**
+
+	 * Retrieves the grid data. 
+
+	 * @return
+
+	 */
+
+	public byte[] getData(){
+
+		return data;
+
+	}
+
+}
+           ]]</programlisting>
     </section>        
     <section>
         <title>Qt C++ életjáték</title>
