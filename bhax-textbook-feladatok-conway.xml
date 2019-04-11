@@ -26,10 +26,7 @@
             Az első fájlunk neve az ant.h, melyben a hangyák mozgását és koordinátájukat adjuk meg(x,y,dir). Típusdefiniálnunk is kell, hisz nem csak
             egy hangya útját szeretnénk megnézni,hanem sok sok hangyájét.
         </para>  
-        <programlisting language='c++'>
-            #ifndef ANT_H
-#define ANT_H
-
+   <programlisting language="c++">
 class Ant
 {
 
@@ -47,8 +44,7 @@ public:
 };
 
 typedef std::vector<Ant> Ants;
-
-#endif
+	   ]]>
 </programlisting>
             <para>
                 A következő fájlunkban adjuk meg az ablak tulajdonságát, melyet QMainWindow parancsal hozunk létre. Itt tudjuk megadni 
