@@ -193,8 +193,8 @@ public slots :
         <para>A fenti linkben elérhető az összes file ami szükséges a programunk futtatásához ezért nem linkelem be 
 	      mindet egyessével, csak a main-t hogy megmutassam hogy a megszokottakhoz eltérően milyen rövid.
 	</para>
-	     <programlisting language='c++'>
-		     #include <QApplication>
+	    <programlisting language="c++"><![CDATA[
+	      #include <QApplication>
 #include "sejtablak.h"
 
 int main(int argc, char *argv[])
@@ -205,13 +205,13 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
-		     ]]</programlisting>
+]]></programlisting>	    
 	    <para>
 		    Ez pedig a siklókilövő mely egy sikló alakzatot indít el ami x generáció után ugyan azt a formát 
 		    nyeri vissza, ez a sikló lett később a hackerek szimbóluma.
 	    </para>
-	    <programlisting language='c++'>
-		  void SejtAblak::sikloKilovo(bool **racs, int x, int y) {
+	         <programlisting language="c++"><![CDATA[
+	      void SejtAblak::sikloKilovo(bool **racs, int x, int y) {
 
     racs[y+ 6][x+ 0] = ELO;
     racs[y+ 6][x+ 1] = ELO;
@@ -267,7 +267,6 @@ int main(int argc, char *argv[])
     racs[y+ 11][x+ 25] = ELO;
 
 }
-		     ]]</programlisting>
     </section>        
     <section>
         <title>BrainB Benchmark</title>
