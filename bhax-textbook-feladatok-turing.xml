@@ -7,6 +7,9 @@
     </info>
     <section>
         <title>Végtelen ciklus</title>
+	<para>
+	    Megoldás forrása:https://github.com/glszKK/Turing/tree/master
+	</para>  
         <para>
 	    Az első feladatban három egyszerű végtelen ciklust kell létrehoznunk, az elsőben egy olyat ami 0 százalákban dolgoztatja a magot:
         </para>
