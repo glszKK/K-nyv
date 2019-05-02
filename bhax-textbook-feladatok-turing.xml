@@ -8,7 +8,7 @@
     <section>
         <title>Végtelen ciklus</title>
 	<para>
-	    Megoldás forrása:https://github.com/glszKK/Turing/tree/master
+	    Megoldás forrása:<link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
 	</para>  
         <para>
 	    Az első feladatban három egyszerű végtelen ciklust kell létrehoznunk, az elsőben egy olyat ami 0 százalákban dolgoztatja a magot:
@@ -140,7 +140,10 @@ false]]></screen>
             függvényt, azaz a T100 program nem is létezik.                
         </para>
 	<para>
-	Sajnos olyan programot kéne ehhez írnunk ami segít megmutatni hogy a fenti program jól fut e vagy sem, ami lehetetlen.
+	    Ez a program úgy működik/működne hogy kap bemenetként egy másik programot amiről el kéne döntenie
+	    hogy működik e vagy nem sem, tehát lefagy. Ez mind szép és jó hisz nagyon megkönnytené a programozók 
+            életét, de van egy nagy hibája. Ha saját magát adjuk meg bemenetnek, mert ha végtelen ciklus nincs a bemenetben akkor
+            oda kerül, ha pedig van benne akkor megfog állni. Ezért nem működne helyesen a program.
 	</para>	
     </section>        
                 
@@ -150,6 +153,9 @@ false]]></screen>
 	    Harmadik feladat, itt egy olyan C programra lesz szükségünk amely felcseréli két változó értékét, bármiféle logika utasítás vagy kifejezés
             használata nélkül.
         </para>
+	<para>
+	    Megoldás forrása:<link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
+	</para>
         <para>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk">https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk</link>
         </para>
@@ -183,12 +189,13 @@ false]]></screen>
 		}             
 ]]></programlisting>
         <para>
-		A csere segédváltozóval bevezet egy új ideiglenes változót, amiben az eslő változó értékét tároljuk amíg abba belereakjuk a 2. változó értékét
-		mert ekkor a v1 értéke elvész. Ezután a második változóba belerakjuk a segédváltozóban eltárolt eslő változó értékét.
+		A feladatban megvolt adva hogy nem használhatunk a program elkészítésekor logikai utasításokat, ami azt jelenti hogy
+		matematikai egyenletekkel kell megoldanunk ezt a feladatot. Nem kell megijedni nem deriválás vagy hasonló nehézségű
+		egyenletekről van itt szó, csak egyszerű alapműveletekről.(szorzás,osztás,kivonás,összeadás)
+		A feladatunk tehát az hogy két változó értékét felcseréljük tehát tegyük fel hogy az a az 20 a b pedig 2.
+		a=20+2=22 -> b=22-2=20 -> a=22-20=2 tehát a-ra megkaptuk a b értékét tehát a kettőt.
+		Ezt még meglehet oldani az XOR-al is ami ugyan úgy felcseréli a változókat csak a bitek segítségével.
         </para>
-	<para>
-		Segédváltozó nélküli csere csak egyszerű kivonás meg osszeadás.
-	</para>
     </section>                     
 
     <section>
@@ -201,7 +208,7 @@ false]]></screen>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/labdapattogas">https://bhaxor.blog.hu/2018/08/28/labdapattogas</link>
         </para>
         <para>
-            Megoldás forrása:  <link xlink:href="https://github.com/ujhazibalazs/MagProg1/blob/master/labdapattogas.cpp">https://github.com/ujhazibalazs/MagProg1/blob/master/labdapattogas.cpp</link>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
         </para>
 	<programlisting language="c"><![CDATA[
 #include <stdio.h>
@@ -253,9 +260,56 @@ main ( void )
     return 0;
 }
 ]]></programlisting>
-        <para>
-            Ez a program eltér az előzőektől egy minimálisan, hisz itt új header fileokat használunk. Melyeknek a neve curses.h és unistd.h.
-            Ezek segítségével tudjuk a kurzort mozgatni a terminálon belül.
+	<para>
+	   Itt pedig ugyan az a labdapattogtatási program csak if nélkül
+        </para>
+	    <programlisting language="c"><![CDATA[
+#include <stdio.h>
+#include <stdlib.h>
+#include <curses.h>
+#include <unistd.h>
+
+int
+main (void)
+{
+    int xj = 0, xk = 0, yj = 0, yk = 0;
+    int mx, my;
+
+    WINDOW *ablak;
+    ablak = initscr ();
+    noecho ();
+    cbreak ();
+    nodelay (ablak, true);
+
+    for (;;)
+    {
+	getmaxyx(ablak, my, mx);
+        xj = (xj - 1) % mx;
+        xk = (xk + 1) % mx;
+
+        yj = (yj - 1) % my;
+        yk = (yk + 1) % my;
+
+        //clear ();
+
+        mvprintw (abs (yj + (my - yk)),
+                  abs (xj + (mx - xk)), "@");
+
+        refresh ();
+        usleep (150000);
+
+    }
+    return 0;
+}
+]]></programlisting>
+         <para>
+		Két új header filet használunk ( curses és unistd ) amik segítségével tudjuk a kurzorunkat mozgatni a terminálban.
+		 Az első programunkat if-el a másodikat pedig if nélkül oldottuk meg. Az első feladatunkat egy ablak = initscr ()-el
+		 kezdünk ahol az ablakunk adatait adjuk meg ahol a labda pattogni fog, megkell adnunk a sorok számát és az oszlopok számát is.
+		 Végtelen ciklust használunk ami azt jelenti hogy egy adott sémán végtelen ideig fog menni a labdánk addig ameddig meg nem szakítjuk.
+		 Ha a programunkba beleírjuk a clear(); parancsot akkor törli a labdákat de ha nem írjuk oda egy folytonos labda mintát láthatunk.
+		 Az mvprint-el adjunk meg karakterünket, jelen esetben mivel egy labdáról van szó a karakterünk egy "o" betű lesz.
+		 Az usleep-el pedig a labda gyorsaságát adjuk meg, minél nagyobb számot írunk be annál lassabb lesz a labdánk.
         </para>
      </section>   
 	
@@ -266,7 +320,7 @@ main ( void )
            azaz mekkora az <type>int</type> mérete. Azt a while ciklust kell használnunk amit Linus Torvalds a BogoMIPS rutinjában használtt.
         </para>
         <para>
-            Megoldás forrása: <link xlink:href="https://sourceforge.net/p/udprog/code/ci/master/tree/source/kezdo/elsoc/szohossz/szohossz.c#l4">https://sourceforge.net/p/udprog/code/ci/master/tree/source/kezdo/elsoc/szohossz/szohossz.c#l4</link>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
         </para>
 	<programlisting language="c"><![CDATA[
 		#include <stdio.h>
@@ -283,7 +337,11 @@ main ( void )
 		}            
 ]]></programlisting>
         <para>
-	A Linus Torvalds féle while ciklus igazán egyszerű, csak addig kell shiftelnünk a biteket, míg eredményül nullát nem kapunk.	    
+		A MIPS jelentése az a "Millió utasítás másodpercenként". A bogoMIPS program melyet Linus Torvald talált ki, a gép elinditásakor
+		megméri hogy meddig fut egy adott ciklus, de a nevéből is következtethetünk arra hogy itt valami nem stimmel. Hisz a bogo az angol
+		bogus szóbol ered ami azt jelenti hogy nem igaz. Tehát itt is van egy kis probléma, már pedig az hogy nem egy pontos értéket 
+		hanem csak egy megközelítő értéket kapunk. Egy gépi szó változója 4byte ezért 32-őt fog eredményül adni.
+		A célunk az hogy nullát kapjunk eredményül, tehát addig shifteljük a biteket balra, amig azt a nullát meg nem kapjuk.	    
         </para>
     </section>                     
 
@@ -292,6 +350,9 @@ main ( void )
         <para>
             Hatodik feladat, itt egy olyan programra lesz szükségünk, amely egy 4 honlapból álló hálózatra kiszámolja a négy lap Page-Rank 
             értékét.
+	     
+            A programot 
+
        </para>
 <programlisting language="c"><![CDATA[
 		#include <stdio.h>
@@ -299,7 +360,7 @@ main ( void )
 
 void
 kiir (double tomb[], int db){
-	
+
 	int i;
 	
 	for (i=0; i<db; ++i){
@@ -388,7 +449,7 @@ int main (void){
 
 ]]></programlisting>
         <para>
-            Megoldás forrása: <link xlink:href="https://gitlab.com/nohar92/bhax/blob/master/Harmati%20Norbert/1.%20rész/pagerank.c"></link>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
         </para>
     </section>
 
@@ -418,8 +479,7 @@ plot(x,y,type="b")
             Megoldás videó: <link xlink:href="https://youtu.be/xbYhp9G6VqQ">https://youtu.be/xbYhp9G6VqQ</link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R">https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R</link>
-        </para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
     </section>
     
     <section xml:id="bhax-textbook-feladatok-turing.MontyHall">
