@@ -351,9 +351,18 @@ main (void)
             Hatodik feladat, itt egy olyan programra lesz szükségünk, amely egy 4 honlapból álló hálózatra kiszámolja a négy lap Page-Rank 
             értékét.
 	     
-            A programot 
-
+            A programot Larry Page és Sergey Brin találták ki, akik amúgy a Google alapítói. A programmal egy weboldal fontosságát és értékét
+            tudjuk megállapítani, az alapján hogy hány link mutat arra az oldalra amit ugye vizsgálunk. Minél több annál jobb! És az is számít
+            hogy a linkeket milyen erősségű oldalon találjuk meg. És ez a PageRank nem a főoldaladra hivatkozott hanem aloldalanként működött.
+	    Azért csak működött mert 2013 óta nem frissült ez a PageRank érték, de valójában az emberek csak egy "gagyibb" változatát láthatták
+	    ennek a programnak, hisz megtudtuk egy 10-es skálán hogy mennyire erős az oldalaink PageRank száma, de ez a program ennél sokkal több.
+	    És a google-nak jóval több adatot és információt add át néhány számnál.
        </para>
+	 <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/pagerank.jpg" scale="30" />
+                </imageobject>
+        </mediaobject>
 <programlisting language="c"><![CDATA[
 		#include <stdio.h>
 #include <math.h>
@@ -479,8 +488,22 @@ plot(x,y,type="b")
             Megoldás videó: <link xlink:href="https://youtu.be/xbYhp9G6VqQ">https://youtu.be/xbYhp9G6VqQ</link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Turing/tree/master">https://github.com/glszKK/Turing/tree/master</link>
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R">https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R</link>
+	 </para>
+	 <para>
+	   A programunk a prímszámokkal foglalkozik azonbelül is az ikerprímekkel, ugye a prímszámok azok a számok amik egyel és önmagukkal 
+	   oszthatóak, ikerprímnek pedig azt a két prímszámot nevezzük amik 2-vel térnek el egymástól. És azt tudjuk hogy a prímszámokból
+           végtelensok létezik, de azt nem tudjuk hogy az ikerprímekből is végtelen számú van e. A prímek a végtelenbe tartanak ezért 
+           feltételezzük azt hogy az ikerprímek is, de amit elkezdjük őket vizsgálni úgy veszzük észre mintha egy adott szám felé tartanának.
+	   A Brun tétel azt mondja ki hogy az ikerprímek reciprokösszege egy véges értékhez konvergál, amit Brun-konstansnak nevezünk. 
+	 </para>
+	<mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/brun.jpg" scale="30" />
+                </imageobject>
+        </mediaobject>
     </section>
+	    
     
     <section xml:id="bhax-textbook-feladatok-turing.MontyHall">
         <title>A Monty Hall probléma</title>
@@ -529,9 +552,29 @@ length(nemvaltoztatesnyer)/length(valtoztatesnyer)
 length(nemvaltoztatesnyer)+length(valtoztatesnyer)
 
 		    
-]]></programlisting>	    
+]]></programlisting>
+        <para>
+            A Monty Hall címet a program egy műsorvezetőről kapta aki a Lets make a deal című műsör volt. Aminek az volt a lényege
+		hogy a játékosoknak 3 ajtó közül kellett választaniuk az egyik ajtó mögött egy óriási nyeremény lapult, a másik két ajtó
+		mögött meg értéktelen nyeremények. Ez mind szép és jó hisz azt hiszi az ember hogy 3 ajtó közül nem is olyan nehéz eltalálni
+		azt ami mögött a főnyeremény lapul hisz erre 33.3% esélyünk lenne. Ám itt jön a csavar, miután a játékos választott egy ajtót
+		de mielőtt azt tényleg kinyitnák a műsorvezető ki nyit a maradék kettő közül választ egyet amelyik mögött nem a főnyeremény lapul
+		hisz ő tudja hogy melyik ajtó mögött mi van. És ilyenkor az adott játékos módosíthatja a választását. A nagy kérdés az hogy
+		megéri-e változtatni vagy sem? A válasz egyszerű, igen. Hisz amikor 3 ajtó közül kell választanuk, mint már mondtam
+		33% esélyünk van arra hogy a jó ajtót választottuk, viszont miután a műsorvezető kinyit egy ajtót az esélyünk 
+		a duplájára növekszik, hisz igy csak két ajtó közül kell választanunk. A programunk pedig ezeket a lehetőségeket
+		vizsgálja meg. 
+	</para>
+	 <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/monty.jpg" scale="30" />
+                </imageobject>
+        </mediaobject>
         <para>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2019/01/03/erdos_pal_mit_keresett_a_nagykonyvben_a_monty_hall-paradoxon_kapcsan">https://bhaxor.blog.hu/2019/01/03/erdos_pal_mit_keresett_a_nagykonyvben_a_monty_hall-paradoxon_kapcsan</link>
         </para>
+        <para>
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/MontyHall_R">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/MontyHall_R</link>
+	</para>
     </section>
 </chapter>                
