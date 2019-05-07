@@ -11,12 +11,12 @@
             Megoldás videó és forrás: <link xlink:href="https://youtu.be/z6NJE2a1zIA">https://youtu.be/z6NJE2a1zIA</link>      
         </para>
         <para>
-            Ez az utolsó fejezetünk ebben a félévben, itt a Lisp programozási nyelvről lesz szó ami egy kicsit eltér az eddigi tanult nyelvektől.
-            Fordított jelölést használ, ezért más gondolkodás módot is igényel. Az operátorok nem a változók közé kerülnek hanem a változók elé.
-            Ami így néz ki: (+ a b). A függvényünket a define-al tudjuk definiálni, és egy szám faktoriálisát úgy tudjuk kiszámolni, hogy
-            n-1 faktoriális szorozva n-el.
+          Ez az utolsó fejezetünk ebben a félévben, itt a Lisp programozási nyelvről lesz szó amit előszőr 
+	  egy sima programozási nyelvként használtak, ám később rájöttek hogy a mesterséges intelligencia kutatásaihoz is tökéletesek. 
+	  A neve a List Processing kifejezésből ered. Kicsit eltér az eddig használt nyelvektől, itt az operátorok is máshogy működnek. 
+	  Itt a változók elé kerülnek, pl: - x y 
+          És a kifejezéseket prefix alakban kéri. Meg kell adnunk a rekurzív és az iteratív alakot is.
         </para>
-     
        <programlisting language="lisp"><![CDATA[
         rekurzív:
             (define (fakt n) (if(< n 1) 1 (* n (fakt(- n 1)))))
@@ -26,8 +26,28 @@
        ]]>
         </programlisting>
        <para>
-           Az iteratív formát pedig úgy tudjuk elérni hogy készítünk egy for ciklust, aminek a countere addig megy míg kisebb  nem lesz
-           mint a bemenő szám, és amint eléri ezt, akkor összeszorozza az elemeket amit a productban fog tárolni.
+	   A programunk ugye faktoriálist számít rekurzív módon ami úgy működik hogy a define-al meghatározzuk a függvényünket,
+	   majd egyszerű matematika következik. Azaz n-1 szorozva n-el. Így megkapjuk az eredményünket.
+       </para>
+	         
+       <programlisting language="lisp"><![CDATA[
+        (defun fact(x)
+(setq sum 1)
+(loop while (> x 1)
+    do (
+        setq sum (* sum x)
+        x (- x 1)
+        )
+    )
+    sum
+)
+(setq f (read))
+(format t "~D! ~D" f (fact f))]]>
+        </programlisting>
+       <para>
+	   Itt pedig az iteratív alak látható annyi kölönbséggel hogy itt nem a define-t használjuk, hanem helyette a fact-ot. Amivel
+	   ugyan úgy definiáljuk a függvényünket. Maga a számolás a loop while-on belül található meg ami addig megy még a megadott 
+	   függvényünk kisebb nem lesz a bemenetnél.
        </para>
     </section>        
 <!--        
