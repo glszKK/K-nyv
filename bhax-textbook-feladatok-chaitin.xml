@@ -231,15 +231,16 @@
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Mandala">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Mandala</link>               
         </para>
         <para>
-            Ez a feladat hasonló lesz az előzőhöz, itt ugyanúgy definiáljuk  a képünket és a layereinket.
-            Ebben a gimp scriptben ugyan úgy mint az előzőnél az elején definiáljuk az új képünket és layereinket.
-            CSak ez abban tér el, hogy itt a forgatáson lesz a hangsúly, mivel egy ilyen mandala úgy készül el
-            hogy a szöveget amit begépelünk egy adott pontban körbeforgatjuk és így a betűk és a szavak keresztezik egymást
-            és egy nagyon szép mintát kapunk eredményül. A forgatást a gimp-item-transform-rotate-simpe függvénnyel érhetjük el.
-            A forgatások után a plug-in-autocrop-layer törli az üres szegélyeket.
-            Manapság rengeteg betűtípussal találkozhatunk, amiknek ugye eltére a mérete. Ezért a text-wh függvényt használjuk itt is
-            hogy lekérjük a betűtípusok adatait.
-            A mandala körívét az ecset méretével tudjuk módosítani. Amint elkészült a kép a gimp-display-new-al tudjuk megjeleníteni.
+		
+	    A feladat igazaból ugyan az mint az előző, egy képet kell csinálnunk/szerkesztenünk a Script-fu segítségével, csak itt
+	    annyival lesz másabb a helyzet hogy nem egy szöveget szerkesztünk hanem egy kör alakú képet. Ahol a forgatáson lesz a hangsúly
+	    mivel a mandala azokból a szövegekből áll amit megadunk, majd ezeket elforgatjuk és keresztezik egymás útját igy kapunk egy szép
+	    szimetrikus, szabályos formát. Itt nem lesznek a lépések pontról pontra szétszedve és levezetve, a videón úgyis ott van minden.
+            Csak a fontosabb parancsokat írom le, ilyen például a gimp-image-new width height 0 amellyel létrehozzuk a képünket és megadjuk
+	    neki a magasságot a szélességet és a színt is. Majd a front layer színét állítjuk be a set-foreground parancsal és a gimp-
+            draw-fill-el kitöltjük azt. Majd a betűméretet adjuk meg pixelben, aztán jön az a bizonyos forgatás amin a hangsúly van
+	    ezt a gimp-item-transform-rotate parancsal érhetjük el. 4 fokozata van ennek a forgatásnak, a 180 fok a pí/2, a pí/4
+	    és a pí/6.
         </para>
          <programlisting language="lisp"><![CDATA[
    (define (elem x lista)
