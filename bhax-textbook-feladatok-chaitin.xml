@@ -77,12 +77,20 @@
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Chrome">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Chrome</link>               
         </para>
         <para>
-            Ebben a feladatban egy króm effektet fogunk elkészíteni, az első feladatunk hogy készítsünk egy fekete hátteret, amire
-            fehér színű szöveget írunk, majd fésüljük össze a két layert. Ha létrehozunk egy új képet akkor 3 argumentum beállítására 
-            lesz szükség, a szélesség, a magasság és az rgb színkód. Ajánlatos mindig új layereket létrehozni hisz sokkal egyszerűbb
-            és átláthatóbb mintha csak egy layeren dolgoznánk. A létrehozott szöveget igazítsuk a megfelelő pozicióba, majd 
-            elmosás funkciót használjuk, aminek ugye meg kell adni a nagyságát és az irányát is. A többi lépést pedig a videóban és 
-            a scriptben láthatjuk.
+            A Script-fu a GIMP-en belül található, ez egy olyan program ami úgy működik mint a photoshop csak leírva.
+	    A kódunk legelején a define-al megadjuk az alapértékeket,méreteket,betűtípust és az ilyen alapbeállításokat.
+	    A második define-vel pedig magát a képünket hozzuk létre, itt is megadjuk a méreteket: szélesség, magasság.
+	    És ez bármikor szerkeszthető. Hogy átláthatóbb és egyszerűbb legyen a kódunk a step parancsal elválasztjuk a lépéseket.
+	    Az első lépésben létrehozunk egy fehér hátteret (gimp-context-set-foreground) majd kiszinezzük feketére szintén az előző
+            parancs segítségével csak a nullák helyére 255-öt írunk, majd írunk rá egy fehér szöveget(set! textfs) amit középre helyezünk
+	    (offsets textfs). A második lépésben egy Gauss elmosódást készítünk a gauss-iir parancsal. A harmadik lépésben a képünk minőségével
+            játszunk, beállítjuk a minimumot és a maximumot hogy minél élesebb legyen a képünk/szövegünk. A negyedik lépésben ismét egy 
+	    Gauss elmosást használunk. Majd az ötödik lépésben a set-color parancs segítségével kijelöljük a fekete layert és a selection
+	    -invert-el invertáljuk, így a begépelt szövegünk köré egy keretet kapunk. A hatodik lépésben létrehozunk egy új átlátszó layert
+	     a layer-new-image parancsal. A hetedik lépésben pedig a set-gradient parancsal egy szürke átmenetet kapunk amit az egerünk
+	     segítségével tudunk módosítani. Nyolcadik lépés, itt a térhatást próbáljuk elérni a szövegünkön a run-moninteractive parancsal.
+	     Végül az utolsó lépésben a curves-spline parancsal a szövegünk fémességét tudjuk variálni. Ha valami nem érthető a videóban 
+             mindenre válasz kapunk!
         </para>
          <programlisting language="lisp"><![CDATA[
       (define (color-curve)
