@@ -68,7 +68,7 @@ image_index = 4444
 plt.imshow(x_test[image_index].reshape(28, 28),cmap='Greys')
 pred = model.predict(x_test[image_index].reshape(1, 28, 28, 1))
 print(pred.argmax())
-print(y_test[image_index])]]>
+print(y_test[image_index])
        ]]>
         </programlisting>
     </section>        
