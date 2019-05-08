@@ -1,26 +1,53 @@
 <authorgroup xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
     <author>
         <personname>
-            <surname>Radi</surname>
-            <firstname>Daniel</firstname>        
+            <honorific>Dr.</honorific>
+            <surname>Bátfai</surname>
+            <firstname>Norbert</firstname>        
         </personname>    
         <affiliation>
-            <shortaffil>Diak</shortaffil>
-            <jobtitle>Egyetemi hallgato</jobtitle>
+            <shortaffil>E. adjunktus, DE.</shortaffil>
+            <jobtitle>Egyetemi adjunktus</jobtitle>
             <orgname>Debreceni Egyetem</orgname>
-            <orgdiv>Informotaikai kar</orgdiv>
+            <orgdiv>Információtechnológiai Tanszék</orgdiv>
             <address>
-                <email>radidani55@gmailcom</email>
+                <email>batfai.norbert@inf.unideb.hu</email>
+                <email>nbatfai@gmail.com</email>
             </address>
         </affiliation>
         <address>
-            <street>Rakoczi Ferenc utca 33a</street>
-            <city>Kocsord</city>
-            <postcode>4751</postcode>
+            <street>Kassai út 26.</street>
+            <city>Debrecen</city>
+            <postcode>4028</postcode>
             <country>Magyarország</country>
-            <email>radidani55@gmail.com</email>
+            <email>batfai.norbert@inf.unideb.hu</email>
             <otheraddr>
+                <link xlink:href="https://arato.inf.unideb.hu/batfai.norbert/">https://arato.inf.unideb.hu/batfai.norbert/</link>
             </otheraddr>
         </address>
-    </author>    
+    </author>
+<author>
+        <personname>
+            <surname>Gilszki</surname>
+            <firstname>Patrik</firstname>        
+        </personname>    
+        <affiliation>
+            <shortaffil>Hallgató</shortaffil>
+            <jobtitle>Hallgató</jobtitle>
+            <orgname>Debreceni Egyetem</orgname>
+            <orgdiv>Információtechnológiai Tanszék</orgdiv>
+            <address>
+                <email>gilszkipatrikk@gmail.com</email>                
+            </address>
+        </affiliation>
+        <address>
+            <street>Nyíl utca</street>
+            <city>Debrecen</city>
+            <postcode>4028</postcode>
+            <country>Magyarország</country>
+            <otheraddr>
+                <link xlink:href="https://arato.inf.unideb.hu/batfai.norbert/">https://arato.inf.unideb.hu/batfai.norbert/</link>
+            </otheraddr>
+        </address>
+    </author>        
 </authorgroup>
