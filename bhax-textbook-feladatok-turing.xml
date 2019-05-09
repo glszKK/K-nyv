@@ -567,7 +567,7 @@ length(nemvaltoztatesnyer)+length(valtoztatesnyer)
 	</para>
 	 <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/monty.png" scale="50" />
+                    <imagedata fileref="img/monty.png" scale="10" />
                 </imageobject>
         </mediaobject>
         <para>
