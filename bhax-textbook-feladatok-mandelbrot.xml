@@ -73,7 +73,7 @@ int main() {
 ]]></programlisting>	    
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/mandelbrot.png" scale="50" />
+                    <imagedata fileref="img/mandelbrot.png" scale="500" />
                 </imageobject>
         </mediaobject>
     </section>        
