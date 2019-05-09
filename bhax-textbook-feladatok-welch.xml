@@ -913,6 +913,15 @@ int main(int argc, char** argv)
         <para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
+	<para>
+               A feladatunk az előzőekben elkészített Tag a Gyökér feladathoz kapcsolódik, egyfajta kiegészítés.
+	       Ismerhetjük már a másolo szemantikát, aminekúgy működik hogy az eredeti fának értékül adjuk
+		a bináris fánkat úgy hogy lemásolja azokat. Itt pedig mint a neve is mutatja mozgatja őket,
+		azaz a bináris fánk a gyökerének elemeit átadja a másik üres fának, majd azt a fát
+		amit a programunk mozgatott annak az elemeit nullpointerre állítja, mégpedig azért 
+		mert ugye konstruktort használunk, ami kitörölné az eredeti fát amiből átadtuk a gyökér elemeit
+		de így hogy nullpointerre állítjuk őket, így nem fognak tőrlődni.
+        </para>
 <programlisting language="c"><![CDATA[
 #include <iostream>		
 #include <cmath>		
@@ -1277,8 +1286,6 @@ main ( int argc, char *argv[] )
 
      return 0;
 }]]></programlisting>
-<para>
-Tehát a feladatom , hogy az LZW Binfa Z3A7.cpp eredeti kódunkhoz írjunk egy mozgató konstruktort és értékadást.A feladat megoldása során az alábbi ponton tettük meg a változtatásokat :
 <programlisting language="c"><![CDATA[
 class LZWBinFa {
 public:
@@ -1316,9 +1323,10 @@ public:
      }
 ]]>
 </programlisting>
-</para>
 <para>
-
+<para>
+Tehát a feladatom , hogy az LZW Binfa Z3A7.cpp eredeti kódunkhoz írjunk egy mozgató konstruktort és értékadást.
+	A feladat megoldása során az alábbi ponton tettük meg a változtatásokat :
 	
 	
 </para>
