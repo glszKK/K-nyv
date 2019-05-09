@@ -360,7 +360,7 @@ main (void)
        </para>
 	 <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/pagerank.jpg" scale="30" />
+                    <imagedata fileref="img/pagerank.png" scale="50" />
                 </imageobject>
         </mediaobject>
 <programlisting language="c"><![CDATA[
@@ -499,7 +499,7 @@ plot(x,y,type="b")
 	 </para>
 	<mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/brun.png" scale="30" />
+                    <imagedata fileref="img/brun.png" scale="50" />
                 </imageobject>
         </mediaobject>
     </section>
@@ -567,7 +567,7 @@ length(nemvaltoztatesnyer)+length(valtoztatesnyer)
 	</para>
 	 <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/monty.png" scale="300" />
+                    <imagedata fileref="img/monty.png" scale="50" />
                 </imageobject>
         </mediaobject>
         <para>
