@@ -11,9 +11,9 @@
            Írj egy olyan malloc és free párost használó C programot, amely helyet foglal egy alsó háromszög
             mátrixnak a szabad tárban!
         </para>
-	<para>
-            Megoldás videó:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
-        </para> 
+	    <para>
+            Megoldás videó:<link xlink:href="https://www.youtube.com/watch?v=1MRTuKwRsB0">https://www.youtube.com/watch?v=1MRTuKwRsB0</link>  
+        </para>
         <para>
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
@@ -77,26 +77,24 @@ main ()
 
     return 0;
 }
-]]></programlisting>	    
+]]></programlisting>
+	<mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/haromszog.png" scale="50" />
+                </imageobject>
+        </mediaobject>
         <para>
-            Az alsó háromszögmátrix tulajdonságai: 
-            -Négyzetes: A mátrixnak ugyan annyi sora van, mint oszlopa.
-            -Főátlója feletti összes elem értéke 0.
-            -Ha a mátrixot i-vel és j-vel indexeljük, ahol i a sorok számát és j az oszlopok számát jelöli, 
-            akkor biztosak lehetünk abban, hogy ha j nagyobb, mint i, a mátrix eleme 0.
-            
-            A forrásban linkelt program pointerek segítségével foglal megfelelő méretű helyet az alsó háromszögmátrix számára.
-            A program elején létrehoztunk egy egész típusú változót nr néven, ez határozza meg, hogy hány soros/oszlopos legyen a mátrix.
-            A mátrixban minden elemnek "Double"-nyi helyet foglalunk.
-            A for ciklusokban csak a főátlóig kell elmennie az indexeknek, mivel a főátló után már csak 0 van.
-            2 db for ciklust teszünk egymásba, hogy a 2 dimenziós tömbünket indexelni tudjuk és helyet tudjunk foglalni az elemeknek a memóriában.
-            A mátrixok a matematikában gyakorlatilag mennyiségek (pl. számok, függvények,
-            kifejezések, más mátrixok) téglalap alakú tömbjei. Úgy tudnánk igazán meghatározni, hogy
-            számok vannak táblázatos formában, amiknek N darab sora és M darab oszlopa van. Egy
-            mátrix elemeire tudunk hivatkozni, méghozzá úgy, hogy az adott elem után alsó indexben
-            megjelöljük azt, hogy hanyadik sor, hanyadik oszlopában helyezkedik el. A mátrixokhoz
-            kapcsolódó fogalom még a főátló, amit azok az elemek alkotják, aminek a sor- és
-            oszlopindexük megegyezik.
+              Elérkeztünk a harmadik fejezethez, ahol nagyrészt az EXOR-okról lesz szó. Első feladatunkban a memóriakezelésről
+	      és a pointerekről fogunk tanulni. A háromszögmátrix a nevétől eltérően négyzetes, ami azt jelenti hogy a sorai és az
+		oszlopainak a száma megegyeznek mert ugye így jön létre egy szabályos négyzet ha minden oldala egyenlő.
+		Emellett a főátlója alatt nullák helyezkednek el. És pontosan ezaz ami kell nekünk, ez a mátrix, hisz
+		a programunk ezt fogja elkészíteni. Szokásosan a header file-ok include-olásával kezdem a feladatot majd 
+		létrehozzuk az int nr parancsal a soraink számát. Majd a programba bevezetjük/deklaráljuk a tm változót.
+		Majd memóriát foglalunk le a doublekból álló háromszögmátrixunknak, mégpedig 8 byte-ot. Aztán jön a malloc parancs
+		ami visszaad egy pointert ami nullára mutat ha a programunk hibába ütközik. A ciklusunk 0-tól 4-ig megy még el nem 
+		éri az nr-t. És a lényeg az hogy az első sorunkban egyetlen egy double-t akarunk lefoglalni, a második sorunk
+		mutasson olyan helyre ahol két doublenak van lefoglalva hely,és így szabályszerűen novekedik. Ezután standart outputra 
+		megkapjuk az eredményt, majd egy return 0 parancsal zárjuk a programunkat.
 	  </para>
     </section>        
     <section>
@@ -107,6 +105,17 @@ main ()
 	<para>
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
+	<para>
+            Ebben a feladatban egy titkosító programot fogunk írni C nyelven melynek a feladata az lesz hogy egy bármekkora
+		méretű kulcs megadásával titkosít szövegeket. A kódunk elején meghatároztuk hogy a max kulcsunk 100 lehet.
+		És ezt nem fogjuk tudni sehogysem megváltoztatni később sem. És még a buffer méretet is beállítjuk, ennek a maximuma 256 lesz.
+		Ez azt adja meg hogy a programunk hány karaktert tud feldolgozni és beolvasni. A következő parancsunk 
+		a strlen és a strncpy ahol a karakterek információit találjuk, hogy milyen hosszú a karakterunk.
+		A kulcsot parancssori argumentumként kéri be. Aztán jön a while ciklus ami a read parancs segítségével elkezdi ugye olvasni a programunkat még a fálj végén
+		lévő "vége" jellel nem fut össze. És ugye a programunk elején megadtuk a max buffert, tehát 256-nyi karaktert
+		olvasott. És most jön a titkosítás a write-al. A programunk a bitenként megvizsgál 2 értéket, és mindig 1-et
+		kapunk vissza, kivéve akkor ha a 2 érték megeggyezik. Ekkor nullát kapunk  vissza eredményül.	
+	 </para>   
         <programlisting language="C"><![CDATA[
       
 #include <stdio.h>
@@ -138,22 +147,7 @@ main (int argc, char **argv)
 		  write (1, buffer, olvasott_bajtok);
 		}
 }
-]]></programlisting>
-        <para>
-            Ebben a programban a kizáró vaggyal(XOR) titkosítunk bármilyen szöveget, inputot.
-            A program elején létrehozunk 2db karakter tömböt, az egyiket a kulcsnak, a másikat a buffernek.
-            Ezután létrehozunk 2db egész(int) típusú változót, az egyiket azért, hogy tudjuk, a kulcs hanyadik karakterénél járunk titkosítás közben, 
-            a másikat pedig azért, hogy tudjuk hány bájtot olvastunk be a megadott szövegből, inputból.
-            A 17. sorban egy egész típusú változóban eltároljuk az első paraméternek megadott kulcs hosszát, mivel ez egy karaktersorozat, ezért a strlen-el megszámoltatjuk hány db.
-            Ezután egy while ciklusban karakterenként titkosítjuk a megadott szöveget exorral és minden karakter titkosítása után a kulcs következő karakterére lépünk, ha a végére értünk,
-            akkor kezdjük az elejéről. Ha while ciklus végzett a titkosítással már csak annyi a dolgunk, hogy ki irassuk a titkos szöveget ami létrejött.
-            EXOR-ral való titkosítás az egyik legrégebbi és legismertebb mód, legalább is ez áll
-            Kernighan-Plauger A programozás magasiskolája című könyvében. A Turing leckében már
-            írtam az EXOR-ról, avagy a kizáró vagynak a működéséről. Röviden összefoglalva egyeseket
-            és nullákat használunk, ezekből épül fel a kettes számrendszer. Két szám bináris alakját
-            tudjuk használni a kizáró vagyhoz úgy, hogy ha a két bit értéke egyenlő, akkor 0, ha
-            különböző, akkor 1-es értéket kapunk vissza.
-	    </para>            
+]]></programlisting>         
     </section>        
     <section>
         <title>Java EXOR titkosító</title>
@@ -210,13 +204,13 @@ main (int argc, char **argv)
 ]]></programlisting>
 
         <para>
-            Ez a program ugyan arra a célra lett létrehozva, mint a felette lévő, annyi különbséggel, hogy másik nyelven íródott.
-            A program Java nyelvben készült, ami annyiban tér el az eddig megszokott nyelvünktől, hogy objektum-orientált.
-            Mint láthatjuk a programban egy "ExorTitkosító" nevű függvényünk van a "Main"-en kívül.
-            Ez az "ExorTitkosító" ugyan azt csinálja lényegében, mint amit feljebb leírtam.
-            A "Main"-ben viszont annyi különbség van, hogy egy try, catch-et használunk.
-            A try-ban létrehozzuk az elején elkészített "ExorTitkosító" objektumunkat és átadjuk neki a megfelelő paramétereket: kulcs, bemeneti és kimeneti csatorna.
-            Ha ez hiba nélkül lefut, akkor a program kilép, de ha bármi hiba történne a catch el fogja kapni azt és tudatja velünk mi volt a baj.
+		A feladatunk ugyan az,titkosítás, csak most Java-ban. Aminek az előnye az hogy ugye Java-ban létre tudunk
+		hozni bizonyos osztályokat amikkel különféle utasításokat tudunk végrehajtani. Ezért létre is hozunk egy ilyen
+		osztályt amit ExorTitkosítonak nevezünk el. És itt kell ugye elvégezni az utasításokat ami azt jelenti
+		hogy itt fogjuk a következő lépéseket definiálni. Láthatunk a main résznél egy public -ot, ami 
+		azt mutatja meg hogy ez a rész a class(osztály)-on kívül is elérhető. Visszatérési értéke nincs a void miatt.
+		Két újabb dologgal is találkozhatunk, a Try-al és a Catch-el, amik feladata hogy ha hibát talál
+		a program akkor a catch elkapja és kíírja a hibaüzenet.	
         </para>            
     </section>        
     <section>
@@ -321,33 +315,55 @@ main (int argc, char **argv)
 		  }
 ]]></programlisting> 
         <para>
-            Ez a program a fentebb készített exor titkosítóval titkosított szövegeket töri fel és árulja el nekünk, hogy mi volt a kulcs.
-            Tulajdonképpen bruteforce-ot alkalmazunk, ami azt jelenti, hogy minden létező kombinációt megpróbálunk és majd idővel sikerül.
-            Ez nem túl jó taktika, ha a kulcs bonyolult és hosszú, mert nagy kapacitású gép kell a töréséhez és nagyon sok idő.
-            A programban tudnunk kell a kulcs hosszát, majd annyi for ciklust készítünk egymásban amennyi karakter hosszú a kulcs és így minden kombinációt kipróbálhatunk a szövegen.
-            Ha a szöveg "tisztának" tűnik, azaz előfordulnak benne gyakori szavak, pl: hogy, nem, az, ha, akkor nagy valószínűséggel sikerült feltörni 
-            (kivéve, ha ezek a szavak nem fordulnak elő a tiszta szövegben). A végén csak ki iratjuk for ciklusok indexei által megkapott kulcsot és a tiszta szöveget.
+          Egy picit összetetteb és bonyolultabb függvényről lesz szó most, hisz több függvényből fog állni.
+		A fejezet második feladatához térünk vissza, ahol ugye az előállított titkos szövegünket akarjuk 
+		feltörni és visszafejteni. Ebbe lesz segítségünk az atlagos_szohossz függvényünk amely pont ezt csinálja,
+		a programunk által generált kulcsal visszafejti a titkosított szöveget és vissza adja az átlagos szóhosszát.
+		Ezt is úgy kezdjük mint a titkosítást, hogy meghatározzuk az értékeket, a maximumokat, a kulcs méretet
+		és a buffer számot. Aztán jön a tiszta_lehet függvény ami az előzőleg említett atlagos_szohossz függvény által
+		generált és kiszámolt értékkel dolgozik és megnézi hogy tiszta e a kód(amit úgy dönt el hogy
+		a vizsgált szövegben van-e hogy,nem,az vagy ha szavak egyike).És ha a vizsgált szavak kozül egyiket sem
+		találja meg akkor egy null értéket kapunk eredményül, ami sajnos a programunk negatívuma is.
+	        Ebből következik az exor_tores 
+		függvényünk ami szintén az előzőleg használt függvénykkel és eredményekkel dolgozozik, ő is megnézi
+		hogy tiszta e már a fejtés alatt lévő szövegünk, és vagy 0-val vagy 1-el tér vissza.
+		A main-en belül adjuk meg a kulcsunk hosszát amit a-z-ig az összes betűvel vagy 0-9-ig az összes számmal
+		megadhatunk. Itt találhatjuk a for ciklusokat amik a kulcsot készítik el, és ezek próbálják meg a törést.
+		És ha valamelyik ciklus sikerrel jár akkor a tiszta_lehet függvényünknek megfelel.
+		A program forráskódja commentelve van így sokkal könnyebben tudjuk értelmezni a feladatot és hogy mi mit is
+		csinál.
+		
         </para>            
     </section>        
     <section>
         <title>Neurális OR, AND és EXOR kapu</title>
         <para>
-            A neurális hálózat fogalma mind a biológiában, mind a modern technológiában is
-            ismert, a két koncepciónak pedig igen sok köze van egymáshoz. Az idegi szabályozás a
-            legmagasabb szintű és a leggyorsabb szabályozási forma az állati és emberi szervezetben.
-            Testünkben nagyjából 30 milliárd neuron található, amik hálózatot képeznek valamint két
-            fő központot létesítenek az agyban és a gerincvelőben. A neuron egy sejtmagot tartalmaz
-            valamint hatalmas energiaigényét mitokondriumok elégítik ki. A neuronok osztódni nem
-            képes sejtek és számuk az idő előrehaladtával csökken. Ezen felül számos idegméreg
-            létezik, mint például az etilalkohol, halucinogének, kábítószerek, nikotin, energiaital,
-            zaj. Más neuronokkal a dendritek és az axon segítségével létesít kapcsolatot. Ezt a
-            kapcsolatot nevezzük szinapszisnak. A neurális hálózat feladata a külső és belső ingerek
-            érzékelése, továbbítása, és válaszreakció indítása. Az ingerületvezetés sebessége
-            120m/s-ig is terjedhet
-        </para>
-        <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/NN_R</link>               
         </para>
+	       <para>
+                Ebben a feladatban a neurális hálókról lesz szó, ami egy neuronokból összeálló háló. Maga a neuron egy idegsejt ami
+		       az idegrendszerünk legkisebb egysége. Ezeknek a feladata a jelek összegyüjtése és továbbítása. Többekközött
+		       a mesetséges intelligánciával is fogunk itt foglalkozni, mert ez a programunk képes a tanulásra. A feltételezés
+		       az hogy az emberi agy információfeldolgozását ezeknek a neuronoknak, és az általuk alkotott
+		       neurális hálók alkotják. Ezért próbálnak a mesterséges intelligencia továbbfejlesztésénél
+		       arra törekedni hogy egy ilyen fajta hálót tudjanak reprodukálni mint az agyunkban fellelhető.
+		       Mi is ezért fogjuk ezeket segítségül hívni hisz egy olyan programot szeretnénk létrehozni
+		       ami alapvető logikai műveleteket képes elvégezni. A neuronokról még azt kell tudni hogy
+		       akkor fognak "tüzelni" hogyha a bemenet összege meghaladnak egy limitet.
+		       Es ezt szeretnénk reprezentálni. A kódunk első részében az OR-t azaz a logikai vagy-ot
+		       tanítjuk meg a hálózatunknak, majd utána az AND azaz a logika és-t. Majd legvégül az EXORT
+		       ami a logika kizáró vagy. Az OR-t és az AND-et hibátlanul megtanulja, ám az EXOR nem 
+		       működik rendesen. Sokáig nem tudták a probléma okát, ám később pár matematikus rájött
+		       hogy miért is működik hibásan az EXOR kapu. A megoldás az hogy rejtett neutronokat kell
+		       még plusszba létrehoznunk a többi mellé, amik szintén segítik a tanulást. Amit a neuralnet hidden
+		       parancsal tudunk beállítani.
+        </para>
+	    <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/neuralishalo.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+
 	  <programlisting language="C"><![CDATA[
 	    library(neuralnet)
 
@@ -457,23 +473,19 @@ int main (int argc, char **argv)
 }
 ]]></programlisting> 
         <para>
-            A hálózat kimenetének hibáját a várt kimenet ismeretében egy folytonos függvény, az úgynevezett veszteségfüggvény segítségével számszerűsítjük. 
-            A hálózat egyes súlyainak hozzájárulása a hibához a veszteségfüggvény súlyok tekintetében vett gradiensével egyenlő, 
-            ahol w a hálózat összes súlyát tartalmazó képzeletbeli vektor, C pedig a veszteségfüggvény (például az átlagos négyzetes eltérés).
-            A kimeneti réteg súlyai tekintetében vett gradiens a láncszabállyal határozható meg.
-            A rejtett rétegek hibájának meghatározásához alkalmaznunk kell a hiba-visszaterjesztést. 
-            Ehhez észre kell vennünk, hogy a lineáris kombinációig (tehát az aktivációs függvény hívása előttig) visszaszámított gradiens kétszer is felhasználásra kerül: 
-            egyrészt meghatározható általa a súlyok gradiense, másrészt az előző réteg kimenetének tekintetében vett gradiens, 
-            mely az előző réteg tanításához kell. A lineáris kombinációig visszaszámított gradiensre bevezetjük a delta-jelölést, ahol O* a kimeneti réteg lineáris kombinációját jelöli, 
-            pedig jelen definíció szerint a kimeneti réteg hibája vagy deltája és a következőképpen határozzuk meg, 
-            aholg az aktivációs függvény deriváltja, melyet elemenként kiértékelünk az O mátrixra, 
-            pedig mátrixok elemenkénti szorzását jelöli. A delta jelöléssel felírjuk a kimeneti súlyok gradiensét, ahol T felső indexben a transzponálást jelöli.
-            A rejtett réteg hibájának meghatározásához vissza kell terjeszteni a gradienst a rejtett réteg kimenetéig, 
-            majd kiszámítani a rejtett réteg deltáját, végül a deltából a súlyok gradiensét 
-            eljuttat minket a rejtett réteg kimenetének gradienséig. 
-            A rejtett réteg deltája (gradiens a lineáris kombinációnál): ?. 
-            A rejtett réteg súlyainak gradiense: ?. 
-            Az eltolósúlyok gradiense ? és ?. 
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
         </para>            
     </section>        
         
