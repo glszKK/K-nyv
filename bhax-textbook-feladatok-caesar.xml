@@ -11,8 +11,11 @@
            Írj egy olyan malloc és free párost használó C programot, amely helyet foglal egy alsó háromszög
             mátrixnak a szabad tárban!
         </para>
+	<para>
+            Megoldás videó:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
+        </para> 
         <para>
-            Megoldás forrása: https://github.com/ujhazibalazs/MagProg1/blob/master/haromszogmatrix.c
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
 	   <programlisting language="C"><![CDATA[
 	    #include <stdio.h>
@@ -101,6 +104,9 @@ main ()
         <para>
             Írj egy EXOR titkosítót C-ben!
         </para>
+	<para>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
+        </para>
         <programlisting language="C"><![CDATA[
       
 #include <stdio.h>
@@ -153,6 +159,9 @@ main (int argc, char **argv)
         <title>Java EXOR titkosító</title>
         <para>
             Írj egy EXOR titkosítót Java-ban!
+        </para>
+	<para>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
        <programlisting language="Java"><![CDATA[
         public class ExorTitkosító {
@@ -214,6 +223,9 @@ main (int argc, char **argv)
         <title>C EXOR törő</title>
         <para>
             Írj egy olyan C programot, amely megtöri az első feladatban előállított titkos szövegeket!
+        </para>
+	<para>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
         <programlisting language="c"><![CDATA[
      #define MAX_TITKOS 4096
@@ -412,6 +424,9 @@ compute(nn.exor, exor.data[,1:2])
         <title>Hiba-visszaterjesztéses perceptron</title>
         <para>
             C++
+        </para>
+        <para>
+            Megoldás forrása:<link xlink:href="https://github.com/glszKK/Caesar">https://github.com/glszKK/Caesar</link>  
         </para>
 	    <programlisting language="C++"><![CDATA[
 	    include <iostream>
