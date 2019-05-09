@@ -473,19 +473,17 @@ int main (int argc, char **argv)
 }
 ]]></programlisting> 
         <para>
-        
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+           A következő feladatunk a neuronokhoz és a mesterséges intelligenciához kapcsolható, mivel ez a program 
+		a neuron hálózatok egyik legelterjedtebb változata, ami alakfelismerő, tehát megadunk neki egy alakzatot
+		egy formát és ő meg mondja hogy mit láthatunk a bemeneten. A programunknak 3 fő része van, az egyik ilyen
+		rész a retinacella ami a bemenetet fogadja, ami igen vagy nem választ adja. A második részünk az 
+		asszociatív cella aminek néhány cellája az előzőleg említett retinacellához kapcsolódik, a maradék pedig
+		a harmadik fő részhez csatlakozik. Ezek vizsgálják a beérkező adatokat, jeleket. A harmadik nagy rész pedig
+		a döntés cella ami a vége a programunknak, itt kapjuk meg a kimenetunket. A programunk úgymond megtanítja
+		a számítógépünknek a bináris osztályozást. Majd csak a következő fejezetben fogunk beszélni a Mandelbrot halmazról
+		ám most ezt hívjuk segítségül, magát a halmazt ábrázoló kép RGB kódját adjuk meg a neurális hálónak, majd a programunk
+		megnézi az összes pixelt és számolja a piros pixeleket. És ezáltal határozza meg hogy a pixelek hány %-a volt piros
+		így megtudja határozni az alakját a bemenetnek.	
         </para>            
     </section>        
         
