@@ -11,7 +11,7 @@
            Írj egy olyan malloc és free párost használó C programot, amely helyet foglal egy alsó háromszög
             mátrixnak a szabad tárban!
         </para>
-	    <para>
+	<para>
             Megoldás videó:<link xlink:href="https://www.youtube.com/watch?v=1MRTuKwRsB0">https://www.youtube.com/watch?v=1MRTuKwRsB0</link>  
         </para>
         <para>
@@ -202,7 +202,6 @@ main (int argc, char **argv)
     
 }
 ]]></programlisting>
-
         <para>
 		A feladatunk ugyan az,titkosítás, csak most Java-ban. Aminek az előnye az hogy ugye Java-ban létre tudunk
 		hozni bizonyos osztályokat amikkel különféle utasításokat tudunk végrehajtani. Ezért létre is hozunk egy ilyen
@@ -332,7 +331,6 @@ main (int argc, char **argv)
 		És ha valamelyik ciklus sikerrel jár akkor a tiszta_lehet függvényünknek megfelel.
 		A program forráskódja commentelve van így sokkal könnyebben tudjuk értelmezni a feladatot és hogy mi mit is
 		csinál.
-		
         </para>            
     </section>        
     <section>
@@ -363,7 +361,6 @@ main (int argc, char **argv)
                     <imagedata fileref="img/neuralishalo.png" scale="50" />
                 </imageobject>
         </mediaobject>
-
 	  <programlisting language="C"><![CDATA[
 	    library(neuralnet)
 
