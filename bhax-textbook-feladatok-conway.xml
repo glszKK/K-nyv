@@ -13,7 +13,7 @@
         </para>
 	    <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/ant.png" scale="50" />
+                    <imagedata fileref="img/ant.png" scale="100" />
                 </imageobject>
         </mediaobject>
         <para>
@@ -490,6 +490,11 @@ int main(int argc, char *argv[])
 		    Ez pedig a siklókilövő mely egy sikló alakzatot indít el ami x generáció után ugyan azt a formát 
 		    nyeri vissza, ez a sikló lett később a hackerek szimbóluma.
 	    </para>
+	    <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/sikló.png" scale="50" />
+                </imageobject>
+        </mediaobject>
 	         <programlisting language="c++"><![CDATA[
 	      void SejtAblak::sikloKilovo(bool **racs, int x, int y) {
 
@@ -547,12 +552,7 @@ int main(int argc, char *argv[])
     racs[y+ 11][x+ 25] = ELO;
 
 }
-]]></programlisting>
-	    <mediaobject>
-                <imageobject>
-                    <imagedata fileref="img/sikló.png" scale="50" />
-                </imageobject>
-        </mediaobject>
+]]></programlisting>   
     </section>        
     <section>
         <title>BrainB Benchmark</title>
