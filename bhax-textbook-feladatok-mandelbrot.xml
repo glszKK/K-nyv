@@ -543,8 +543,6 @@ int main()
     <section>
         <title>Mandelbrot nagyító és utazó Java nyelven</title>
         <para>
-        </para>
-        <para>
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Mandelbrot">https://github.com/glszKK/Mandelbrot</link>                
         </para>
 	 <para>
@@ -556,7 +554,7 @@ int main()
 		 a számokat és a tartományt tudjuk varriálni. És legvégül találkozhatunk 2 résszel, az egyik a plotPoints
 		 ami arra szolgál hogy bejárja a megadott tartományunkat és elkészítse a halmazunkat és kiszámolja azt.
 		 A másik rész pedig az actionPerformed aminek a segítségével tudjuk megmondani a programunknak hogy hova is 
-		 szeretnénk zoomolni  .
+		 szeretnénk zoomolni.
         </para>
 <programlisting><![CDATA[
 import java.awt.*;
