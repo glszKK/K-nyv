@@ -172,7 +172,12 @@ main (int argc, char **argv)
 		Aztán postorder módon is bejárjuk a fát a destroy_tree parancsal. A program végéhez értünk, a main függvényhez
 		itt láthatjuk (for(int i=0;i<10000;i++)) hogy 10.000 elemet kell megadnunk, majd elindítjuk az inorder bejárást
 		majd a fa pointereir felszabadítjuk.
-	</para>	
+	</para>
+	<mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/lzw.png" scale="50" />
+                </imageobject>
+        </mediaobject>
 <programlisting language="c"><![CDATA[
 #include <stdio.h>
 #include <stdlib.h>
@@ -403,14 +408,13 @@ int main(int argc, char** argv)
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
 	 <para>
-        
-		       
-		       
-		       
-		       
-		       
-		       
-		       
+            Az előző feladat végén beszéltünk a bejárásról, itt is ez lesz a feladatunk csak itt más módon.
+		 Először preorder módon majd posztorder módon is. Amik igazából nem sokban térnek el egymástól
+		 csakis annyiban hogy más a működési sorrendjük. Preorder ejárásnál először a részfa gyökerét 
+		 dolgozzuk fel majd utána a fa bal oldalát, aztán legvégül a fa jobb oldalát. A postorder módnál
+		 pedig először a részfa bal oldalát dolgozzuk fel aztán a jobb oldalt majd pedig a gyökeret.
+		 A két programot a magyarázat alatti scriptekkel mutatom be, az első script
+		 A program megértésében és magyarázatának kidolgozásában segített: Nagy László Milán     
         </para>
         <programlisting language="c"><![CDATA[
             void kiir (Csomopont * elem, std::ostream & os)
@@ -443,32 +447,6 @@ int main(int argc, char** argv)
             --melyseg;
         }
     }]]></programlisting>
-        <programlisting language="c"><![CDATA[
-    void kiir (Csomopont * elem, std::ostream & os)
-    {
-        
-        if (elem != NULL)
-        {
-
-            ++melyseg;
-	    kiir (elem->egyesGyermek (), os);
-	    for (int i = 0; i < melyseg; ++i)
-             	os << "---";
-            os << elem->getBetu () << "(" << melyseg - 1 << ")" << std::endl;
-            kiir (elem->nullasGyermek (), os);
-            --melyseg;
-        }
-    }]]></programlisting>
-	<para>	
-	
-		
-		
-		
-		
-		
-		
-		
-        </para>
     </section>        
                         
     <section>
@@ -478,7 +456,7 @@ int main(int argc, char** argv)
             osztálya. A gyökér csomópont legyen kompozícióban a fával!
         </para>
         <para>
-            Megoldás forrása: <link xlink:href="https://github.com/lovaszbotond/Welch/blob/master/Gyoker.c"></link>                
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
 <programlisting language="c"><![CDATA[
 #include <iostream>
@@ -689,16 +667,14 @@ int main(int argc, char** argv)
 	return 0;
 }]]></programlisting>
      <para>
-
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
-	     
+        Az egész fejezetünk a binfára és a z3a7.cpp nevű fájra épül, így a feladatok eléggé hasonlítanak egymáshoz. Itt sincs ez másképp.
+	     Az lzw binfánkat C-ben már megirtuk, most pedig C++-ban fogjuk. Az első különbség az hogy C-ben a struktúrát a csomópontok
+	     helyettesítésére használtuk, C++-ban pedig egy struktúrán belül nem csak csomópontokat használhatunk, de függvényeket is megadhatunk 
+	     neki. A gyökeret objektumként kezeljük és a konstruktorba ráállítjuk a famutatót a gyökérre. Megismerkedhetünk az operátorok túlterhelésével, 
+	     ami annyit tesz itt hogy a bitshift operátort túlterhelem ami a fánk építését végzi
+	     ugyanúgy mint a fentiekben említett insert_tree parancsunk. És ugye ha nullát kapunk eredményül és még nincs akkor azt létrehozza, mégpedig 
+	     úgy hogy memóriát foglal a new-parancsal és az ujNullasGyermek parancsal befűzzük a fába. Az 1-essel is ezt kell csinálnunk csak ott 
+	     természetesen nem a Nullás parancsot használjuk hanem az ujEgyesGyermek parancsot.    
      </para>
     </section>        
                 
@@ -709,10 +685,13 @@ int main(int argc, char** argv)
             fával!
         </para>
         <para>
-            Megoldás videó: 
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
-        <para>
-            Megoldás forrása:  <link xlink:href="https://github.com/lovaszbotond/Welch/blob/master/MutatoGyoker.cpp"></link>
+	<para>
+		Ez a feladat az előzőtöl abban tér el hogy ott a gyökeret objektumként kezeltük és ráállítottuk a famutatót a gyökérre
+		a konstruktorban, itt viszont más lesz a helyzet. A gyökérből egy pointert készítünk és eddig a gyökeret referenciaként
+		adtuk meg de ebben a feladatban úgy fogjuk hogy a konstruktorban példányosítjuk és a new-al helyet foglalunk le neki.
+		És erre állítjuk rá a fát. És végül a delete-vel szabadítjuk fel a memóriát amire már nincs szükségünk.
         </para>
 <programlisting language="c"><![CDATA[
 #include <iostream>
@@ -923,9 +902,6 @@ int main(int argc, char** argv)
 	bfa.destroy_tree(bfa.gyoker);
 	return 0;
 }]]></programlisting>
-<para>
-Szintúgy mint korábban ennek a kódnak is az előző feladat az alapja.Annak a módosítása.A különbség , hogy a gyökérelemre is már egy mutató mutat , és ezért a Binfa konstruktorában létre kell hozni egy gyökérobjektumot.A gyökér is egy pointer mint maga a fa.Az eéőzőben a gyökér egy objektum volt , aminek terület is volt foglalva.Ahol a program eddig a gyökér elem referenciáját adta át a függvénynek , vagy a fa építő eljárásában , ott mostmár a gyökérelemet kell átadnunk és nem a referenciáját.Ahol "and" jel volt kitéve ott most nem tesszök ki a "bfa" előtt.
-</para>
     </section>                     
 
     <section>
@@ -935,10 +911,7 @@ Szintúgy mint korábban ennek a kódnak is az előző feladat az alapja.Annak a
             értékadásra alapozva!
         </para>
         <para>
-            Megoldás videó: 
-        </para>
-        <para>
-            Megoldás forrása:<link xlink:href="https://github.com/lovaszbotond/Welch/blob/master/mozgato.cpp"></link>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
 <programlisting language="c"><![CDATA[
 #include <iostream>		
@@ -1345,35 +1318,9 @@ public:
 </programlisting>
 </para>
 <para>
-A mozgató szemantika a konstruktort , a másolót és a destruktort használja , azaz így kell értelmeznünk a feladatot.A bináris fák mozgatásához másolásához , ismétlődő lépésekből álló műveletsorozaton alapuló tehát rekurzív függvényekre lesz szükségünk.
-</para>
-<para>
-A destruktor alapvetően üres, azt ki kell fejteni,különben a program nem fog lefordulni, azonban a másoló konstruktor, és az "=" operátor nincs értelmezve/kifejtve, mert általában csak az objektumokra mutató referenciát dobaáljuk ide-oda.
-</para>
-<para>
-Destruktor: az objektum törlődése előtti teendőket hajtja végre mint például-> erőforrások felszabadítása.
-</para>
-<para>
-Másoló konstruktor: lefoglaljuk az objektum üzemeltetéséhez szükséges erőforrásokat, majd az objektumunkat egy másik példány másolataként hozzuk létre.
-</para>
-<para>
-= operátor: megsemmisítjük az objektumot, majd létrehozzuk az újat, egy létező példány alapján.
-</para>
-<para>
-A fontos módosításokat a fenti kódcsipeten láthatjuk . 
-Megértéséhez tudjuk , hogy maga a binfa szerkezetét nézve , az "lzwbinfa" osztályon belül beépített a csomópont osztályú objektumok alkotják a fánkat.
-</para>
-<para>
-A mozgató konstruktor esetében túlterheljük az operátort.
-</para>
-<para>
-A másolókonstruktor esetében érték szerint adjuk át a fát nem pedig referencia szerint.
-</para>
-<para>
-A feladat megvalósításához nagy segítségemre volt az alábbi weboldal: <link xlink:href="https://calmarius.blog.hu/2010/11/18/c_dolgok_amelyekkel_sokat_lehet_szivni"></link>
-</para>
-<para>
-Jó volt tapasztalni , hogy a feladatok egymásra épülnek és szépen fokozatosan tudjuk felépíteni a programunkat , hogy ki egészítsük a feladat által meghatározott módokon.
+
+	
+	
 </para>
     </section>                     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
