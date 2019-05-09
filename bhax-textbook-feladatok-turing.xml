@@ -499,7 +499,7 @@ plot(x,y,type="b")
 	 </para>
 	<mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/brun.jpg" scale="30" />
+                    <imagedata fileref="img/brun.png" scale="30" />
                 </imageobject>
         </mediaobject>
     </section>
@@ -567,7 +567,7 @@ length(nemvaltoztatesnyer)+length(valtoztatesnyer)
 	</para>
 	 <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/monty.jpg" scale="30" />
+                    <imagedata fileref="img/monty.png" scale="300" />
                 </imageobject>
         </mediaobject>
         <para>
