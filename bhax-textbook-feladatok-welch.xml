@@ -3,7 +3,7 @@
         <title>Helló, Welch!</title>
         <keywordset>
             <keyword/>
-        </keywordset> 
+        </keywordset>
     </info>
     <section>
         <title>Első osztályom</title>
@@ -80,8 +80,6 @@ public class PolarGen
 	    }
 	}
 }]]></programlisting>
-        <para>	
-        </para>
 <programlisting><![CDATA[
 #include <iostream>
 #include <cstdlib>
@@ -146,7 +144,7 @@ main (int argc, char **argv)
     std::cout << pg.kovetkezo () << std::endl;
 
   return 0;
-}]]></programlisting>                
+}]]></programlisting>                 
     </section>        
 
     <section>
@@ -401,7 +399,7 @@ int main(int argc, char** argv)
         <para>
             Járd be az előző (inorder bejárású) fát pre- és posztorder is!
         </para>
-	       <para>
+           <para>
             Megoldás videó:<link xlink:href="https://www.youtube.com/watch?v=Z32AiCcYpi8"></link>
         </para>
          <para>
@@ -455,7 +453,7 @@ int main(int argc, char** argv)
             Az LZW algoritmust ültesd át egy C++ osztályba, legyen egy Tree és egy beágyazott Node
             osztálya. A gyökér csomópont legyen kompozícióban a fával!
         </para>
-        <para>
+       <para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
 <programlisting language="c"><![CDATA[
@@ -666,7 +664,7 @@ int main(int argc, char** argv)
 	bfa.destroy_tree(&bfa.gyoker);
 	return 0;
 }]]></programlisting>
-     <para>
+      <para>
         Az egész fejezetünk a binfára és a z3a7.cpp nevű fájra épül, így a feladatok eléggé hasonlítanak egymáshoz. Itt sincs ez másképp.
 	     Az lzw binfánkat C-ben már megirtuk, most pedig C++-ban fogjuk. Az első különbség az hogy C-ben a struktúrát a csomópontok
 	     helyettesítésére használtuk, C++-ban pedig egy struktúrán belül nem csak csomópontokat használhatunk, de függvényeket is megadhatunk 
@@ -910,7 +908,7 @@ int main(int argc, char** argv)
             Írj az előző programhoz mozgató konstruktort és értékadást, a mozgató konstruktor legyen a mozgató
             értékadásra alapozva!
         </para>
-        <para>
+         <para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Welch">https://github.com/glszKK/Welch</link>         
         </para>
 	<para>
@@ -1324,5 +1322,5 @@ public:
 ]]>
 </programlisting>
     </section>                     
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 </chapter>                
