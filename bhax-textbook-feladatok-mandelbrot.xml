@@ -84,16 +84,13 @@ int main() {
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Mandelbrot">https://github.com/glszKK/Mandelbrot</link>                
         </para>
 	<para>
-            
-		
-		
-		
-		
-		
-		
-		
-		
-		
+            Ez a feladat szinte ugyan az mint az előző, néhány apróságban térnek el egymástól. Mégpedig abban hogy itt
+		a C++-ban találhatunk egy beépített komplex osztályt aminek a segítségével lépkedünk. Ezenkívül
+		jobban elengedi a kezünket a program, hisz itt már betudjuk állítani saját magunknak a méreteket
+		ha pedig lusták vagyunk akkor van egy basic alapértelmezett képméret és azt fogja használni a programunk.
+		A dolgunk annyi még hogy a változókat int és double alakra át kell írnunk. Majd megint létrehozunk egy üres
+		png-t amibe készül az egész halmazunk. Különbség még az hogy itt két forciklust ágyazunk egymásba
+		amik segítségével járjuk be az egészet és legvégezetül egy színesebb alakzatot fogunk kapni.
         </para>
 <programlisting language="c"><![CDATA[
 #include <iostream>
@@ -163,19 +160,26 @@ main ( int argc, char *argv[] )
     <section>
         <title>Biomorfok</title>
         <para>
-		
-        </para>
-        <para>
             Megoldás videó: <link xlink:href="https://youtu.be/IJMbgRzY76E">https://youtu.be/IJMbgRzY76E</link>
         </para>
         <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/Biomorf</link>
         </para>
 	<para>
-           
-		
-		
+           Ez a program azért került ebbe a csokorba mert az előzőleg megírt Mandelbrot halmazok segítségével fogjuk ezeket a biomorfokat
+		is létrehozni. Ezek a biomorfok élő organizmusokhoz hasonlítanak, amiket Pickover talált fel, és ő meg volt győződve arról
+		hogy valami újat fedezett fel a természetben. De mint később kiderült mégsem, hisz ilyen alakzatokat és biomorfokat akár
+		számítógép és matematikai egyenletek segítségével is létrehozhatunk. A program eleje tisztára olyan mint a Mandelbrot halmazé
+		annyi különbséggel hogy itt a felhasználó saját magának adhatja meg a cc konstans értékét és a küszöbszámokat.
+		Itt is két egymásba ágyazott forciklust használunk, és ezek segítségével ugyanúgy végig lépkedünk a pontokon.
+		De van egy harmadik for ciklus is ami a számításokat végzi, egészen addig míg a programunkban leírt határt
+		el nem éri.	
         </para>
+	   <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/pickover.png" scale="50" />
+                </imageobject>
+        </mediaobject> 	    
 <programlisting language="c"><![CDATA[
 #include <iostream>
 #include "png++/png.hpp"
@@ -248,8 +252,6 @@ main ( int argc, char *argv[] )
 
     <section>
         <title>A Mandelbrot halmaz CUDA megvalósítása</title>
-        <para>
-        </para>
         <para>
             Megoldás videó:<link xlink:href="https://youtu.be/gvaqijHlRUs"></link> 
         </para>
@@ -377,6 +379,17 @@ main (int argc, char *argv[])
 }
 ]]>
 </programlisting>
+	<para>
+               Ezt a programot az NVIDIA fejlesztette ki, melynek segítségével a korábban megírt programokat és 
+		Mandelbrot halmazok generálását és elkészítését jelentősen meg tudjuk növelni. A program lényege
+		létrehozunk egy új gride-t ami 600x600 blokkból tevődik össze, és minden egyes blokkhoz tartozik egy szál.
+		Az egész programhoz egy NVIDIA GPU szükséges. A define-al meghatározzuk a méreteket és az értékeket.
+		majd a Mandelbrot halmazunkat egy mandel parancsal hozzuk létre, ám a kódunkba a mandel előtt szerepel
+		egy device szó, ami annyit takar hogy jelzi hogy maga a program/függvény csakis a videókártyáról lesz elérhető.
+		Aztán ott a mandelkernel, ezelőtt is áll egy szó, mégpedig a global szó. Amely azt jelzi hogy ez egy kernel függvény.
+		Ezek voltak a program érdekes részei, mivel a forrást úgy kaptuk meg hogy commentelve van és minden fontos
+		információ a parancsokról és a függvényekről megtalálható ott, így nem fogom leírni külön ide őket.
+        </para>
     </section>                     
 
     <section>
@@ -388,16 +401,34 @@ main (int argc, char *argv[])
         <para>
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Mandelbrot">https://github.com/glszKK/Mandelbrot</link>                
         </para>
-<para>
+	<para>
+           A következő programunk alapja megint a Mandelbrot halmaz, és mint a címben is láthatjátok, nagyításról lesz szó.
+		A programunk rá fog tudni zoomolni a halmaz szélére ahol újabb halmazt/halmazokat találhatunk. De először is
+		telepítenünk kell két alapvető csomagot.(sudo apt-get install libsfml-dev). Mint a fejezetben mindenhol,
+		itt is a méretek beállításával kezdünk. Azután mindent úgy csinálunk mint a fejezet második feladatában
+		a komplex halmaznál. A színeket itt tudjuk állítani, mégpedig az iterációk számával.
+		Beállítottuk hogy az X-re kattintás esetén a programunk bezáródjón, és még azt is beállítottuk hogy
+		kattintáskor a kurzor helyére zoomoljon a programunk, ezért beszélünk nagyításról.
+        </para>
+	  <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/mandelbrotzoom.png" scale="50" />
+                </imageobject>
+        </mediaobject>
 <programlisting language="c"><![CDATA[
 #include "SFML/Graphics.hpp"
+
+//resolution of the window
 const int width = 1280;
 const int height = 720;
+
+//used for complex numbers
 struct complex_number
 {
     long double real;
     long double imaginary;
 };
+
 void generate_mandelbrot_set(sf::VertexArray& vertexarray, int pixel_shift_x, int pixel_shift_y, int precision, float zoom)
 {
     #pragma omp parallel for
@@ -405,7 +436,7 @@ void generate_mandelbrot_set(sf::VertexArray& vertexarray, int pixel_shift_x, in
     {
         for (int j = 0; j < width; j++)
         {
-     
+           
             long double x = ((long double)j - pixel_shift_x) / zoom;
             long double y = ((long double)i - pixel_shift_y) / zoom;
             complex_number c;
@@ -425,6 +456,7 @@ void generate_mandelbrot_set(sf::VertexArray& vertexarray, int pixel_shift_x, in
                 if (z.real * z.real + z.imaginary * z.imaginary > 4)
                     break;
             }
+         
             if (iterations < precision / 4.0f)
             {
                 vertexarray[i*width + j].position = sf::Vector2f(j, i);
@@ -446,20 +478,22 @@ void generate_mandelbrot_set(sf::VertexArray& vertexarray, int pixel_shift_x, in
         }
     }
 }
+
 int main()
 {
-    sf::String title_string = "Mandelbrot Set Plotter"; 
-    sf::RenderWindow window(sf::VideoMode(width, height), title_string);  méretekkel és címmel)
+    sf::String title_string = "Mandelbrot Set Plotter"; /
+    sf::RenderWindow window(sf::VideoMode(width, height), title_string);  
     window.setFramerateLimit(30); 
     sf::VertexArray pointmap(sf::Points, width * height);
     
-  
+
+
     float zoom = 300.0f;
     int precision = 100;
     int x_shift = width / 2;
     int y_shift = height / 2;
     
-    
+
     generate_mandelbrot_set(pointmap, x_shift, y_shift, precision, zoom);
     
     
@@ -471,13 +505,15 @@ int main()
      * */
     while (window.isOpen())
     {
+
+        
         sf::Event event;
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        
+       
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
             sf::Vector2i position = sf::Mouse::getPosition(window);
@@ -502,84 +538,6 @@ int main()
 }
 ]]>
 </programlisting>
-A program fordításához szükségünk van arra, hogy telepítsünk gépünkre egy két alapvető csomagot.
-Köztük:
-</para>
-<para>
-sudo apt-get install libsfml-dev
-</para>
-<para>
-Build: g++ MandelbrotSetPlotter.cpp -lsfml-window -lsfml-system -lsfml-graphics  -fopenmp -O2
-</para>
-<para>
-Használat: g++ -o mbhzoom MandelbrotSetPlotter.cpp -lsfml-window -lsfml-system -lsfml-graphics -fopenmp -O2
-</para>
-<para>
-Indítás: ./mbhzoom
-</para>
-<para>
-<programlisting>
-const int width = 1280;
-const int height = 720;
-</programlisting>
-Első körben beállítjuk az ablak szélességét/magasságát.(resolution) Ezek konstansok.
-<programlisting>
-struct complex_number
-{
-    long double real;
-    long double imaginary;
-};
-</programlisting>
-Használjuk a komplex számokhoz.
-</para>
-<para>
-A következőkben a void generate_mandelbrot_set után a egészen az "int main()-ig a mandelbrot komplex alapján legenerálunk egy mandelbrot halmazt mint ahogy azt eddigi megoldásaink során is csináltuk, annyi különbséggel , hogy most máshogy nevezzük el valós/képzetes/komplex/stb.. részt , hogy a szemünk , szokja a különböző forráskódok olvasását még ha az matematikailag ugyan az is.a feltételen belül az <function>int iterations = 0</function>-ban fogjuk tárolni az iterációk számát.
-A pixelek színe az iterációk számán fog alapulni.
-</para>
-<para>
-Jöhet a main:
-</para>
-<para>
-<programlisting>
-sf::String title_string = "Mandelbrot Set Plotter"; 
-    sf::RenderWindow window(sf::VideoMode(width, height), title_string); 
-    window.setFramerateLimit(30); 
-sf::VertexArray pointmap(sf::Points, width * height);
-</programlisting>
-Megadjuk az ablaknak a címét majd az ablak objektum(létrehozza az ablakot a megadott mértékkel és címmel).Alább pedig a frissített ablakot kapjuk.
-<programlisting>
-float zoom = 300.0f;
-    int precision = 100;
-    int x_shift = width / 2;
-int y_shift = height / 2;
-</programlisting>
-Inicializáljuk az értékeket a matek szerint.
-Legeneráljuk a mbh-t.
-<programlisting>
-while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-}
-</programlisting>
-Ciklikusan figyeli az előforduló különböző event-eket ha egy olyan esemény következik be , hogy kattintunk az X gombra akkor bezárja az ablakot.
-<programlisting>
-if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-        {
-            sf::Vector2i position = sf::Mouse::getPosition(window);
-            x_shift -= position.x - x_shift;
-            y_shift -= position.y - y_shift;
-            zoom *= 2;
-precision += 200;
-</programlisting>
-Továbbá ha a bal egérgommbal kattintunk, akkor az egér helyére nagyít az alábbi algoritmus segítségével. Minden nagyítás után újra legenerálja a mbh-t.
-A programunk végén pedig szimplán ellenőrzünk és újra indítunk ami a folyamatot illeti.
-</para>
-
-   
     </section>                     
                                                                                                                                                                             
     <section>
@@ -590,22 +548,15 @@ A programunk végén pedig szimplán ellenőrzünk és újra indítunk ami a fol
             Megoldás forrása:<link xlink:href="https://github.com/glszKK/Mandelbrot">https://github.com/glszKK/Mandelbrot</link>                
         </para>
 	 <para>
-            
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+             A feladatunk ugyan az lesz, egy olyan programot kell létrehoznunk ami ugyanúgy zoomolni tud, csak most Java-ba.
+		 Először szokás szerint importálunk, majd létrehozunk egy osztályt. A setbounds résznél állítjuk be az
+		 ablakunk méretét. Az alatta lévő setResizable pedig arra szolgál hogy ha false értéket adunk meg neki
+		 akkor nem tudjuk változtatni az ablak méretét. C++-ban ugye new-al foglaltunk le memóriát, itt java-ban 
+		 szintén a new parancsal fogunk, mégpedig a new JPanel parancsal. Majd létrehozzuk a gombokat is, amelyekkel
+		 a számokat és a tartományt tudjuk varriálni. És legvégül találkozhatunk 2 résszel, az egyik a plotPoints
+		 ami arra szolgál hogy bejárja a megadott tartományunkat és elkészítse a halmazunkat és kiszámolja azt.
+		 A másik rész pedig az actionPerformed aminek a segítségével tudjuk megmondani a programunknak hogy hova is 
+		 szeretnénk zoomolni  .
         </para>
 <programlisting><![CDATA[
 import java.awt.*;
@@ -752,144 +703,7 @@ public class Mandelbrot extends JFrame implements ActionListener {
         new Mandelbrot().setVisible(true);
     }
 }
-]]></programlisting>
-<para>
-A Java megoldásnál egy teljesen új verzíót próbálunk ki a mandelbrot nagyításra.
-Szokásos módon mint C++-ban itt is importáljuk a megfelelő software csomagokat.
-A public class Mandelbrot lesz a a programom neve is egyben , és ott lesz az osztályom is. 
-A private szekcióban definiáljuk az objektumainkat majd a konstruktorokban inicializálunk.
-<programlisting>
-  public Mandelbrot() {
-        super("Mandelbrot Set");
-        setBounds(100, 100, 800, 600);
-        setResizable(false);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        plotPoints();
-        
-        Container contentPane = getContentPane();
-        
-contentPane.setLayout(null)
+]]>
 </programlisting>
-Alábbi csipetben létrehozzuk az alap ablakunkat amiben kesőbb dolgozni fogunk. 
-A setBounds a keretet fogja beállítani. 
-A setResizable(false) , hogy ne tudjuk állítani annak a méretét , hanem fix pozícióban legyen. 
-A closeoperation egy szimpla exit event lesz , hogy ki tudjunk lépni belőle.
-A Container contentPane = getContentPane() pedig lesz ahova be fogjuk szépen pakolgatni a tulajdonságokat/kezelési felületemet.
-<programlisting>
-ctrlPanel = new JPanel();
-        ctrlPanel.setBounds(600,0,200,600);
-        ctrlPanel.setBackground(themeColor);
-        ctrlPanel.setLayout(null);
-        
-        btnPanel = new JPanel();
-        btnPanel.setBounds(0,200,200,200);
-        btnPanel.setLayout(new GridLayout(3,3));
-        btnPanel.setBackground(themeColor);
-        
-        ctrlBtns[1] = new JButton("up");
-        ctrlBtns[7] = new JButton("down");
-        ctrlBtns[3] = new JButton ("left");
-        ctrlBtns[5] = new JButton("right");
-        ctrlBtns[2] = new JButton("+");
-        ctrlBtns[0] = new JButton("-");
-        ctrlBtns[8] = new JButton(">");
-        ctrlBtns[6] = new JButton("")
-ctrlBtns[4] = new JButton();
-</programlisting>
-A "new" Jpanel-el lefoglalunk neki helyet a memóriában- azon belül is lesz ctrl(control)Panel illetve btn(button)Panel a ctrlBtns(buttons) pedig maguk a gombok belül, ezeket inicializáljuk, illetve aposztrófon belül a bennük lévő tartalom található.
-<programlisting>
-    contentPane.add(ctrlPanel);
-        contentPane.add(new imgPanel());
-ctrlPanel.add(btnPanel);
-</programlisting>
-Szintén hozzá adjuk a publicon belüli contentPane-hez a most megírt objekteket.
-Láthatjuk is melyek ezek - ctrlPanel - btnPanel - és létrehozunk majd egy imgPanelt is ( image ) aminek előre foglalunk helyet és egy teljesen különálló panel lesz 0,0 értékekkel.Szintén amiről még nem beszéltünk , setBounds a keret, setLayout , hogy rácsosan vagy összevissza szeretném látni - jelenleg ( null ) értéket kapott a ctrlPanelen belül de láthatjuk , hogy a btnPanelen belül már "new Gridlayout(3,3)" tehát egy 3x3-as mátrix lesz. A Background lesz a hátterem - egyszerű themeColor.
-<programlisting>
- for (int x = 0; x "ctrlBtns.length;x++){
-        	btnPanel.add(ctrlBtns[x]);
-ctrlBtns[x].addActionListener(this);"
-</programlisting>
-A for cikluson belül lényegében az összes gombra egy különálló eseményt kreálok.Megtörténik egy esemény mi arra fel vagyunk iratkozva és lépünk.Az ActionListener(akció figyelő) lesz az eventek visszatérése.
-A validate(); ellenőriz és újraindul.
-<programlisting>
-    public class imgPanel extends JPanel{
-    	public imgPanel(){
-setBounds(0,0,600,600);
-
-public void paint (Graphics g){
-    		super.paint(g);
-g.drawImage(I, 0, 0, this);
-</programlisting>
-Az imgPanel lesz a Jpanel gyermeke. A "paint" egy lefoglalt metódus.A "super.paint" egy ősosztálybeli konstruktort hív meg amely öröklődött a szülőtől aki jelen esetben a JPanel.A "drawImage" pedig kirajzoltat.
-<programlisting>
-public void plotPoints(){
-    	I = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-        for (int y = 0; y  getHeight(); y++) {
-            for (int x = 0; x  getWidth(); x++) {
-                zx = zy = 0;
-                cx = (x - 320+xMove) / zoom;
-                cy = (y - 290+yMove) / zoom;
-                int iter = numIter;
-                while (zx * zx + zy * zy  4  iter > 0) {
-                    temp = zx * zx - zy * zy + cx;
-                    zy = 2 * zx * zy + cy;
-                    zx = temp;
-                    iter--;
-                }
-I.setRGB(x, y, iter | (iter  colorIter));
-</programlisting>
-Elsőként van az "I" ami a BufferedImage amit még a privateban is megadtunk és itt adunk hozzá szélességet , magasságot , hosszt, majd megszínesszük. ( TYPE_INT_RGB ) 
-Következő lépésben pedig megírjuk mint C++-ban magát a matekot ami a mandelbrot halmaz mögött áll.
-<programlisting>
-    public void actionPerformed(ActionEvent ae){
-    	String event = ae.getActionCommand();
-    	
-    	switch (event){
-    	case "up":
-    		yMove-=100;
-    		break;
-    	case "down":
-    		yMove+=100;
-    		break;
-    	case "left":
-    		xMove-=100;
-    		break;
-    	case "right":
-    		xMove+=100;
-    		break;
-    	case "+":
-    		zoom+=zoomIncrease;
-    		zoomIncrease+=100;
-    		break;
-    	case "-":
-    		zoom-=zoomIncrease;
-    		zoomIncrease-=100;
-    		break;
-    	case ">":
-    		colorIter++;
-    		break;
-    	case ">":
-    		colorIter--;
-    		break;
-    	}
-    	
-    	
-    	
-    	plotPoints();
-    	validate();
-    	repaint();
-}
-</programlisting>
-Megadjuk ezen kódcsipeten , hogy a gombok nyomására mi történjen. UP->fel y mentén 100-at , és kidob(break), DOWN -> le y mentén 100 at és kidob .. és így tovább az utolsó breakig szépen hivatkozunk mindenre.
-A végén pedig a "plotPoints","validate","repaint" - elérjük , hogy minden egyes event után újraszámoljon.
-<programlisting>
- public static void main(String[] args) {
-new Mandelbrot().setVisible(true);
-</programlisting>
-Létrehozzuk/megadjuk az egész classt és láthatóvá tesszük.
-A megoldás során közösen dolgoztunk együtt Dékány Róbertel , aki egyben tutoriált is.
-</para>
-
-    </section>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    </section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 </chapter>                
