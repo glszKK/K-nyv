@@ -32,12 +32,15 @@
 	}
 	]]>
         </programlisting>
-        <para>
-		
-		
-		
-           Decimálisból unáris (egyes számrendszer) számrendszerbe való átváltás során csak a 10-es számrenderben megadott számú tetszőleges karaktert kell leírni.
-	   A fenti példában ez egy for ciklussal van megoldva de bármilyen más megoldás is jó ha az megfelelő számú tetszőleges karakter ad vissza eredményül.
+	    <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/turingép.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+       <para>
+		A feladatban az unáris számrendszerről lesz szó, ami ugye tudjuk az egyes számrendszer. A programunk lényege
+	       hogy decimálisból unárisba váltas át a számokat. Mindez úgy történik hogy folyamatosan kivonunk 1-et az átváltani
+	       kívánt számból és ezeket a kivont 1-eseket tároljuk. Addig még 0-át nem kapunk eredményül. Ehhez egy for ciklust használunk.
         </para>
     </section>        
         
@@ -49,11 +52,42 @@
   	<para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
-        <para>
-
-		
-		
+	    <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/chomsky.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+	<para>
+        	A generatív nyelvtan kitalálója, a fejezetünk névadója volt: Noam Chomsky. A neve ismert lehet még
+		a Chomsky-hierarchiából is, ezt fentebb szúrtam be. A generatív nyelvtan a formális nyelvek közé tartozik
+		aminek 2 másik fajtája is van, a környezetfüggetlen nyelvtan és a szabályos nyelvtan. Igy 3-an alkotják meg
+		a Formális nyelveket. Mivel a feladatunk az hogy két példát mutassunk be a generatív nyelvre így
+		allíthatjuk hogy nem környezettfüggetlen nyelvről beszélünk.
         </para>
+	<para>    
+		<programlisting language="c"><![CDATA[
+  		S -> aBSc
+		S -> abc
+		Ba -> aB
+		Bb -> bb
+		S -> aBSc -> aBaBScc -> aBaBabccc -> aaBBabccc -> aaBaBbccc -> aaaBBbccc ->  -
+		aaaBbbccc -> aaabbbccc	
+	]]>
+        </programlisting>
+        </para>   
+	<para>
+		    <programlisting language="c"><![CDATA[
+          	 S -> abc
+		S -> aXbc
+		Xb -> bX
+		Xc -> Ybcc
+		bY -> Yb
+		aY -> aaX
+		aY -> aa
+		S -> aXbc -> abXc -> abYbcc -> aYbbcc->aXbbcc -> aabXbcc-> aabbXcc-> aabbYbccc -> aaYbbccc -> aaYbbbccc->aaabbbccc	
+	]]>
+        </programlisting>
+	    </para>    
     </section>        
                 
     <section>
@@ -66,47 +100,38 @@
 	<para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
-	<programlisting><![CDATA[
-	<nem terminális> ::= konkatenációja terminálisoknak, nem terminálisoknak, 
-	illetve {iteráció}, [opcionális], alter|natíva
-	<egész szám> ::= <előjel><szám>
-	<előjel> ::= [-|+]
-	<szám> ::= <számjegy>{<számjegy>}
-	<számjegy> ::= 0|1|2|3|4|5|6|7|8|9]]>
-	</programlisting>
-	<programlisting><![CDATA[
-	<címkézett_utasítás> ::= <azonosító> | case | default
-	<kifejezésutasítás> ::= <kifejezés>
-	<deklarációs_lista> ::= <deklaráció>
-	<utasítás_lista> ::= <utasítás>
-	<összetett_utasítás> ::= <deklarációs_lista> | <utasítás_lista>
-	<kiválasztó_utasítás> ::= if | if else | switch
-	<iterációs_utasítás> ::= while | do while | for
-	<vezérlésátadó_ utasítás> ::= goto | continue | break | return]]>
-        </programlisting>
-        <para>
-            Példák a szabványok közötti különbségekre:  
+	 <para>
+            
+		Ebben a részben a C nyelvről lesz szó. Mint tudjuk hisi nekünk is olvasnunk kell, létezik egy referencia könyv
+		 ahol a C nyelvhesz szükséges információkat és utasításokat megtaláljuk. Ilyenek példál a szabványok. Amik
+		 igazából mindig valami új featurest hoznak be a C nyelvbe. Csak a probléma az hogy visszafele nem futnak
+		 és nem működnek az újabb szabványok. Példál van a C99 szabvány, amiben már lehet dekralálni viszont a C89-ben
+		 még ez nem tud lefutni hisz ott még külön kellett dekralálni. A feladatunk az most hogy mutassunk kettő olyan kód
+		 csipetet amivel betudjuk bizonyítani hogy visszafele nem fordulnak.
         </para>
-	<programlisting language="c"><![CDATA[
-	int main(){
-	//int a;
-		return 0;
-	}
-	]]>
+	    <programlisting language="c"><![CDATA[
+		int main(){
+		//int a;
+		return
+	    ]]>
         </programlisting>
-        <para>
-            A fenti példa C89-es szabvánnyal nem fordul le mí C99-es szabvánnyal le fordul mert abban már megengedett a //-el való kommentelés, míg a C89-es szabványban csak a /* és a */ voltak kommentet jelző szimbólumok. Szóval a fenti példa C89-es szabványban így nézne ki:
-        </para>
-	<programlisting language="c"><![CDATA[
-	int main(){
-	/*int a;*/
-		return 0;
-	}
-	]]>
+	  <para>
+		Ilyen például a fenti kódcsipetünk, ez C99-be lefüt,C89-ben nem,mégpedig azért mert  megengedett a //-el való 
+		  kommentelés viszont a C89-ben még nem.
+	  </para>
+	     <programlisting language="c"><![CDATA[
+	    		#include <stdio.h>
+
+			int main()
+			{
+			for(int a=5;a>10;a++);
+			return 0;
+			}
+	       ]]>
         </programlisting>
-	<para>
-	Ez mind a 2 szabványban le fog fordulni.
-	</para>
+	    <para>
+		Itt pedig a leírásban említett dekralálás látható.
+	  </para>
     </section>                     
 
     <section>
@@ -120,15 +145,44 @@
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
         <para>
-         
-		
-		
-		
-		
-		
-		
-		
+		A programunk működése úgy néz ki hogy include-oljuk az stdio.h header filet és jelzem hogy en ezzel szeretnék dolgozni.
+		Majd ezútán definiáljuk és írjuk le a lexer számlálót ami ugye számolni fogja a bemenetet betűként. A digit
+		függvénnyel adjuk meg a számokat majd növeljük azokat egyesével. A következő sorba láthatjuk hogy milyen 
+		karaktereket ismer fel [A-Za-z][A-Za-z0-9]. Aztán jön a feladatunk main része ahol meghívjuk az elemzőt
+		ahogy a commentben is olvashatjuk, azaz a lexert (yylex). Majd kiírjuk az eredményt amit kaptunk.
+		A returtn 0.-val pedig véget vetünk a programunknak.
         </para>
+		 <programlisting language="c"><![CDATA[
+		/*** definíciós rész ***/
+
+		%{
+		/* Ez a kód bemásolódik a generált C forrásba*/
+		#include <stdio.h>
+		int valos=0;
+		%}
+
+		/* Ez az opció azt mondja meg, hogy csak egy input file kerüljön beolvasásra. */
+		%option noyywrap
+
+		%%
+ 		/*** Szabályok ***/ 
+
+	
+		[:digit:]+  { valos++; }
+		[A-Za-z][A-Za-z0-9]*       {   /* Minden más karaktert ignorálunk. */   }
+
+		%%
+		/*** C kód. Ez is bemásolódik a generált C forrásba. ***/
+
+		int main()
+		{
+   		 /* Meghívjuk az elemzőt, majd kilépünk.*/
+        	yylex();
+		printf("%d valós számot talált a lexer: \n",valos);
+   		 return 0;
+		}
+       ]]>
+        </programlisting>
     </section>                     
 
     <section>
