@@ -101,7 +101,6 @@
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
 	 <para>
-            
 		Ebben a részben a C nyelvről lesz szó. Mint tudjuk hisi nekünk is olvasnunk kell, létezik egy referencia könyv
 		 ahol a C nyelvhesz szükséges információkat és utasításokat megtaláljuk. Ilyenek példál a szabványok. Amik
 		 igazából mindig valami új featurest hoznak be a C nyelvbe. Csak a probléma az hogy visszafele nem futnak
@@ -193,20 +192,104 @@
 	<para>
             Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
+	     <programlisting language="c"><![CDATA[
+		#include <stdio.h>
+		#include <ctype.h>
+		#include <string.h>
+		#include <time.h>
+		#include <stdlib.h>
+		int x=0;
+		typedef struct{
+		char c;
+		char *d[7];
+		} cipher;
+		cipher L337[] = {
+		{'a',{"4","/-\\","a","/\\","a","a","a"}},
+		{'b',{"!3","|3","8","ß","b","b","b"}},
+		{'c',{"[","<","{","c","c","c","c"}},
+		{'d',{"|}","d","|>","T)","d","d","d"}},
+		{'e',{"3","&","e","€","e","e","e"}},
+		{'f',{"|=","|#","/=","f","f","f","f"}},
+		{'g',{"&","6","g","(_+","g","g","g"}},
+		{'h',{"|-|",")-(","[-]","h","h","h","h"}},
+		{'i',{"1","[]","!","|","i","i","i"}},
+		{'j',{"_|",";","1","j","j","j","j"}},
+		{'k',{">|","1<","|c","k","k","k","k"}},
+		{'l',{"1","|_","l","|","l","l","l"}},
+		{'m',{"/\\/\\","/V\\","[V]","m","m","m","m"}},
+		{'n',{"</>","n","|\\|","^/","n","n","n"}},
+		{'o',{"0","Q","o","<>","o","o","o"}},
+		{'p',{"|*","|>","p","|7","p","p","p"}},
+		{'q',{"(_,)","q","9","&","q","q","q"}},
+		{'r',{"I2","|?","Iz","r","r","r","r"}},
+		{'s',{"s","5","z","§","s","s","s"}},
+		{'t',{"4","-|-","7","t","t","t","t"}},
+		{'u',{"(_)","u","v","L|","u","u","u"}},
+		{'v',{"v","\\/","|/","\\|","v","v","v"}},
+		{'w',{"\\/\\/","w","\\x/","\\\\//\\\\//","w","w","w"}},
+		{'x',{"4","}{","><","x","x","x","x"}},
+		{'y',{"y","j","`/","\\|/","y","y","y"}},
+		{'z',{"2","-/_","z",">_","z","z","z"}},
+		{'1',{"I","1","L","I"}},
+		{'2',{"R","2","2","Z"}},
+		{'3',{"E","3","E","3"}},
+		{'4',{"4","A","A","4"}},
+		{'5',{"S","5","S","5"}},
+		{'6',{"b","6","G","6"}},
+		{'7',{"7","7","L","T"}},
+		{'8',{"8","B","8","B"}},
+		{'9',{"g","q","9","9"}},
+		{'0',{"0","()","[]","0"}},
+		};
+		%}
+		%option noyywrap
+		%%
+		\n 		{
+		printf("\n");
+		}
+. 		{
+		srand(time(0)+x++);
+   		char c = tolower(*yytext);
+   		int i=0;
+   		while(i<36 && L337[i++].c!=c); 
+   		if(i<36)
+   		{
+   			char *s=L337[i-1].d[rand()%7];
+   			printf("%s",s);
+   		}
+		else 
+		{
+			printf("%c",c);
+		}
+		}
+		%%
+		int main()
+		{
+		yylex();
+		return 0;
+		}
+       ]]>
+        </programlisting>
         <para>
-         
-		
-		
-		
-		
-		
-
+            Itt megint egy lexer-re lesz szükségünk, a fordításhoz szükségünk lesz a lex leet.c parancsra amellyel gcc által
+		olvasható forráskódot fog létrehozni. De ez a program nem számolgatni fog, itt a dolga az lesz hogy szöveg
+		fájlból vegye be / olvassa be a szabályokat majd ezekalapján készítsen egy C forráskódot. Egy ilyen lex
+		forráskód általában 3 részból áll. Az első iylen rész a definiciós a második az a rész ahol a szabályokat
+		tároljuk a harmadik rész pedig maga a C kód amit a szabályok által generált. A programunk alapja
+		ezenkívül az hogy létrehoz egy cipher típusú tömböt ami a leet kódokat tárolja. Ha kap a programunk egy
+		bemenetet akkor megvizsgálja hogy a létrehozott tömbünkben benne van-e? Ha igen kiválasztja a megfelelő
+		kódolási formát és kiírja kimenetként, ha pedig nem találja meg akkor a bemenetet írja ki kimenetként.
+		A mainbe megint találkozhatunk a yylex() parancsal, amit már az előző feladatból tudunk hogy meghívja magát
+		a lexet, majd megint egy return 0-val zárjuk a programunkat.
         </para>
     </section>                     
 
 
     <section>
         <title>A források olvasása</title>
+	 <para>
+             A feladatunk az lesz hogy különféle kódcsipeteket kaptunk és elkell magyaráznunk hogy mit jelentenek.
+	</para>
         <para>
             Hogyan olvasod, hogyan értelmezed természetes nyelven az alábbi kódcsipeteket? Például
             <programlisting><![CDATA[if(signal(SIGINT, jelkezelo)==SIG_IGN)
@@ -233,59 +316,59 @@
                 <programlisting><![CDATA[if(signal(SIGINT, SIG_IGN)!=SIG_IGN)
     signal(SIGINT, jelkezelo);]]></programlisting>
 		<para>
-			Ha a SIGINT nem volt figyelmen kívül hagyva akkor a jelkezelő kezelje.
-			Ha figyelmen kívül volt hagyva tövábbra is maradjon úgy.
+			Ezt már ugye a fenti feladat leírásban láthattuk példaként.
 		</para>
             </listitem>
 	
             <listitem>                                    
                 <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>  
 		<para>
-		A függvény 5x fog lefutni, viszont figyelni kell arra hogy az i változót még a for ciklus ellőtt deklarálni kell, és ha az i-t ++i-vel növeltük akkor lehetőleg 		továbbra is úgy használjuk hogy könnyebben érthető maradjon a kód.
-	
+		 Ez egy for ciklus, ami 0-tól 4-ig tart hisz nincs megengedve az egyenlőség,i-t megnövelve. 
+			Majd i ezt a megnövelt értéket veszi fel
 		</para>          
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>  
 		<para>
-			Itt is ugyanaz igaz mint az előzőnél. A cuklus 5x le fog futni ha a ciklusváltozót deklarátuk a ciklus előtt.
+			Ez ugyan az mint az előző, csak itt az i nem a növelt értéket hanem a növelés előtti értéket veszi fel.
 		</para>          
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>  
 		<para>
-			Nyelvtani hiba nincs ha már létrehoztuk a tomb nevű tömböt és az i-t. Le is fog fordulni, viszont az eredmény bugos lesz.
+			Az eleje megint ugyan az, de a végén i-vel egyenlővé teszi a tömb-i-ik elemét
 		</para>          
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting>
 		<para>
-			A kód hibamentes ha már létrehoztuk a látható változókat és mutatókat.
+			Ez megint egy forciklus, szintén 0 a kezdőérték, és addig megyünk amíg az i értékünk kisebb
+			az n-nél. És az S mutató hozzárendeli ahhoz az értékhez amire a d mutat és minden kör végén az i-t
+			egyel növelnünk kell.
 		</para>            
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>  
 		<para>
-			A printf függvény ki fog írni 2 decimális számot ha már megvan az f függvény, az a változó, és ha az a változó megfelelő típusú az f függvényhez.
-			Arra kell figyelni hogy ha az f függvény visszatérési értéke nem int akkor a kiírt értékek nem biztos hogy pontosak lesznek.
+			A printf a kiíratás, szóval tudjuk hogy két eégszet fogunk kiíratni, amikhez tartozik 1-1 művelet.
 		</para>          
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>  
 		<para>
-			A printf ki fogja írni az f függvény visszatérési értékét a-ra decimális alakban, és a értékét decimális alakban. Itt is ugyanarra kell figyelni mint 				az előbb. Nyelvtani hiba nincs a kódrészletben.
+			Megint két egészet fogunk kiírni, az egyik az f függvény értékét, a másik pedig az a függvény értékét.
 		</para>          
             </listitem>
 	
             <listitem>
                 <programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>  
 		<para>
-		A kiiratás megtörténik viszont az f függvény most az a változó memória címévél fog dolgozni nem az a értékével ha ezt akarjuk akkor nincs semmi gond.
+			Itt ugyan az a helyzet mint az előzőnél, csak most az f függvényünk tudja változtatni az a függvényünket.
 		</para>          
             </listitem>	
         </orderedlist>
@@ -305,19 +388,20 @@
         </para>
         <programlisting language="tex"><![CDATA[$(\forall x \exists y ((x<y)\wedge(y \text{ prím})))$]]></programlisting>
 	<para>
-		Végtelen sok prím van.
+		Az első formula értelmezése az hogy végtelen sok prímünk van.
 	</para>
 	<programlisting language="tex"><![CDATA[$(\forall x \exists y ((x<y)\wedge(y \text{ prím})\wedge(SSy \text{ prím})))$]]></programlisting> 
 	<para>
-		Végtelen sok ikerprím van.
+		A második formula jelentése az hogy végtelen sok IKERPRÍM van.
 	</para>
 	<programlisting language="tex"><![CDATA[$(\exists y \forall x (x \text{ prím}) \supset (x<y)) $]]></programlisting> 
 	<para>
-		Véges sok prím van.
+		Ez azt jelenti hogy Véges sok prím van.
 	</para>
 	<programlisting language="tex"><![CDATA[$(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$]]></programlisting>
 	<para>
-		Véges sok prím van.
+		Ez pedig ugyan azt jelenti mint az előző, csak kicsit más környezetbe van leírva és máshogy fogalmazva.
+		Tehát ugyan úgy Véges sok prímünk van.
 	</para>
         
         <para>
@@ -342,46 +426,51 @@
 
         <itemizedlist>
             <listitem>
-                <para>egész</para>
-		<programlisting><![CDATA[int a;]]></programlisting>                         
+                <para>egész</para>                       
             </listitem>
             <listitem>
-                <para>egészre mutató mutató</para>
-		<programlisting><![CDATA[int *b;]]></programlisting>                        
+                <para>egészre mutató mutató</para>                        
             </listitem>
             <listitem>
-                <para>egész referenciája</para>
-		<programlisting><![CDATA[int &r;]]></programlisting>                        
+                <para>egész referenciája</para>                      
             </listitem>
             <listitem>
-                <para>egészek tömbje</para>
-		<programlisting><![CDATA[int t[5];]]></programlisting>                        
+                <para>egészek tömbje</para>                    
             </listitem>
             <listitem>
-                <para>egészek tömbjének referenciája (nem az első elemé)</para>
-		<programlisting><![CDATA[int (&tr)[5] = t;]]></programlisting>                        
+		 <para>egészek tömbjének referenciája (nem az első elemé)</para>
             </listitem>
             <listitem>
-                <para>egészre mutató mutatók tömbje</para>
-		<programlisting><![CDATA[int *d[5];]]></programlisting>                        
+                <para>egészre mutató mutatók tömbje</para>                     
             </listitem>
             <listitem>
-                <para>egészre mutató mutatót visszaadó függvény</para>
-		<programlisting><![CDATA[int *h();]]></programlisting>                        
+                <para>egészre mutató mutatót visszaadó függvény</para>                      
             </listitem>
             <listitem>
-                <para>egészre mutató mutatót visszaadó függvényre mutató mutató</para>
-		<programlisting><![CDATA[int *(*h) ();]]></programlisting>                        
+                <para>egészre mutató mutatót visszaadó függvényre mutató mutató</para>                    
             </listitem>
             <listitem>
                 <para>egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvény</para>
-		<programlisting><![CDATA[int (*v (int c)) (int a, int b);]]></programlisting>
             </listitem>            
             <listitem>
-                <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>
-		<programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>                        
+                <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>                     
             </listitem>            
-        </itemizedlist>            
+        </itemizedlist>   
+	  <para>
+            A feladatunk az hogy fentiekben felsorolt elemekből létrehozzunk pár forráskódot ami lefut.
+            Az első ilyen kódom egy faktoriális számolás lesz.
+        </para>
+	    <programlisting><![CDATA[
+		int* fakt(int szam) {
+			static int a = 1;
+			if (szam < 2)
+				return &a;
+			while (szam>1) {
+				a = a*szam;
+				--szam;
+			}
+			return &a;
+]]></programlisting>
 
        <para>
             Mit vezetnek be a programba a következő nevek?
@@ -389,9 +478,9 @@
 
         <itemizedlist>
             <listitem>
-                <programlisting><![CDATA[int a;]]></programlisting>   
-		<para>
-			Egy egész típusú változót.
+		    <programlisting><![CDATA[int a;]]></programlisting>
+		    <para>
+			   Egész típusú változó
 		</para>         
             </listitem>
 
