@@ -85,12 +85,47 @@
          Vannak állandók is amelyek szintén rendelkeznek a fenti típusokkal és minősítőkkel. Emellett léteznek olyan állandók
          amikkel karaktereket adunk meg pl kódszámokat. De léteznek karaktersorozatok is, amelyek szintén lehetnek állandók
          de vannak olyanok is amelyek nem lehetnek állandóak csakis escape sorozattal írhatóak le. C nyelvben nem lehetnek a 
-         nyelvek kulcsszavai változónevek és a változó nevek első karakterének mindig muszáj betűnek lennie!
+         nyelvek kulcsszavai változónevek és a változó nevek első karakterének mindig muszáj betűnek lennie! Elágaztató
+         utasításokra az if-else párost használjuk. De az else simán elhagyható. Találkozhatunk a csellengő if problémával is
+         mikor két if-ünk van és egy elsénk és sem a program sem mi nemtudjuk hogy most épp melyik if-hez tartozik az a fránya
+         else. Ezért is van másfajta módszer a többirányú elágazásra. A SWITCH, ami összehasonlítja az értékeket majd végre
+         hajtja az utasításokat. Ciklusszervezés a WHILE és a FOR utasításokkal működik. mintkettőben ott van az ismétlődés.
+         De a For lehet végtelen is akár for (; ; ) ; és a while is ugyan úgy while(1). Két ciklust ha kedvünk van felserélhetünk.
+         Visszatérve a nyelvre hogy mennyire jó is, arra nem tudunk választ adni. Hisz ez mind emberfüggő, aki mondjuk épp
+         C-ben tanult meg programozni annak ez lesz a legjobb programozási nyelv amit mindig szeretni fog és isteníteni, viszont
+         aki már több megtanult programozási nyelv után tér rá erre annak lehet hogy nem fog eggyezni az előzővel a véleménye.
+         Negatívumnak mondanám még azt hogy találhatunk a C nyelvhez egy könyvet amiben ugymond az utasítások featurok vannak leírva
+         Ez mind szép és jó, ám mikor behoznak egy új szabványt akkor az tény hogy több mindenre lesz lehetőségünk. De visszafele
+         nem fognak működni a szabványok. Tehát ha a C99-es szabványba behoztak valami új dolgot, akkor azt a C89-es szabványban
+         nem fogjuk tudni alkalmazni, hisz visszafele nemtudnak működni.
+      
         </para>
     </section>        
     <section>
         <title>BME: Szoftverfejlesztés C++ nyelven / Benedek Zoltán, Levendovszky Tihamér</title>
        <para>
+           Az utolsó könyvünkhöz érkeztünk, amiben a C++ programozási nyelvről fogunk olvasni. Ez a programozási nyelv
+           A C programozási nyelvnek az objektum-orientált típusa. Melyet Bjarne Stroustrup fejlesztett ki. Ez a nyelv is 
+           általános célú ami a C nyelvre hajlik és alapoz. Ezért is hasonlítanak nagyon egymásra. Találkozhatunk olyan programokkal
+           forráskódokkal amik szinte egy az egyben ugyan úgy néznek ki és ugyan úgy működnek. De emellett rengetek különbség is van
+           a kétnyelv között, hisz ha nem lenne mi értelme lenne egy új programozási nyelvet megtanulni a C után ami szinte ugyan az.
+           Például a függvényparamétereknél vélhetjük felfedezni ez első ilyen nagyobb kölünbséget. C-ben ha definiálni szeretnénk egy
+           függvényt ami üres paraméterlistával rendelkezik akkor simán megtehetjük akárhány paraméterrel. Viszont ez a C++-ban 
+           egy void parancsal egyenlő. Amit megtudunk úgy irni hogy akárhány paraméterrel legyen meghívható, annyi a dolgunk hogy
+           a void-ot kicsit átalakítjuk, méghozzá így : ( void f (...) {}. C-ben a függvényvisszatérési értékét nem adhatjuk meg tehát 
+           alapértelmezett lesz ami egy tök jó dolog. Viszont C++-ban nem találkozhatunk ilyen alapértékekkel, itt ehelyett egy hibaüzenet
+           fogunk kapni. C++-ban jobban elengedik a kezünket, szabadabbak vagyunk. Ezt úgy értem hogy itt példál lehetőségünk van arra
+           hogy ha szeretnénk akkor tudunk dekralálni változókat is, amik helyén amugy egy utasításnak kéne állnia.
+           Jó példa még a két nyelv közötti kölünbségre  a függvénytúlterhelés. C-ben ilyenre nem volt lehetőségünk, ám C++
+           annál inkább. C-ben az átadás érték szerint történik, ami azt jelenti hogy kénytelenek vagyunk pointereket használni,
+           hogyha változtatni szeretnénk egy változó már megadott értékein. C++-ban pedig már van lehetőségünk cím szerinti
+           átadásra. Lehetőségünk van kivételkezelésre is, amely olyan parancs, szebb szóval mechanizmus amely segít abba hogy
+           kivételes eseteket is tudjunk kezelni. Például ha van egy programunk és fontos számunkra az hogy a bemenetünk ne 0 legyen
+           akkor használhatjuk ezt. Egy try-catch blokkot kell használnunk. És még rengeteg új és jó tulajdonsága van a C++-nak 
+           de nekem ennyire volt időm elolvasni a könyvet, így újabb és hasznosabb dolgot nemtudnék írni vagy mondani.
+           De a C++-t ajánlom mindenkinek, kezdőknek is, és azoknak is akik a C nyelv tanulásánál huzták a szájukat
+           vagy nem szimpatizáltak annyira azzal a nyelvel, mert ezzel tuti fognak!
+         
         </para>
     </section>              
 </chapter>               
