@@ -11,6 +11,10 @@
 	 A harmadik fejezet első feladatában mint már a címben is látható, Decimálisból unárisba átváltó Turing gépet kell létrehoznunk,
 	 állapotátmenet gráfjával megadva.
         </para>
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
+        </para>
+	    
 	<programlisting language="c"><![CDATA[
 	#include <stdio.h>
 	int main()
@@ -29,6 +33,9 @@
 	]]>
         </programlisting>
         <para>
+		
+		
+		
            Decimálisból unáris (egyes számrendszer) számrendszerbe való átváltás során csak a 10-es számrenderben megadott számú tetszőleges karaktert kell leírni.
 	   A fenti példában ez egy for ciklussal van megoldva de bármilyen más megoldás is jó ha az megfelelő számú tetszőleges karakter ad vissza eredményül.
         </para>
@@ -39,11 +46,13 @@
         <para>
             Mutass be legalább két környezetfüggő generatív grammatikát, amely ezt a nyelvet generálja!
         </para>
-        <para>
-            Megoldás forrása:
+  	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+
+		
+		
         </para>
     </section>        
                 
@@ -53,6 +62,9 @@
             A <citation>KERNIGHANRITCHIE</citation> könyv C referencia-kézikönyv/Utasítások melléklete alapján definiáld 
             BNF-ben a C utasítás fogalmát!
             Majd mutass be olyan kódcsipeteket, amelyek adott szabvánnyal nem fordulnak (például C89), mással (például C99) igen.
+        </para>
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
 	<programlisting><![CDATA[
 	<nem terminális> ::= konkatenációja terminálisoknak, nem terminálisoknak, 
@@ -104,14 +116,18 @@
             Nem elfogadható olyan megoldás, amely maga olvassa betűnként a bemenetet, 
             a feladat lényege, hogy lexert használjunk, azaz óriások vállán álljunk és ne kispályázzunk!
         </para>
-        <para>
-            Megoldás videó: 
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
         <para>
-            Megoldás forrása:  
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+         
+		
+		
+		
+		
+		
+		
+		
         </para>
     </section>                     
 
@@ -120,14 +136,17 @@
         <para>
             Lexelj össze egy l33t ciphert!
         </para>
-        <para>
-            Megoldás videó: 
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
         <para>
-            Megoldás forrása:  
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
+         
+		
+		
+		
+		
+		
+
         </para>
     </section>                     
 
@@ -151,6 +170,9 @@
                 Ha nem megy ránézésre, elkapja valamelyiket esetleg a splint vagy a frama?
             </para>
         </caution>
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
+        </para>
             
         <orderedlist numeration="lowerroman">
             <listitem>                                    
@@ -214,8 +236,10 @@
             </listitem>	
         </orderedlist>
         <para>
-	    Tanulságok, tapasztalatok, magyarázat...:
-            Figyeljünk hogy hogyan haszáljuk az operátorokat, figyeljünk a kiértékelés és az értékadás sorrendjére (i++, ++i), és ismerjük a függvényeket amiket használunk.
+	    
+		
+		
+		
         </para>
 
     </section>                     
@@ -257,6 +281,9 @@
             
         <para>
             Vezesd be egy programba (forduljon le) a következőket: 
+        </para>
+	<para>
+            Megoldás forrása: <link xlink:href="https://github.com/glszKK/Chomsky/tree/master">https://github.com/glszKK/Chomsky/tree/master</link>
         </para>
 
         <itemizedlist>
