@@ -93,7 +93,7 @@
   <revision>
         <revnumber>0.1.2</revnumber>
         <date>2019-04-29</date>
-        <authorinitials>Botond</authorinitials>
+        <authorinitials>glszKK</authorinitials>
         <revremark>
             Olvasónapló befejezése
         </revremark>
@@ -111,7 +111,7 @@
         <date>2019-05-10</date>
         <authorinitials>glszKK</authorinitials>
         <revremark>
-            Könyv befejezése | probléma a welch fejzettel
+            Könyv befejezése | probléma a welch fejzettel | Olvasónapló véletlen kitörlése, majd emlékezetből újraírása
         </revremark>
     </revision>
 </revhistory>
