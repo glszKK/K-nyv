@@ -12,13 +12,80 @@
     </info>
     <section>
         <title>Juhász István - Magas szintű programozási nyelvek</title>
-           
+            Programozni megtanulni csakis úgy lehet ha nagyon sokat gyakorlunk, folyamatosan megállás nélkül csináljuk.
+            Próbálgatjuk az újabb és újabb forráskódokat és kíváncsian vágunk bele új, saját, általunk készített feladatba is.
+            Mindenki nagyra álmodik és jó programozó akar lenni, de ehez tenni kell. Az első ilyen teendő az hogy megtanuljuk 
+            az alapfogalmakat amik a programozáshoz kapcsolódnak. Így egyszerűbb lesz megértenünk mindent. Vágjunk is bele.
+            Tehát a programozásnak 3 féle nyelvcsaládját különbüztetjük meg. Az első ilyen nyelv a gépi nyelv, az Assembly nyelv 
+            és a Magas szintű nyelvek. Az utolsó nyelvcsaládhoz forráskód szükséges amit megírunk és ehez egy fordító program
+            mely lefordítja a forráskódunkat és beviszi és lefutattja azt a számítógépünkön. Egy ilyen fordítóprogram 4 lépésen
+            megy keresztül ilyenkor mikor megkap egy forráskódot. Először is lexikálisan elemzi, majd miután ez megvan szintaktikai
+            elemzést is végrehajt, majd szemantikai elemzést, és legvégül egy kódgenerálást. Tehát először a forráskódot lexikálisan
+            elemeire bontja majd utána szintaktikailag elemzi azokat az elemekt hogy minden stimmel-e, és helyesek e és teljeseülnek 
+            -e az adott nyelven megírt forráskód szabályai. Ezenbelül a programnyelveket még 2 külön fajtába osztjuk. Az első ilyen
+            Fajta az imperatív nyelvek, amelyek algoritmikusok által működnek. Egy programozó megír egy ilyen algoritmust és ez
+            működteti a processzort, az általa írt utasítások és szabályok szerint, emellett ennek a nyelvnek vannak még alcsoportjai
+            is, például az eljárásorientált nyelvek és az objektumorientált nyelvek. Majd jön a másik fajta, amely a deklaratív nyelv
+            Ezekkel csak problémát írunk le, melyekre magába a nyelvbe beépített megoldásokat keressük. Ennek a nyelvnek is vannak
+            alcsoportjai, például a fukncionális nyelvek és a logikai nyelvek. A könyv következő részében a kifezezésekről volt szó,
+            Tehát a kifejezések egyfajta szintaktikai eszközök melyek a programunk egy pontján egy megadott értékből egy új,
+            másik értéket hoz létre, ennek két összetevője van: az érték és a típus. Egy kifejezés összesen 3 részből áll.
+            Az első ilyen rész az Operandusok melyek a kifejezésben az értéket képviselik, például:konstans, vagy változó.
+            A második ilyen összetevő az Operátorok melyek műveleti jelek, nem kell itt olyan bonyolult dolgokra gondolni.
+            Sima összeadás kivonás szorzás osztás amit ovodás korunk óta használunk. A harmadik összetevő pedig a zárójelek
+            Melyek segítenek elkülöníteni és rendezni a kifejezéseinket, és emellett a műveletek sorrendjét is ezzel tudjuk
+            megadni. Ha alak szempontból vizsgáljuk őket akkor 3 féle van..mindig 3..valahogy nagyon különleges szám ez
+            az informatikában! Tehát visszatérve lehet prefix alakú egy ilyen kifejezés, ami úgy néz ki hogy először a zárójel
+            majd az operátor aztán a számok ( + 5 6), van az infix alak, ami így néz ki ( 3 + 15 ) és legvégül van a postfix
+            ami a prefix fordított alakja, tehát egy a zárójel után egy számmal kezdünk majd az operátor a sor legvégén helyezkedik
+            el. Pontosan így ( 8 5 -). Visszatérünnk a nyelvekhez, mégpedig az eljárásorientált nyelvekhez. Egy adattípust
+            na kitaláljátok hány dolog határoz meg? igen 3..A tartomány ami a felvehető értékek halmaza. A műveletek ami a 
+            tartomány elemein végrehajtható műveleteket tárolja, és a reprezentáció: a tartományba tartozó értékeket jeleníti meg.
+            A nevesített konstantoknak 3 fajtája van. A neve, a típusa és az értéke. Ezek közül mindet egytől egyig deklarálnunk kell.
+            Ezek a nevesített konstansok azt teszik nekünk lehetővé hogy a sokszor előfordulő értékeket elnevezzük ezzel utalva
+            a konstas szerepére. Csoda történt. A változóknak nem 3 hanem 4 komponense van. Az első ilyen komponens a Név 
+            Ami a programunkban a változó nevével jelenik meg. Aztán ott vannak az Attribútumok amik olyanfajta jellemzők
+            amelyek a változók viselkedését figyeli írja le és határozza meg. A harmadik ilyen típus a Cím, itt helyezkedik el
+            a változónk értéke. A negyedik és egyben utolsó ilyen komponensünk az érték. A kifejezések meghatározására
+            két típusról fogunk tanulni: az egyik típus az a típusegyenértékűség, a másik pedig a típuskényszerítés.
+            Típusegyenértékűségnél azt mondjuk hogy adott egy két operandusu operátorunk, és neki csak ugyna ilyen típusu
+            operandusa lehet. Ilyenkor a kimenetünk, vagyis az eredményünk vagy olyan lesz mint a két operandus 
+            vagy pedig olyan mint az operátoré. A másik esetben a típuskészerítésnél pedig az előzőhöz ellentétes
+            tehát a kétoperanduusú operátornak lehet két különböző típusú operandusa.
+            Utasításokkal adjuk meg az algoritmusainkat, tehát mi adjuk meg hogy mi hogy működik, hogy mennyi ideig tartson
+            vagy mennyi ideig csináljon ezt azt. Ezeknek két csoportja van, A deklarációs utasítások és a végrehajtó utasítások.
+            A deklarációs utasítások az igazából a fordítóprogramnak szolnak hogy mit csináljon. Ezeket az utasításokat még
+            több alcsoportra osztjuk: például: értékadó,üres,hívó,elágazó és még sok más utasítás csoport létezik.
+            Egy üres utasítás esetén a gépünk ezt az üres utasítást hajtra vége a processzor segítségével.
+            Az elágaztató utasítás pedig mint a nevébe is benne van, abba segít nekünk hogy
+            két dolog kozott, jelen esetben tevékenység közül válasszunk. Ilyenek például az IF vagy a THEN vagy az ELSE
+            Az IF azért jó utasítás és azért használják nagyon sokat a programozók mert egymásba fűzhetőek. Az elset magába 
+            nem nagyon használjuk, inkább az IF-el együtt hogy IF ... ELSE ... .
+            A ciklusszervező utasításokkal azt tudjuk elérni hogy egy adott tevékenységet akár többször is elvégezhetünk.
+            A feltételes ciklusnál van egy fajta szabályozás, ami az ismétlődést szabályozza és ez pedig a feltétel értékén múlik.
+            A kezdőfeltételes ciklus pedig előszzör megkapja az eredméynt majd addig ismételi magát és addig csinálja
+            a megadott utasításokat amíg az az utasítás hamis nem lesz. Aztán jönnek a végfeltételes ciklusok amelyek először
+            lefutnak majd utána értékelődnek ki és ha az utasítás és a feltétel igaz akkor ujra lefutnak ha pedig hamis akkor
+            nem értékelődnek ki. Térjünk át a Vezérlő utasításokra: itt is 3 fajta van. A break: ami a ciklusmagban található
+            és 'lefékezi' azaz megállítja és befejezi a ciklust majd kilép belőle. A return szintén befejezi a ciklust ám ő átadja
+            a vezérlést a hívónak. Majd legvégül a CONTINUE ami szintén a breakhez hasonlóan a ciklusmagban található. Ő az
+            utasításokat nem hatja végre csak vizsgálja a feltételeket.
            <para> 
         </para>
     </section>        
     <section>
         <title>Kerninghan és Richie</title>
      <para> 
+         Ebben a konyvben A c programozási nyelvről fogunk olvasni. Magáról a nyelvről tudni kell hogy egy általános célú
+         programozási nyelv, de magasszintűnek egyáltalán nem mondhatjuk, de van aki mégis oda sorolja, hisz vannak olyan 
+         dolgai és featurei amik kényelmesebbé, egyszerűbbé ezáltal szerethetőbbé teszi magát mint néhány magas szintű
+         programozási nyelv. Például nincsennek benne bonyolult, összetett műveletek. Például karakterláncok vagy halmazok
+         vagy hasonló. Ha adattípusok szerint vizsgáljuk meg a C nyelvet akkor azt kell mondanunk hogy nagyon keveset használ
+         Pl. double, float, int. Viszont cserébe úgynevezett minősítőket használhatunk amelyek segítik a programozó életét. 
+         Vannak állandók is amelyek szintén rendelkeznek a fenti típusokkal és minősítőkkel. Emellett léteznek olyan állandók
+         amikkel karaktereket adunk meg pl kódszámokat. De léteznek karaktersorozatok is, amelyek szintén lehetnek állandók
+         de vannak olyanok is amelyek nem lehetnek állandóak csakis escape sorozattal írhatóak le. C nyelvben nem lehetnek a 
+         nyelvek kulcsszavai változónevek és a változó nevek első karakterének mindig muszáj betűnek lennie!
         </para>
     </section>        
     <section>
