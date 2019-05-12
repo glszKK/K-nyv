@@ -70,7 +70,6 @@
             és 'lefékezi' azaz megállítja és befejezi a ciklust majd kilép belőle. A return szintén befejezi a ciklust ám ő átadja
             a vezérlést a hívónak. Majd legvégül a CONTINUE ami szintén a breakhez hasonlóan a ciklusmagban található. Ő az
             utasításokat nem hatja végre csak vizsgálja a feltételeket.
-           <para> 
         </para>
     </section>        
     <section>
@@ -98,7 +97,6 @@
          Ez mind szép és jó, ám mikor behoznak egy új szabványt akkor az tény hogy több mindenre lesz lehetőségünk. De visszafele
          nem fognak működni a szabványok. Tehát ha a C99-es szabványba behoztak valami új dolgot, akkor azt a C89-es szabványban
          nem fogjuk tudni alkalmazni, hisz visszafele nemtudnak működni.
-      
         </para>
     </section>        
     <section>
@@ -125,7 +123,6 @@
            de nekem ennyire volt időm elolvasni a könyvet, így újabb és hasznosabb dolgot nemtudnék írni vagy mondani.
            De a C++-t ajánlom mindenkinek, kezdőknek is, és azoknak is akik a C nyelv tanulásánál huzták a szájukat
            vagy nem szimpatizáltak annyira azzal a nyelvel, mert ezzel tuti fognak!
-         
         </para>
     </section>              
 </chapter>               
