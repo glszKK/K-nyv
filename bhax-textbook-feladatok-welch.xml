@@ -171,11 +171,6 @@ main (int argc, char **argv)
 		itt láthatjuk hogy 10.000 elemet kell megadnunk, majd elindítjuk az inorder bejárást
 		majd a fa pointereir felszabadítjuk.
 	</para>
-	<mediaobject>
-                <imageobject>
-                    <imagedata fileref="img/lzw.png" scale="50" />
-                </imageobject>
-        </mediaobject>
 <programlisting language="c"><![CDATA[
 #include <stdio.h>
 #include <stdlib.h>
